@@ -111,6 +111,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# VS Code Project Settings
+.vscode/
+
 # Samples directory - we don't want to include these in case someone accidentally imports them into the project
 /[Aa]ssets/[Ss]amples.meta
 /[Aa]ssets/[Ss]amples/*
