@@ -114,6 +114,9 @@ crashlytics-build.properties
 # VS Code Project Settings
 .vscode/
 
+# Rider Project Settings
+.idea/
+
 # Samples directory - we don't want to include these in case someone accidentally imports them into the project
 /[Aa]ssets/[Ss]amples.meta
 /[Aa]ssets/[Ss]amples/*
