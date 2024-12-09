@@ -120,3 +120,7 @@ crashlytics-build.properties
 # Samples directory - we don't want to include these in case someone accidentally imports them into the project
 /[Aa]ssets/[Ss]amples.meta
 /[Aa]ssets/[Ss]amples/*
+
+# Temporary CI/CD Artifacts
+/[Aa]rtifacts/
+/[Cc]odeCoverage/
