@@ -1,7 +1,7 @@
 name: CI Pipeline
 
 env:
-  unity_version: 6000.0.30f1
+  unity_version: 6000.0.23f1
   target_platform: StandaloneWindows64
   build_output_path: Build/
   coverage_output_path: CodeCoverage/
