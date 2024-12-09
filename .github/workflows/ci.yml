@@ -23,12 +23,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install Unity Activation License
-      uses: game-ci/unity-activate@v2.0.0
-      with:
-        unityVersion: ${{ env.unity_version }}
-        activationFile: ${{ secrets.UNITY_LICENSE }}
-
     - name: Build Unity Project
       uses: game-ci/unity-builder@v2.0.0
       with:
@@ -48,12 +42,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
-    - name: Install Unity Activation License
-      uses: game-ci/unity-activate@v2.0.0
-      with:
-        unityVersion: ${{ env.unity_version }}
-        activationFile: ${{ secrets.UNITY_LICENSE }}
 
     - name: Run Unity Tests
       uses: game-ci/unity-test-runner@v2.0.0
