@@ -1,0 +1,15 @@
+# UX approvals
+* @ux-team
+
+# QA approvals
+* @qa-team
+
+# Tech approvals
+*.cs @tech-team
+*.asmdef @tech-team
+.gitignore @tech-team
+.gitattributes @tech-team
+.github/* @tech-team
+
+# Product Owner approvals
+* @product-team
