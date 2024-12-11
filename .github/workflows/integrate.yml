@@ -71,7 +71,7 @@ jobs:
         with:
           targetPlatform: WebGL
           customParameters: >
-            -executeMethod Attrition.BuildScript.BuildForWebGL
+            -buildMethod Attrition.BuildScript.BuildForWebGL
             -buildProfile WebGL
           allowDirtyBuild: true
 
