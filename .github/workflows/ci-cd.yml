@@ -1,4 +1,4 @@
-name: Integrate
+name: CI/CD
 
 on: 
     push:
@@ -81,3 +81,24 @@ jobs:
         with:
           name: Build-WebGL
           path: build/WebGL
+
+
+  deploy:
+    needs:
+        - test
+        - build
+    name: Deploy to Itch.io
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2.0.8
+      with:
+        name: Build-WebGL
+        path: build/WebGL
+    - uses: KikimoraGames/itch-publish@v0.0.3
+      with:
+        butlerApiKey: ${{secrets.ITCH_API_TOKEN}}
+        gameData: ./build/WebGL
+        itchUsername: ${{ secrets.ITCH_USERNAME }}
+        itchGameId: ${{ env.ITCH_GAME_ID }}
+        buildChannel: webgl
+        buildNumber: 0.1.0
