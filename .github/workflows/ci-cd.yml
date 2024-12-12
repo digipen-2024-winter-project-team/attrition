@@ -109,5 +109,5 @@ jobs:
       with:
         path: build/WebGL
         api-key: ${{ env.ITCH_API_TOKEN }}
-        project: "attrition-demo"
+        project: "frenchtr/attrition-demo"
         channel: webgl
