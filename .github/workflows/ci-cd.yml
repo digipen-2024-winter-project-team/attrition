@@ -105,8 +105,9 @@ jobs:
         path: build/WebGL
 
     - name: "Publish WebGL build artifact to Itch.io"
-      uses: KikimoraGames/itch-publish@v0.0.3
+      uses: robpc/itchio-upload-action@v1
       with:
-        butlerApiKey: ${{ env.ITCH_API_TOKEN }}
-        gameData: ./build/WebGL
-        buildChannel: webgl
+        path: build/WebGL
+        api-key: ${{ env.ITCH_API_TOKEN }}
+        project: "attrition-demo"
+        channel: webgl
