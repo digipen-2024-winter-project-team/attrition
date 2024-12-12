@@ -15,7 +15,9 @@ env:
     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
     ITCH_API_TOKEN: ${{ secrets.ITCH_API_TOKEN }}
     ITCH_USERNAME: ${{ secrets.ITCH_USERNAME }}
+    ITCH_GAME_NAME: ${{ secrets.ITCH_GAME_NAME }}
     ITCH_GAME_ID: ${{ secrets.ITCH_GAME_ID }}
+    BUILD_PATH_WEBGL: build/WebGL
 
 jobs:
   test:
@@ -85,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Build-WebGL
-          path: build/WebGL
+          path: ${{ env.BUILD_PATH_WEBGL }}
 
   deploy:
     name: Deploy build to Itch.io
@@ -102,12 +104,12 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: Build-WebGL
-        path: build/WebGL
+        path: ${{ env.BUILD_PATH_WEBGL }}
 
     - name: "Publish WebGL build artifact to Itch.io"
       uses: robpc/itchio-upload-action@v1
       with:
-        path: build/WebGL
+        path: ${{ env.BUILD_PATH_WEBGL }}
         api-key: ${{ env.ITCH_API_TOKEN }}
-        project: "frenchtr/attrition-demo"
+        project: "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_NAME }}"
         channel: webgl
