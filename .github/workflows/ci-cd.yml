@@ -8,6 +8,15 @@ on:
         branches:
             - main
 
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    ITCH_API_TOKEN: ${{ secrets.ITCH_API_TOKEN }}
+    ITCH_USERNAME: ${{ secrets.ITCH_USERNAME }}
+    ITCH_GAME_ID: ${{ secrets.ITCH_GAME_ID }}
+
 jobs:
   test:
     name: Run tests
@@ -16,6 +25,7 @@ jobs:
         contents: write
         checks: write
     steps:
+
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,7 +33,8 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v3
+      - name: Cache project files
+        uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -33,12 +44,8 @@ jobs:
       # Test
       - name: Run tests
         uses: game-ci/unity-test-runner@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ env.GITHUB_TOKEN }}
 
   build:
     name: Build project
@@ -47,6 +54,7 @@ jobs:
         contents: write
         checks: write
     steps:
+
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -54,7 +62,8 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v3
+      - name: Cache project files
+        uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -64,10 +73,6 @@ jobs:
       # Build WebGL
       - name: Build for WebGL
         uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
           customParameters: >
@@ -76,29 +81,32 @@ jobs:
           allowDirtyBuild: true
 
       # Upload Build
-      - name: Upload WebGL Build
-        uses: actions/upload-artifact@v3
+      - name: Upload WebGL build artifact
+        uses: actions/upload-artifact@v4
         with:
           name: Build-WebGL
           path: build/WebGL
 
-
   deploy:
+    name: Deploy build to Itch.io
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        checks: write
     needs:
         - test
         - build
-    name: Deploy to Itch.io
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v2.0.8
+
+    - name: "Download WebGL build artifact"
+      uses: actions/download-artifact@v4
       with:
         name: Build-WebGL
         path: build/WebGL
-    - uses: KikimoraGames/itch-publish@v0.0.3
+
+    - name: "Publish WebGL build artifact to Itch.io"
+      uses: KikimoraGames/itch-publish@v0.0.3
       with:
-        butlerApiKey: ${{secrets.ITCH_API_TOKEN}}
+        butlerApiKey: ${{ env.ITCH_API_TOKEN }}
         gameData: ./build/WebGL
-        itchUsername: ${{ secrets.ITCH_USERNAME }}
-        itchGameId: ${{ env.ITCH_GAME_ID }}
         buildChannel: webgl
-        buildNumber: 0.1.0
