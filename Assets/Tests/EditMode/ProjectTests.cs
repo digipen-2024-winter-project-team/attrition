@@ -22,6 +22,8 @@ namespace Attrition
                 "Assets/Resources",
                 "Assets/Runtime",
                 "Assets/Tests",
+                "Assets/TextMeshPro",
+                "Assets/WebGLTemplates",
             };
 
             var allowedRootDirectories = new[] { "Assets" };
@@ -109,120 +111,5 @@ namespace Attrition
 
             Assert.False(hasMisplacedScenes, $"{misplacedScenes.Count} scenes are outside the '{scenesDirectory}' directory.");
         }
-        
-        // [Test]
-        // public void GivenProjectAssets_WhenCheckedForDuplicateNames_ThenNoAssetsHaveSameTypeAndNameInDifferentLocations()
-        // {
-        //     /* ARRANGE */
-        //     var excludedExtensions = new HashSet<string>
-        //     {
-        //         ".asmref",
-        //     };
-        //
-        //     var allAssets = AssetDatabase.GetAllAssetPaths()
-        //         .Where(path => path.StartsWith("Assets/")) // Exclude Packages and other folders
-        //         .Where(path => !string.IsNullOrEmpty(System.IO.Path.GetExtension(path))) // Ignore folders
-        //         .Where(path => !excludedExtensions.Contains(System.IO.Path.GetExtension(path).ToLower())) // Exclude specific extensions
-        //         .Select(path => new
-        //         {
-        //             Name = System.IO.Path.GetFileNameWithoutExtension(path),
-        //             Extension = System.IO.Path.GetExtension(path),
-        //             Path = path
-        //         })
-        //         .GroupBy(asset => new { asset.Name, asset.Extension }) // Group by name and type
-        //         .ToList();
-        //
-        //     /* ACT */
-        //     var duplicates = allAssets
-        //         .Where(group => group.Count() > 1) // Find groups with duplicates
-        //         .ToDictionary(group => group.Key, group => group.ToList());
-        //
-        //     var hasDuplicates = duplicates.Any();
-        //
-        //     /* ASSERT */
-        //     if (hasDuplicates)
-        //     {
-        //         var stringBuilder = new StringBuilder();
-        //
-        //         stringBuilder.AppendLine($"{duplicates.Count} sets of duplicate assets were found:");
-        //         stringBuilder.AppendLine();
-        //
-        //         foreach (var duplicateGroup in duplicates)
-        //         {
-        //             stringBuilder.AppendLine(
-        //                 $"Duplicate Name: {duplicateGroup.Key.Name}, Type: {duplicateGroup.Key.Extension}");
-        //             foreach (var asset in duplicateGroup.Value)
-        //             {
-        //                 stringBuilder.AppendLine($"- {asset.Path}");
-        //             }
-        //
-        //             stringBuilder.AppendLine();
-        //         }
-        //
-        //         Debug.LogError(stringBuilder.ToString());
-        //     }
-        //
-        //     Assert.False(hasDuplicates, $"{duplicates.Count} sets of duplicate assets were found.");
-        // }
-        
-        /*[Test]
-        public void GivenProjectFiles_WhenCheckedForNamingConvention_ThenAllFilesFollowPascalCaseWithExclusions()
-        {
-            /* ARRANGE #1#
-            
-            const string namingPattern = @"^([A-Z][a-z0-9]*)+([A-Z]{2,}[a-z0-9]*)*$";
-            var regex = new System.Text.RegularExpressions.Regex(namingPattern);
-            
-            var excludedExtensions = new HashSet<string>
-            {
-                ".asmdef",
-                ".asmref",
-            };
-            
-            var excludedPaths = new List<string>
-            {
-                "Assets/ThirdParty",
-                "Assets/Plugins",
-                "Assets/Runtime/Settings/Build Profiles",
-            };
-            
-            var allFiles = AssetDatabase.GetAllAssetPaths()
-                .Where(path => path.StartsWith("Assets/")) // Exclude non-Assets paths
-                .Where(path => !string.IsNullOrEmpty(System.IO.Path.GetExtension(path))) // Ignore folders
-                .Where(path => !excludedExtensions.Contains(System.IO.Path.GetExtension(path).ToLower())) // Exclude extensions
-                .Where(path => !excludedPaths.Any(excludedPath => path.StartsWith(excludedPath))) // Exclude specific paths
-                .ToList();
-
-            /* ACT #1#
-            
-            var nonCompliantFiles = allFiles
-                .Where(filePath =>
-                {
-                    var fileName = System.IO.Path.GetFileNameWithoutExtension(filePath);
-                    return !regex.IsMatch(fileName);
-                })
-                .ToList();
-
-            var hasNonCompliantFiles = nonCompliantFiles.Any();
-
-            /* ASSERT #1#
-            
-            if (hasNonCompliantFiles)
-            {
-                var stringBuilder = new StringBuilder();
-                
-                stringBuilder.AppendLine($"{nonCompliantFiles.Count} files do not follow the PascalCase naming convention:");
-                stringBuilder.AppendLine();
-
-                foreach (var file in nonCompliantFiles)
-                {
-                    stringBuilder.AppendLine(file);
-                }
-
-                Debug.LogError(stringBuilder.ToString());
-            }
-
-            Assert.False(hasNonCompliantFiles, $"{nonCompliantFiles.Count} files do not follow the PascalCase naming convention.");
-        }*/
     }
 }
