@@ -22,7 +22,7 @@ namespace Attrition
                 "Assets/Resources",
                 "Assets/Runtime",
                 "Assets/Tests",
-                "Assets/TextMeshPro",
+                "Assets/TextMesh Pro",
                 "Assets/WebGLTemplates",
             };
 
