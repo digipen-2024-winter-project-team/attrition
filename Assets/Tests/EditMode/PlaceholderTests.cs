@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Attrition.Tests
+namespace Attrition
 {
     public class PlaceholderTests
     {
