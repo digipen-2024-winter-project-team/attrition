@@ -1,0 +1,115 @@
+name: CI/CD
+
+on: 
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    ITCH_API_TOKEN: ${{ secrets.ITCH_API_TOKEN }}
+    ITCH_USERNAME: ${{ secrets.ITCH_USERNAME }}
+    ITCH_GAME_NAME: ${{ secrets.ITCH_GAME_NAME }}
+    ITCH_GAME_ID: ${{ secrets.ITCH_GAME_ID }}
+    BUILD_PATH_WEBGL: build/WebGL
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        checks: write
+    steps:
+
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Cache
+      - name: Cache project files
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v4
+        with:
+          githubToken: ${{ env.GITHUB_TOKEN }}
+
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        checks: write
+    steps:
+
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # Cache
+      - name: Cache project files
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # Build WebGL
+      - name: Build for WebGL
+        uses: game-ci/unity-builder@v4
+        with:
+          targetPlatform: WebGL
+          customParameters: >
+            -buildMethod Attrition.BuildScript.BuildForWebGL
+            -buildProfile WebGL
+          allowDirtyBuild: true
+
+      # Upload Build
+      - name: Upload WebGL build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build-WebGL
+          path: ${{ env.BUILD_PATH_WEBGL }}
+
+  deploy:
+    name: Deploy build to Itch.io
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        checks: write
+    needs:
+        - test
+        - build
+    steps:
+
+    - name: "Download WebGL build artifact"
+      uses: actions/download-artifact@v4
+      with:
+        name: Build-WebGL
+        path: ${{ env.BUILD_PATH_WEBGL }}
+
+    - name: "Publish WebGL build artifact to Itch.io"
+      uses: robpc/itchio-upload-action@v1
+      with:
+        path: ${{ env.BUILD_PATH_WEBGL }}
+        api-key: ${{ env.ITCH_API_TOKEN }}
+        project: "${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_NAME }}"
+        channel: webgl
