@@ -6,8 +6,8 @@ using UnityEditor.ProBuilder;
 
 namespace Attrition.ProBuilderAdvancedToolsOverlay
 {
-    [Overlay(typeof(SceneView), "ProBuilder Advanced", defaultDockPosition = DockPosition.Top, defaultDockZone = DockZone.LeftToolbar)]
-    public class ProBuilderSceneViewOverlayUIToolkit : Overlay, ITransientOverlay
+    [Overlay(typeof(SceneView), "ProBuilder Tools", defaultDockPosition = DockPosition.Top, defaultDockZone = DockZone.LeftToolbar)]
+    public class ProBuilderSceneViewOverlay : Overlay, ITransientOverlay
     {
         private const string EditorPath = "Assets/Editor/ProBuilderAdvancedToolsOverlay";
         private const string VisualTreeAssetFilename = "ProBuilderAdvancedToolsOverlay.uxml";
