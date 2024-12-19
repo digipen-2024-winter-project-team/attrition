@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7521596878254092891}
   - component: {fileID: 3835747122644846260}
   - component: {fileID: -3788525159462590025}
+  - component: {fileID: 6321470713925311054}
   m_Layer: 0
   m_Name: Boar
   m_TagString: Untagged
@@ -101,7 +102,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -136,15 +137,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d116d20dc9754345afd89b5235d428a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 3
-  damageable: {fileID: 0}
+  hitpoints: 0
+  damageable: {fileID: 3835747122644846260}
   maxHitpoints: 3
   startWithMaxHitpoints: 1
   invincibilityDuration: 0
-  team: {fileID: 0}
+  team: {fileID: 11400000, guid: 5a12c0b3c493d456aa8e99253f4569bc, type: 2}
   destroyed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6321470713925311054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566079342572261674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 7740491249602828787, guid: 00760828e2b8c2d43ac91b7d53ccbaea, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 6321703024798991081
+  references:
+    version: 2
+    RefIds:
+    - rid: 6321703024798991081
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 1566079342572261674}
 --- !u!1 &3113607683026906842
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 3113607683026906842}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.742, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8335511006596480185}
@@ -247,7 +274,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -28,7 +28,7 @@ public partial class FindForwardAction : Action
             timer = 0;
             return Status.Success;
         }
-        return Status.Failure;
+        return Status.Running;
     }
 
     protected override void OnEnd()
