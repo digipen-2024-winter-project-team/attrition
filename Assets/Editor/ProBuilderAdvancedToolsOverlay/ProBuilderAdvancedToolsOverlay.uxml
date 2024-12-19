@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement class="toolbar-root">
+        
+        <!-- Vertex Mode Tools -->
+        <ui:Foldout text="Vertex Mode Tools" name="vertex-mode-tools">
+            <ui:Button name="vertex-grow-selection-button" text="Grow Selection" />
+            <ui:Button name="vertex-shrink-selection-button" text="Shrink Selection" />
+            <ui:Button name="vertex-select-loop-button" text="Select Loop" />
+            <ui:Button name="vertex-select-ring-button" text="Select Ring" />
+            <ui:Button name="vertex-collapse-vertices-button" text="Collapse Vertices" />
+            <ui:Button name="vertex-split-vertices-button" text="Split Vertices" />
+            <ui:Button name="vertex-weld-vertices-button" text="Weld Vertices" />
+            <ui:Button name="vertex-smart-connect-button" text="Smart Connect" />
+        </ui:Foldout>
+
+        <!-- Edge Mode Tools -->
+        <ui:Foldout text="Edge Mode Tools" name="edge-mode-tools">
+            <ui:Button name="edge-grow-selection-button" text="Grow Selection" />
+            <ui:Button name="edge-shrink-selection-button" text="Shrink Selection" />
+            <ui:Button name="edge-select-loop-button" text="Select Loop" />
+            <ui:Button name="edge-select-ring-button" text="Select Ring" />
+            <ui:Button name="edge-select-hole-button" text="Select Hole" />
+            <ui:Button name="edge-bridge-edges-button" text="Bridge Edges" />
+            <ui:Button name="edge-insert-edge-loop-button" text="Insert Edge Loop" />
+            <ui:Button name="edge-smart-subdivide-button" text="Smart Subdivide" />
+            <ui:Button name="edge-offset-elements-button" text="Offset Elements" />
+            <ui:Button name="edge-bevel-edges-button" text="Bevel Edges" />
+        </ui:Foldout>
+
+        <!-- Face Mode Tools -->
+        <ui:Foldout text="Face Mode Tools" name="face-mode-tools">
+            <ui:Button name="face-grow-selection-button" text="Grow Selection" />
+            <ui:Button name="face-shrink-selection-button" text="Shrink Selection" />
+            <ui:Button name="face-select-loop-button" text="Select Loop" />
+            <ui:Button name="face-select-ring-button" text="Select Ring" />
+            <ui:Button name="face-select-hole-button" text="Select Hole" />
+            <ui:Button name="face-select-material-button" text="Select Material" />
+            <ui:Button name="face-select-smoothing-group-button" text="Select Smoothing Group" />
+            <ui:Button name="face-select-vertex-color-button" text="Select Vertex Color" />
+            <ui:Button name="face-center-pivot-button" text="Center Pivot" />
+            <ui:Button name="face-delete-faces-button" text="Delete Faces" />
+            <ui:Button name="face-flip-face-normals-button" text="Flip Face Normals" />
+            <ui:Button name="face-freeze-transform-button" text="Freeze Transform" />
+            <ui:Button name="face-extrude-button" text="Extrude" />
+            <ui:Button name="face-merge-faces-button" text="Merge Faces" />
+            <ui:Button name="face-detach-faces-button" text="Detach Faces" />
+            <ui:Button name="face-duplicate-faces-button" text="Duplicate Faces" />
+            <ui:Button name="face-triangulate-faces-button" text="Triangulate Faces" />
+        </ui:Foldout>
+
+        <!-- General Tools -->
+        <ui:Foldout text="General Tools" name="general-tools">
+            <ui:Button name="general-probuilderize-button" text="ProBuilderize" />
+            <ui:Button name="general-set-collider-button" text="Set Collider" />
+            <ui:Button name="general-set-trigger-button" text="Set Trigger" />
+            <ui:Button name="general-flip-object-normals-button" text="Flip Object Normals" />
+            <ui:Button name="general-conform-object-normals-button" text="Conform Object Normals" />
+            <ui:Button name="general-subdivide-object-button" text="Subdivide Object" />
+            <ui:Button name="general-triangulate-object-button" text="Triangulate Object" />
+            <ui:Button name="general-toggle-drag-rect-mode-button" text="Toggle Drag Rect Mode" />
+            <ui:Button name="general-toggle-handle-orientation-button" text="Toggle Handle Orientation" />
+            <ui:Button name="general-toggle-select-back-faces-button" text="Toggle Select Back Faces" />
+            <ui:Button name="general-toggle-x-ray-button" text="Toggle X-Ray" />
+            <ui:Button name="general-mirror-objects-button" text="Mirror Objects" />
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

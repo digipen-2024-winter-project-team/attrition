@@ -1,0 +1,24 @@
+/* Root toolbar container */
+.toolbar-root {
+    flex-direction: column;
+    padding: 5px;
+}
+
+/* Individual tool containers */
+.toolbar-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+/* Hidden elements */
+.hidden {
+    display: none;
+}
+
+/* Buttons */
+button {
+    margin: 2px;
+    width: 200px;
+    font-size: 12px;
+}
