@@ -37,8 +37,6 @@ namespace Attrition.CameraTriggers
             {
                 DrawGizmos();
             }
-
-            CameraTrigger.TriggerGizmoVisibility = GizmoVisibility.Never;
         }
 
         private void OnDrawGizmosSelected()
