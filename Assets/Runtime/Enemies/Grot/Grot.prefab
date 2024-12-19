@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 4704636478940641258}
   - component: {fileID: 248984773881324565}
   - component: {fileID: 4123121816839242520}
+  - component: {fileID: 2740023959496729423}
+  - component: {fileID: 9064840019342844281}
   m_Layer: 0
   m_Name: Grot
   m_TagString: Untagged
@@ -152,7 +154,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7971083788121381096}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
@@ -217,3 +219,51 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &2740023959496729423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971083788121381096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d116d20dc9754345afd89b5235d428a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 0
+  damageable: {fileID: 9064840019342844281}
+  maxHitpoints: 3
+  startWithMaxHitpoints: 1
+  invincibilityDuration: 0
+  team: {fileID: 11400000, guid: 5a12c0b3c493d456aa8e99253f4569bc, type: 2}
+  destroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7971083788121381096}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9064840019342844281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971083788121381096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b76879cb54fd49b8949f3b30f4545b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damaged:
+    m_PersistentCalls:
+      m_Calls: []
