@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 4123121816839242520}
   - component: {fileID: 2740023959496729423}
   - component: {fileID: 9064840019342844281}
+  - component: {fileID: 4222656773435664155}
   m_Layer: 0
   m_Name: Grot
   m_TagString: Untagged
@@ -267,3 +268,29 @@ MonoBehaviour:
   damaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4222656773435664155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971083788121381096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -7988501657815218245, guid: b5268ba15192f6147a5157ef755e9df9, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 6321703028543979919
+  references:
+    version: 2
+    RefIds:
+    - rid: 6321703028543979919
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 7971083788121381096}
