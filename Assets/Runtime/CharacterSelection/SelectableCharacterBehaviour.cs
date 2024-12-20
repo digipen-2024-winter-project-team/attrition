@@ -1,6 +1,5 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection
 {
@@ -12,7 +11,14 @@ namespace Attrition.CharacterSelection
         private Animator animator;
         [SerializeField]
         private Transform browseFollowTarget;
-        
+        [SerializeField]
+        private CharacterClass characterClass;
+
+        public CharacterClass CharacterClass
+        {
+            get => this.characterClass;
+            private set => this.characterClass = value;
+        }
         public Transform BrowseFollowTarget => this.browseFollowTarget;
 
         public void Focus()

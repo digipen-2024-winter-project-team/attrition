@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection
 {
@@ -7,8 +8,9 @@ namespace Attrition.CharacterSelection
     {
         [SerializeField]
         private InputActionReference navigateAction;
+        [FormerlySerializedAs("characterSelection")]
         [SerializeField]
-        private CharacterSelectionBehaviour characterSelection;
+        private CharacterNavigator characterNavigation;
 
         private void OnEnable()
         {
@@ -24,7 +26,7 @@ namespace Attrition.CharacterSelection
         private void OnNavigate(InputAction.CallbackContext context)
         {
             var value = context.ReadValue<Vector2>();
-            this.characterSelection.Navigate(value);
+            this.characterNavigation.Navigate(value);
         }
     }
 }
