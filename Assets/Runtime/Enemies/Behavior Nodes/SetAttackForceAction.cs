@@ -13,7 +13,7 @@ public partial class SetAttackForceAction : Action
 
     protected override Status OnStart()
     {
-        Rotation.Value = new Vector3(Rotation.Value.x * Power, 0, Rotation.Value.z * Power);
+        Rotation.Value = new Vector3(Rotation.Value.x * Power, Rotation.Value.y, Rotation.Value.z * Power);
         return Status.Running;
     }
 
