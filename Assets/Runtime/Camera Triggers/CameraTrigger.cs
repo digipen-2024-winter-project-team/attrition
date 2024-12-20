@@ -2,6 +2,7 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using Attrition.Common;
+using UnityEditor;
 
 namespace Attrition.CameraTriggers
 {
@@ -29,11 +30,13 @@ namespace Attrition.CameraTriggers
 
         private static readonly Color triggerBoundsColor = new(1, 0, 0, 0.5f);
         
-        public static GizmoVisibility TriggerGizmoVisibility = GizmoVisibility.Never;
+        public const string TriggerGizmoVisibilityKey = "CameraTriggerGizmoVisiblity";
 
+        private static GizmoVisibility TriggerGizmoVisibility => (GizmoVisibility)EditorPrefs.GetInt(TriggerGizmoVisibilityKey, 0);
+        
         private void OnDrawGizmos()
         {
-            if (TriggerGizmoVisibility == GizmoVisibility.Always)
+            if (TriggerGizmoVisibility == GizmoVisibility.AlwaysShow)
             {
                 DrawGizmos();
             }
@@ -41,7 +44,7 @@ namespace Attrition.CameraTriggers
 
         private void OnDrawGizmosSelected()
         {
-            if (TriggerGizmoVisibility == GizmoVisibility.WhenSelected)
+            if (TriggerGizmoVisibility == GizmoVisibility.ShowWhenSelected)
             {
                 DrawGizmos();
             }

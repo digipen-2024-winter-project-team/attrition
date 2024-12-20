@@ -25,6 +25,9 @@ namespace Attrition.PlayerCharacter
         
         private Vector2 indicatorPosition;
         private Vector2 indicatorVelocity;
+        
+        private Vector2 GetUVPosition(Vector3 position) =>
+            (Vector2)CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
 
         private void Start()
         {
@@ -56,7 +59,9 @@ namespace Attrition.PlayerCharacter
                 Vector3 aimDirection = Movement.MoveDirection != Vector3.zero
                     ? Movement.MoveDirection
                     : transform.forward;
-                float maxDistance = targetDistances.Max(obj => obj.distance);
+                float maxDistance = targetDistances.Length > 0 
+                    ? targetDistances.Max(obj => obj.distance)
+                    : 1;
                 
                 var newTarget = targetDistances
                     .OrderBy(obj =>
@@ -97,7 +102,10 @@ namespace Attrition.PlayerCharacter
             }
             
             indicator.gameObject.SetActive(targeting != null);
+        }
 
+        private void LateUpdate()
+        {
             if (targeting != null)
             {
                 indicatorPosition = Vector2.SmoothDamp(indicatorPosition, Vector2.zero, ref indicatorVelocity, indicatorSpeed);
@@ -105,10 +113,9 @@ namespace Attrition.PlayerCharacter
                 Vector2 targetUV = GetUVPosition(targeting.transform.position) + indicatorPosition;
                 var parentRect = ((RectTransform)indicator.parent).rect;
                 indicator.anchoredPosition = parentRect.size * targetUV;
+                
+                print(targetUV);
             }
-            
-            Vector2 GetUVPosition(Vector3 position) =>
-                (Vector2)CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
         }
     }
 }

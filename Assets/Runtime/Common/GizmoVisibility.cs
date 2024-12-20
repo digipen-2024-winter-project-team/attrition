@@ -3,8 +3,8 @@ namespace Attrition.Common
 {
     public enum GizmoVisibility
     {
-        Never,
-        Always,
-        WhenSelected,
+        NeverShow,
+        AlwaysShow,
+        ShowWhenSelected,
     }
 }
