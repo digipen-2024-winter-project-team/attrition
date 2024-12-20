@@ -15,7 +15,7 @@ public partial class FindForwardAction : Action
     [SerializeReference] public BlackboardVariable<float> delay;
     protected override Status OnStart()
     {
-        forward.Value = GameObject.transform.forward;
+        //forward.Value = GameObject.transform.forward;
         return Status.Running;
     }
 
