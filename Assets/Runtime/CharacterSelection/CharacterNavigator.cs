@@ -4,10 +4,14 @@ namespace Attrition.CharacterSelection
 {
     public class CharacterNavigator : MonoBehaviour
     {
-        [SerializeField] private SelectableCharacterBehaviour[] characters;
-        [SerializeField] private CinemachineDollyTweener dollyController;
-        [SerializeField] private CinemachineSplineDollyPitcher pitchController;
-        [SerializeField] private CharacterSelectionStateHandler stateHandler;
+        [SerializeField]
+        private SelectableCharacterBehaviour[] characters;
+        [SerializeField]
+        private CinemachineDollyTweener dollyController;
+        [SerializeField]
+        private CinemachineSplineDollyPitcher pitchController;
+        [SerializeField]
+        private CharacterSelectionStateHandler stateHandler;
 
         private int currentCharacterIndex;
         private bool isNavigatingRight;
@@ -17,6 +21,7 @@ namespace Attrition.CharacterSelection
         private void OnEnable()
         {
             this.stateHandler.OnStateChanged.AddListener(this.HandleStateChanged);
+            this.Navigate();
         }
 
         private void OnDisable()
@@ -51,8 +56,7 @@ namespace Attrition.CharacterSelection
                 }
             }
         }
-
-
+        
         private void NavigateLeft()
         {
             this.isNavigatingRight = false;

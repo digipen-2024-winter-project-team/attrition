@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dolly: {fileID: 3526215818177198133}
-  pitchAngle: 15
+  pitchAngle: 8
 --- !u!1 &5719325843088836332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,11 +1537,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 268688255606854721, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00003556162
+      value: 0.000035509467
       objectReference: {fileID: 0}
     - target: {fileID: 268688255606854721, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.034831792
+      value: -0.034831762
       objectReference: {fileID: 0}
     - target: {fileID: 3494333980297440529, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_Name
@@ -1565,7 +1565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8567634250379436418, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.56738216
+      value: -1.1969202
       objectReference: {fileID: 0}
     - target: {fileID: 8567634250379436418, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalPosition.y
