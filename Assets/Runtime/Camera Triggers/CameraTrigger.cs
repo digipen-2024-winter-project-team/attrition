@@ -2,7 +2,9 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using Attrition.Common;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace Attrition.CameraTriggers
 {
@@ -32,7 +34,12 @@ namespace Attrition.CameraTriggers
         
         public const string TriggerGizmoVisibilityKey = "CameraTriggerGizmoVisiblity";
 
-        private static GizmoVisibility TriggerGizmoVisibility => (GizmoVisibility)EditorPrefs.GetInt(TriggerGizmoVisibilityKey, 0);
+        private static GizmoVisibility TriggerGizmoVisibility => 
+        #if UNITY_EDITOR
+            (GizmoVisibility)EditorPrefs.GetInt(TriggerGizmoVisibilityKey, 0);
+        #else
+            GizmoVisibility.NeverShow;
+        #endif
         
         private void OnDrawGizmos()
         {
