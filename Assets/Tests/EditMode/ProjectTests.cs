@@ -24,6 +24,7 @@ namespace Attrition
                 "Assets/Tests",
                 "Assets/TextMesh Pro",
                 "Assets/WebGLTemplates",
+                "Assets/Polybrush Data",
             };
 
             var allowedRootDirectories = new[] { "Assets" };
