@@ -1,5 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Attrition.Character_Selection
 {
@@ -17,6 +20,8 @@ namespace Attrition.Character_Selection
         private TextMeshProUGUI nameTextComponent;
         [SerializeField]
         private TextMeshProUGUI classTextComponent;
+        [SerializeField]
+        private Button buttonComponent;
         
         public string CharacterName
         {
@@ -36,6 +41,11 @@ namespace Attrition.Character_Selection
                 this.characterClass = value;
                 this.UpdateContents();
             }
+        }
+
+        private void OnEnable()
+        {
+            EventSystem.current.SetSelectedGameObject(this.buttonComponent.gameObject);
         }
 
         private void OnValidate()
@@ -70,6 +80,11 @@ namespace Attrition.Character_Selection
 
             this.CharacterName = identity.DisplayName;
             this.CharacterClass = @class.DisplayName;
+        }
+
+        public void Submit()
+        {
+            this.buttonComponent.onClick.Invoke();
         }
     }
 }
