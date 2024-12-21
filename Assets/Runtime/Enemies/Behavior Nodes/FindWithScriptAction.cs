@@ -1,11 +1,8 @@
 using System;
-using Attrition.PlayerCharacter;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using UnityEditor.SceneManagement;
-using Object = System.Object;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "Find with Script", story: "Find [Target] with Script: [ScriptName]", category: "Action/Find", id: "5e8068a61e4784a51b4f19e4f30b0c58")]
