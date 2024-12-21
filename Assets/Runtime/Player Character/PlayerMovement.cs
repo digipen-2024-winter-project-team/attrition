@@ -23,6 +23,8 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private int dodgeDirections = 8;
         [SerializeField] private float dodgeDistance;
         [SerializeField] private SmartCurve dodgeSpeedCurve;
+        [SerializeField] private float dodgeInvincibilityDuration;
+        [SerializeField] private float dodgeCooldownDuration;
         [Header("Falling")] [SerializeField] private float gravity;
         [SerializeField] private float maxFallSpeed;
         [SerializeField] private CollisionAggregate ground;
@@ -32,6 +34,7 @@ namespace Attrition.PlayerCharacter
         private Vector3 cameraForward;
         private Vector2 previousMoveInput;
         private float previousInputAngle;
+        private float dodgeCooldownExpiration;
 
         private Vector3 moveDirection;
         public Vector3 MoveDirection => moveDirection;
@@ -134,7 +137,9 @@ namespace Attrition.PlayerCharacter
                 canGround = () => ground.Touching,
                 canFall = () => !ground.Touching,
 
-                canDodge = () => ground.Touching && dodge.action.WasPerformedThisFrame(),
+                canDodge = () => ground.Touching 
+                                 && dodge.action.WasPerformedThisFrame() 
+                                 && Time.time > dodgeCooldownExpiration,
                 canEndDodge = () => dodgeSpeedCurve.Done;
 
             stateMachine = new(grounded, new()
@@ -223,6 +228,8 @@ namespace Attrition.PlayerCharacter
             {
                 base.Enter();
 
+                context.Health.AddInvincibilityTime(context.dodgeInvincibilityDuration);
+                
                 context.dodgeSpeedCurve.Start();
 
                 Vector3 moveDirection = context.moveDirection;
@@ -259,6 +266,13 @@ namespace Attrition.PlayerCharacter
                 context.SlopeVelocity = new(dodgeVelocity.x, -context.groundSuckSpeed, dodgeVelocity.z);
                 
                 base.Update();
+            }
+
+            public override void Exit()
+            {
+                context.dodgeCooldownExpiration = Time.time + context.dodgeCooldownDuration;
+                
+                base.Exit();
             }
         }
         
