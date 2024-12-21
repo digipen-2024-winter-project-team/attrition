@@ -1,9 +1,8 @@
 using System;
+using System.Linq;
 using Attrition.Common;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Attrition.DebugSceneSelector
 {
@@ -23,6 +22,8 @@ namespace Attrition.DebugSceneSelector
             public string description;
         }
 
+        public string[] GetSceneNames() => sceneOptions.Select(sceneOption => sceneOption.scene).ToArray(); 
+        
         public void ReturnToMain()
         {
             SceneManager.LoadScene(mainMenuScene);

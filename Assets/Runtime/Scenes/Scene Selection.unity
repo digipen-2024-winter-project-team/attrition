@@ -654,12 +654,8 @@ MonoBehaviour:
   optionsParent: {fileID: 1602433793}
   mainMenuScene: Main Menu
   sceneOptions:
-  - scene: Ashley
-    description: Testing scene for Ashley
-  - scene: Travis
-    description: Testing scene for Travis
-  - scene: BehaviorTestScene
-    description: Can you guess?
+  - scene: Sandbox
+    description: Simple sandbox scene to test features.
 --- !u!1 &1311644531397054440
 GameObject:
   m_ObjectHideFlags: 0
