@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Attrition.Name_Generation
 {
-    public class NameGenerator
+    public class NameGenerator : INameGenerator
     {
         private readonly List<string> prefixes;
         private readonly List<string> roots;
