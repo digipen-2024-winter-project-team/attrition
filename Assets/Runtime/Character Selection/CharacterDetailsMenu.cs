@@ -45,7 +45,10 @@ namespace Attrition.Character_Selection
 
         private void OnEnable()
         {
-            EventSystem.current.SetSelectedGameObject(this.buttonComponent.gameObject);
+            if (Application.isPlaying)
+            {
+                EventSystem.current.SetSelectedGameObject(this.buttonComponent.gameObject);
+            }
         }
 
         private void OnValidate()
@@ -84,7 +87,10 @@ namespace Attrition.Character_Selection
 
         public void Submit()
         {
-            this.buttonComponent.onClick.Invoke();
+            if (Application.isPlaying)
+            {
+                this.buttonComponent.onClick.Invoke();
+            }
         }
     }
 }
