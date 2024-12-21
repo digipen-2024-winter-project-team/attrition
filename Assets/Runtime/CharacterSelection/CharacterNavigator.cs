@@ -1,23 +1,31 @@
-﻿using UnityEngine;
+﻿using Attrition.Common.SerializedEvents;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection
 {
     public class CharacterNavigator : MonoBehaviour
     {
+        [FormerlySerializedAs("instantiator")]
         [SerializeField]
-        private SelectableCharacterBehaviour[] characters;
+        private CharacterClassRandomizer classRandomizer;
         [SerializeField]
         private CinemachineDollyTweener dollyController;
         [SerializeField]
         private CinemachineSplineDollyPitcher pitchController;
         [SerializeField]
         private CharacterSelectionStateHandler stateHandler;
+        
+        [field: SerializeField]
+        public SerializedEvent<SelectableCharacterBehaviour> Focused { get; set; }
+        [field: SerializeField]
+        public SerializedEvent<SelectableCharacterBehaviour> Unfocused { get; set; }
 
         private int currentCharacterIndex;
         private bool isNavigatingRight;
 
-        private SelectableCharacterBehaviour CurrentCharacter => this.characters[this.currentCharacterIndex];
-
+        private SelectableCharacterBehaviour CurrentCharacter => this.classRandomizer.Characters[this.currentCharacterIndex];
+        
         private void OnEnable()
         {
             this.stateHandler.OnStateChanged.AddListener(this.HandleStateChanged);
@@ -73,8 +81,8 @@ namespace Attrition.CharacterSelection
         {
             // Update the current character index based on the navigation direction.
             this.currentCharacterIndex = this.isNavigatingRight
-                ? (this.currentCharacterIndex - 1 + this.characters.Length) % this.characters.Length
-                : (this.currentCharacterIndex + 1) % this.characters.Length;
+                ? (this.currentCharacterIndex - 1 + this.classRandomizer.Characters.Count) % this.classRandomizer.Characters.Count
+                : (this.currentCharacterIndex + 1) % this.classRandomizer.Characters.Count;
 
             // Move the dolly to the updated position, respecting the direction.
             this.dollyController.MoveToPosition(
@@ -86,12 +94,14 @@ namespace Attrition.CharacterSelection
         {
             this.CurrentCharacter.Focus();
             this.stateHandler.SetState(CharacterSelectionStateHandler.SelectionState.Focused);
+            this.Focused.Raise(this.CurrentCharacter);
         }
 
         private void UnfocusCurrentCharacter()
         {
             this.CurrentCharacter.Unfocus();
             this.stateHandler.SetState(CharacterSelectionStateHandler.SelectionState.Browsing);
+            this.Unfocused.Raise(this.CurrentCharacter);
         }
 
         private void HandleStateChanged(CharacterSelectionStateHandler.SelectionState newState)

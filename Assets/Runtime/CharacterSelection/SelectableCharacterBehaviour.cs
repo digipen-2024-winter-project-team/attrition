@@ -1,5 +1,6 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection
 {
@@ -12,12 +13,12 @@ namespace Attrition.CharacterSelection
         [SerializeField]
         private Transform browseFollowTarget;
         [SerializeField]
-        private CharacterClass characterClass;
+        private CharacterIdentity identity;
 
         public CharacterClass CharacterClass
         {
-            get => this.characterClass;
-            private set => this.characterClass = value;
+            get => this.identity.CharacterClass;
+            set => this.identity.SetCharacterClass(value);
         }
         public Transform BrowseFollowTarget => this.browseFollowTarget;
 

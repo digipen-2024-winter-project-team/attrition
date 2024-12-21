@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f48f11d9084091b807a48bf2d3cdce, type: 3}
   m_Name: Prisoner
   m_EditorClassIdentifier: 
-  displayName: 
+  displayName: Prisoner
+  model:
+    Mesh: {fileID: 919132149155446097, guid: a382ed55f370487499207fefd7e1cb44, type: 3}
+    Material: {fileID: 2100000, guid: 4dc125ad4e8bf83448d8489912c5991b, type: 2}
+    AnimatorController: {fileID: 9100000, guid: 43af94ee851a8df4284827aeeeec45f3, type: 2}

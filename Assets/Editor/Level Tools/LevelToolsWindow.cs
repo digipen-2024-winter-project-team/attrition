@@ -1,13 +1,11 @@
-using System;
+using Attrition.CameraTriggers;
+using Attrition.Common;
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
-using Attrition.Common;
-using Attrition.CameraTriggers;
-using Unity.Cinemachine;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace Attrition.LevelTools
+namespace Attrition.Level_Tools
 {
     public class LevelToolsWindow : EditorWindow
     {
@@ -19,19 +17,19 @@ namespace Attrition.LevelTools
 
         private void OnEnable()
         {
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged += this.OnPlayModeStateChanged;
         }
 
         private void OnDisable()
         {
-            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged -= this.OnPlayModeStateChanged;
         }
 
         private void OnPlayModeStateChanged(PlayModeStateChange change)
         {
             if (change == PlayModeStateChange.EnteredPlayMode && EditorPrefs.GetBool(startWithFullBrightKey, false))
             {
-                SpawnFullbrightLight();
+                this.SpawnFullbrightLight();
             }
         }
 
@@ -40,9 +38,9 @@ namespace Attrition.LevelTools
 
         private void SpawnFullbrightLight()
         {
-            fullbrightLight = new GameObject("Full bright");
+            this.fullbrightLight = new GameObject("Full bright");
             
-            var light = fullbrightLight.AddComponent<Light>();
+            var light = this.fullbrightLight.AddComponent<Light>();
             light.intensity = 0.25f;
             light.type = LightType.Directional;
             
@@ -64,15 +62,15 @@ namespace Attrition.LevelTools
             EditorGUILayout.Space();
             
             GUI.enabled = Application.isPlaying;
-            if (GUILayout.Button($"Full Bright: {(fullbrightLight != null ? "ON" : "OFF")}"))
+            if (GUILayout.Button($"Full Bright: {(this.fullbrightLight != null ? "ON" : "OFF")}"))
             {
-                if (fullbrightLight == null)
+                if (this.fullbrightLight == null)
                 {
-                    SpawnFullbrightLight();
+                    this.SpawnFullbrightLight();
                 }
                 else
                 {
-                    Destroy(fullbrightLight);
+                    Destroy(this.fullbrightLight);
                 }
             }
             GUI.enabled = true;
