@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CharacterSelectionStateHandler : MonoBehaviour
     {

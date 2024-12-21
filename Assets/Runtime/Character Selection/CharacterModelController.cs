@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     [RequireComponent(typeof(CharacterIdentity))]
     public class CharacterModelController : MonoBehaviour

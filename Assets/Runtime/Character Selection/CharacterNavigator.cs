@@ -1,12 +1,13 @@
-﻿using Attrition.Common.SerializedEvents;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Attrition.Common.SerializedEvents;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CharacterNavigator : MonoBehaviour
     {
-        [FormerlySerializedAs("instantiator")]
         [SerializeField]
         private CharacterClassRandomizer classRandomizer;
         [SerializeField]
@@ -15,6 +16,12 @@ namespace Attrition.CharacterSelection
         private CinemachineSplineDollyPitcher pitchController;
         [SerializeField]
         private CharacterSelectionStateHandler stateHandler;
+        [SerializeField]
+        private float navigationCooldown = 1f;
+        [SerializeField]
+        private float focusCooldown = 1f;
+        private bool isNavigationOnCooldown;
+        private bool isFocusOnCooldown;
         
         [field: SerializeField]
         public SerializedEvent<SelectableCharacterBehaviour> Focused { get; set; }
@@ -45,22 +52,39 @@ namespace Attrition.CharacterSelection
             {
                 if (direction.y < 0)
                 {
-                    this.UnfocusCurrentCharacter();
+                    if (!this.isFocusOnCooldown)
+                    {
+                        this.UnfocusCurrentCharacter();
+                        this.StartCoroutine(this.StartFocusCooldown());
+                        this.StartCoroutine(this.StartNavigationCooldown());
+                    }
                 }
             }
             else if (this.stateHandler.IsBrowsing)
             {
                 if (direction.y > 0)
                 {
-                    this.FocusCurrentCharacter();
+                    if (!this.isFocusOnCooldown)
+                    {
+                        this.FocusCurrentCharacter();
+                        this.StartCoroutine(this.StartFocusCooldown());
+                    }
                 }
                 else if (direction.x > 0)
                 {
-                    this.NavigateRight();
+                    if (!this.isNavigationOnCooldown)
+                    {
+                        this.NavigateRight();
+                        this.StartCoroutine(this.StartNavigationCooldown());
+                    }
                 }
                 else if (direction.x < 0)
                 {
-                    this.NavigateLeft();
+                    if (!this.isNavigationOnCooldown)
+                    {
+                        this.NavigateLeft();
+                        this.StartCoroutine(this.StartNavigationCooldown());
+                    }
                 }
             }
         }
@@ -69,6 +93,7 @@ namespace Attrition.CharacterSelection
         {
             this.isNavigatingRight = false;
             this.Navigate();
+            this.StartCoroutine(this.StartNavigationCooldown());
         }
         
         private void NavigateRight()
@@ -77,6 +102,20 @@ namespace Attrition.CharacterSelection
             this.Navigate();
         }
 
+        private IEnumerator StartNavigationCooldown()
+        {
+            this.isNavigationOnCooldown = true;
+            yield return new WaitForSeconds(this.navigationCooldown);
+            this.isNavigationOnCooldown = false;
+        }
+        
+        private IEnumerator StartFocusCooldown()
+        {
+            this.isFocusOnCooldown = true;
+            yield return new WaitForSeconds(this.focusCooldown);
+            this.isFocusOnCooldown = false;
+        }
+        
         private void Navigate()
         {
             // Update the current character index based on the navigation direction.

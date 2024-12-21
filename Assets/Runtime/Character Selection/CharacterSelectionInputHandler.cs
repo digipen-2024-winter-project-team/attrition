@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CharacterSelectionInputHandler : MonoBehaviour
     {

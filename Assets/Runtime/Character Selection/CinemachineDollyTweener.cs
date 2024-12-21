@@ -3,7 +3,7 @@ using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CinemachineDollyTweener : MonoBehaviour
     {

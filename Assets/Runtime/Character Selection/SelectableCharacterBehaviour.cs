@@ -1,8 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class SelectableCharacterBehaviour : MonoBehaviour
     {

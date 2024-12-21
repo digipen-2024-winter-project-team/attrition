@@ -2,7 +2,7 @@
 using Attrition.NameGeneration;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CharacterIdentity : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace Attrition.CharacterSelection
 
         private void OnEnable()
         {
-            var nameGenerator = new NameGenerator(this.nameData, DateTime.Now.Millisecond);
+            var nameGenerator = new NameGenerator(this.nameData, DateTime.Now.Millisecond + this.GetInstanceID());
             this.SetDisplayName(nameGenerator.GenerateName());
         }
 

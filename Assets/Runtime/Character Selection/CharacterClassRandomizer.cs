@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Character_Selection
 {
     public class CharacterClassRandomizer : MonoBehaviour
     {
