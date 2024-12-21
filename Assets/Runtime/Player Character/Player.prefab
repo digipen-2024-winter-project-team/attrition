@@ -370,7 +370,7 @@ MonoBehaviour:
   walkAcceleration: 100
   slopeCheckWidth: 0.75
   groundSuckSpeed: 1
-  dodge: {fileID: 8490278915060280501, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  dodge: {fileID: 6993126799829891020, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   dodgeDirections: 8
   dodgeDistance: 3
   dodgeSpeedCurve:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 552184772847157552}
-  chooseTarget: {fileID: -5437575148951679725, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  chooseTarget: {fileID: 7582962793065774200, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   indicator: {fileID: 203572241596548879}
   movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   indicatorSpeed: 0.1
