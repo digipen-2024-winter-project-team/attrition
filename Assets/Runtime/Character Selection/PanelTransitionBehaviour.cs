@@ -3,15 +3,14 @@ using System.Collections;
 using Attrition.Common.DOTweenParameters;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Attrition.Character_Selection
 {
     public class PanelTransitionBehaviour : MonoBehaviour
     {
         [SerializeField]
-        private bool transitionInOnEnable;
-        [SerializeField]
-        private bool transitionOutOnDisable;
+        private bool playTransitionInOnEnable;
         [Header("Translation")]
         [SerializeField]
         private Vector2 translateInFrom;
@@ -27,17 +26,9 @@ namespace Attrition.Character_Selection
         {
             this.startPosition = ((RectTransform)this.transform).anchoredPosition;
             
-            if (this.transitionInOnEnable)
+            if (this.playTransitionInOnEnable)
             {
                 this.PlayTransitionIn();
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (this.transitionOutOnDisable)
-            {
-                this.PlayTransitionOut();
             }
         }
 
