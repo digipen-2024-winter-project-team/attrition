@@ -41,5 +41,10 @@ namespace Attrition.CharacterSelection
             // Unfocus camera
             this.focusCamera.gameObject.SetActive(false);
         }
+
+        public void SetAnimator(Animator animator)
+        {
+            this.animator = animator;
+        }
     }
 }

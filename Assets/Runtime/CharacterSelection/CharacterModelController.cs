@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Attrition.CharacterSelection
     [RequireComponent(typeof(CharacterIdentity))]
     public class CharacterModelController : MonoBehaviour
     {
+        [Serializable]
         private struct ModelKeyValuePair
         {
             public CharacterClass Class;
@@ -18,6 +20,7 @@ namespace Attrition.CharacterSelection
         [SerializeField]
         private List<ModelKeyValuePair> models;
         private CharacterIdentity identity;
+        private SelectableCharacterBehaviour character;
         
         private void Awake()
         {
@@ -40,6 +43,16 @@ namespace Attrition.CharacterSelection
             {
                 child.gameObject.SetActive(false);
             }
+
+            if (this.identity == null)
+            {
+                this.ResolveDependencies();
+
+                if (this.identity == null)
+                {
+                    return;
+                }
+            }
             
             var characterClass = this.identity.CharacterClass;
             
@@ -56,12 +69,25 @@ namespace Attrition.CharacterSelection
             if (model != null)
             {
                 model.gameObject.SetActive(true);
+
+                if (model.TryGetComponent(out Animator animator))
+                {
+                    this.character.SetAnimator(animator);
+                }
             }
         }
         
         private void ResolveDependencies()
         {
-            this.identity ??= this.GetComponent<CharacterIdentity>();
+            if (this.identity == null)
+            {
+                this.identity = this.GetComponent<CharacterIdentity>();
+            }
+
+            if (this.character == null)
+            {
+                this.character = this.GetComponent<SelectableCharacterBehaviour>();
+            }
         }
     }
 }

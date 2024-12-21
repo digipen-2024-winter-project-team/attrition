@@ -30,13 +30,14 @@ namespace Attrition.CharacterSelection
             {
                 var characterClass = PickRandomClass();
                 
-                while (characters.Exists(c => c.CharacterClass == characterClass))
+                while (this.characters.Exists(c => c.CharacterClass == characterClass))
                 {
                     characterClass = PickRandomClass();
                 }
 
                 character.gameObject.name = $"{characterClass.DisplayName}";
-
+                character.CharacterClass = characterClass;
+                
                 if (character.TryGetComponent(out CharacterModelController modelController))
                 {
                     modelController.UpdateCharacterModel();
