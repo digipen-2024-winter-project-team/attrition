@@ -1,10 +1,9 @@
-using System;
+using Attrition.Common.Physics;
+using Attrition.Damge_System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Attrition.Common.Physics;
-using Attrition.DamageSystem;
 
-namespace Attrition.PlayerCharacter
+namespace Attrition.Player_Character
 {
     public class PlayerAttack : MonoBehaviour
     {
@@ -15,19 +14,19 @@ namespace Attrition.PlayerCharacter
         
         private void Update()
         {
-            if (attackAction.action.WasPerformedThisFrame())
+            if (this.attackAction.action.WasPerformedThisFrame())
             {
-                Attack();
+                this.Attack();
             }
         }
 
         private void Attack()
         {
-            foreach (var collision in hitboxCollision.Colliders)
+            foreach (var collision in this.hitboxCollision.Colliders)
             {
                 if (Damageable.Find(collision.gameObject, out var damageable))
                 {
-                    var results = damageable.TakeDamage(new(damageValue, gameObject, team));
+                    var results = damageable.TakeDamage(new(this.damageValue, this.gameObject, this.team));
                 }
             }
         }

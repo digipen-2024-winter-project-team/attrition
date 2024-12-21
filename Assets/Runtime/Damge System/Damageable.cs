@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
-using System;
 
-namespace Attrition.DamageSystem
+namespace Attrition.Damge_System
 {
     public class Damageable : MonoBehaviour
     {
@@ -11,8 +11,8 @@ namespace Attrition.DamageSystem
 
         public DamageResult[] TakeDamage(DamageInfo damageInfo)
         {
-            Damaged?.Invoke(damageInfo);
-            damaged.Invoke(damageInfo);
+            this.Damaged?.Invoke(damageInfo);
+            this.damaged.Invoke(damageInfo);
 
             return damageInfo.GetResults();
         }

@@ -1,5 +1,5 @@
 ﻿using System;
-using Attrition.NameGeneration;
+using Attrition.Name_Generation;
 using UnityEngine;
 
 namespace Attrition.Character_Selection

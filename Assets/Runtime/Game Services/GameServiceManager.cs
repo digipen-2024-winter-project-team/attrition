@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+#endif
 
-namespace Attrition.GameServices
+namespace Attrition.Game_Services
 {
     [CreateAssetMenu(fileName = GameServiceManagerResourceName, menuName = "Attrition/" + GameServiceManagerResourceName)]
     public class GameServiceManager : ScriptableObject
@@ -18,8 +18,8 @@ namespace Attrition.GameServices
         private static MonoBehaviourCallbacks instance;
         public static MonoBehaviourCallbacks Instance => instance != null ? instance : SpawnInstance();
 
-        public void AddService(GameService gameService) => services.Add(gameService);
-        public bool ContainsService(GameService gameService) => services.Contains(gameService);
+        public void AddService(GameService gameService) => this.services.Add(gameService);
+        public bool ContainsService(GameService gameService) => this.services.Contains(gameService);
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static MonoBehaviourCallbacks SpawnInstance()
@@ -56,28 +56,28 @@ namespace Attrition.GameServices
         public event Action ApplicationQuited;
         public event Action Destroyed;
         
-        private void Awake() => SceneManager.activeSceneChanged += (from, to) => SceneChanged?.Invoke(from, to);
-        private void Start() => Started?.Invoke();
-        private void Update() => Updated?.Invoke();
-        private void LateUpdate() => LateUpdated?.Invoke();
-        private void FixedUpdate() => FixedUpdated?.Invoke();
-        private void OnDestroy() => Destroyed?.Invoke();
-        private void OnApplicationQuit() => ApplicationQuited?.Invoke();
+        private void Awake() => SceneManager.activeSceneChanged += (from, to) => this.SceneChanged?.Invoke(from, to);
+        private void Start() => this.Started?.Invoke();
+        private void Update() => this.Updated?.Invoke();
+        private void LateUpdate() => this.LateUpdated?.Invoke();
+        private void FixedUpdate() => this.FixedUpdated?.Invoke();
+        private void OnDestroy() => this.Destroyed?.Invoke();
+        private void OnApplicationQuit() => this.ApplicationQuited?.Invoke();
     }
     
     public abstract class GameService : ScriptableObject
     {
         public void InitializeService()
         {
-            CallbacksInstance.Started += Start;
-            CallbacksInstance.Updated += Update;
-            CallbacksInstance.LateUpdated += LateUpdate;
-            CallbacksInstance.FixedUpdated += FixedUpdate;
-            CallbacksInstance.SceneChanged += OnSceneChange;
-            CallbacksInstance.Destroyed += InstanceDestroyed;
-            CallbacksInstance.ApplicationQuited += OnApplicationQuit;
+            CallbacksInstance.Started += this.Start;
+            CallbacksInstance.Updated += this.Update;
+            CallbacksInstance.LateUpdated += this.LateUpdate;
+            CallbacksInstance.FixedUpdated += this.FixedUpdate;
+            CallbacksInstance.SceneChanged += this.OnSceneChange;
+            CallbacksInstance.Destroyed += this.InstanceDestroyed;
+            CallbacksInstance.ApplicationQuited += this.OnApplicationQuit;
             
-            Initialize();
+            this.Initialize();
         }
 
         private static MonoBehaviourCallbacks CallbacksInstance => GameServiceManager.Instance;
@@ -107,7 +107,7 @@ namespace Attrition.GameServices
                 MultipleManagersError = "Multiple Game Service Managers Found!",
                 AddToManagerButton    = "Add to Game Service Manager";
 
-            private GameService GameService => target as GameService;
+            private GameService GameService => this.target as GameService;
 
             private GameServiceManager FindManager(out string errorMessage)
             {
@@ -116,9 +116,9 @@ namespace Attrition.GameServices
                 errorMessage = "";
 
                 // already has manager
-                if (GameService.gameServiceManager != null)
+                if (this.GameService.gameServiceManager != null)
                 {
-                    return GameService.gameServiceManager;
+                    return this.GameService.gameServiceManager;
                 }
                 
                 else switch (managerGUIDs.Length)
@@ -145,14 +145,14 @@ namespace Attrition.GameServices
 
                 EditorGUILayout.Space();
 
-                var manager = FindManager(out var errorMessage);
-                bool onManager = manager != null && manager.ContainsService(GameService);
+                var manager = this.FindManager(out var errorMessage);
+                bool onManager = manager != null && manager.ContainsService(this.GameService);
 
                 // display connected manager
                 if (onManager)
                 {
                     GUI.enabled = false;
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(gameServiceManager)));
+                    EditorGUILayout.PropertyField(this.serializedObject.FindProperty(nameof(gameServiceManager)));
                     GUI.enabled = true;
                 }
 
@@ -165,11 +165,11 @@ namespace Attrition.GameServices
                 // prompt to add service to manager
                 else if (!onManager && GUILayout.Button(AddToManagerButton))
                 {
-                    manager.AddService(GameService);
+                    manager.AddService(this.GameService);
                     EditorUtility.SetDirty(manager);
 
-                    GameService.gameServiceManager = manager;
-                    EditorUtility.SetDirty(GameService);
+                    this.GameService.gameServiceManager = manager;
+                    EditorUtility.SetDirty(this.GameService);
 
                     AssetDatabase.SaveAssets();
                 }

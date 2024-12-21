@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Attrition.PlayerCharacter
+namespace Attrition.Player_Character
 {
     public class Player : MonoBehaviour
     {
@@ -15,12 +15,12 @@ namespace Attrition.PlayerCharacter
         {
             [SerializeField] private Player player;
 
-            protected Player Player => player;
-            protected PlayerMovement Movement => player.movement;
-            protected PlayerTargeting Targeting => player.targeting;
-            protected CinemachineBrain CinemachineBrain => player.cinemachineBrain;
-            protected Rigidbody Rigidbody => player.rigidbody;
-            protected Collider Collider => player.collider;
+            protected Player Player => this.player;
+            protected PlayerMovement Movement => this.player.movement;
+            protected PlayerTargeting Targeting => this.player.targeting;
+            protected CinemachineBrain CinemachineBrain => this.player.cinemachineBrain;
+            protected Rigidbody Rigidbody => this.player.rigidbody;
+            protected Collider Collider => this.player.collider;
         }
     }
 }

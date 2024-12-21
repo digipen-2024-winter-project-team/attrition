@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace Attrition.DamageSystem
+namespace Attrition.Damge_System
 {
     public class Durability : MonoBehaviour
     {
@@ -24,34 +24,34 @@ namespace Attrition.DamageSystem
 
         private void Awake()
         {
-            if (startWithMaxHitpoints)
+            if (this.startWithMaxHitpoints)
             {
-                hitpoints = maxHitpoints;
+                this.hitpoints = this.maxHitpoints;
             }
             
-            damageable.Damaged += OnDamaged;
+            this.damageable.Damaged += this.OnDamaged;
         }
 
-        public bool Invincible => Time.time < invincibilityExpiration;
+        public bool Invincible => Time.time < this.invincibilityExpiration;
         
         private void OnDamaged(DamageInfo damageInfo)
         {
-            if (hitpoints == 0) return;
+            if (this.hitpoints == 0) return;
             
-            float value = damageInfo.Receive(Invincible, team, gameObject);
+            float value = damageInfo.Receive(this.Invincible, this.team, this.gameObject);
 
-            if (Invincible)
+            if (this.Invincible)
             {
                 return;
             }
 
-            hitpoints = Mathf.MoveTowards(hitpoints, 0, value);
-            invincibilityExpiration = Time.time + invincibilityDuration;
+            this.hitpoints = Mathf.MoveTowards(this.hitpoints, 0, value);
+            this.invincibilityExpiration = Time.time + this.invincibilityDuration;
 
-            if (hitpoints == 0)
+            if (this.hitpoints == 0)
             {
-                Destroyed?.Invoke(damageInfo);
-                destroyed.Invoke(damageInfo);
+                this.Destroyed?.Invoke(damageInfo);
+                this.destroyed.Invoke(damageInfo);
             }
         }
     }

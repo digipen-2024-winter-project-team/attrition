@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Attrition.DamageSystem
+namespace Attrition.Damge_System
 {
     [CreateAssetMenu(menuName = "Attrition/Combat/Combat Team")]
     public class CombatTeam : ScriptableObject
@@ -10,7 +10,7 @@ namespace Attrition.DamageSystem
         [SerializeField] private List<Interaction> interactions;
 
         public Interaction GetInteraction(CombatTeam team)
-            => interactions.Find(interaction => interaction.team == team);
+            => this.interactions.Find(interaction => interaction.team == team);
         
         [Serializable]
         public class Interaction

@@ -1,4 +1,4 @@
-using Attrition.CameraTriggers;
+using Attrition.Camera_Triggers;
 using Attrition.Common;
 using Unity.Cinemachine;
 using UnityEditor;

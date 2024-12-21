@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Attrition.NameGeneration
+namespace Attrition.Name_Generation
 {
     public interface INameData
     {

@@ -22,7 +22,7 @@ namespace Attrition.Character_Selection
         private DOTweenParameters translateOutAnimation;
         private Vector2 startPosition;
         
-        private void OnEnable()
+        private void OnEnable() 
         {
             this.startPosition = ((RectTransform)this.transform).anchoredPosition;
             

@@ -1,8 +1,9 @@
 /* Made by Oliver Beebe 2023 */
-using System.Collections.Generic;
-using System;
 
-namespace Attrition.PlayerCharacter
+using System;
+using System.Collections.Generic;
+
+namespace Attrition.Player_Character
 {
     [Serializable]
     public class StateMachine 
@@ -25,66 +26,66 @@ namespace Attrition.PlayerCharacter
             this.firstState = firstState;
             this.transitions = transitions;
 
-            Reset();
+            this.Reset();
         }
 
         public void Reset() 
         {
-            if (currentState != null) {
-                currentState.Exit();
-                currentState.ManualExit();
+            if (this.currentState != null) {
+                this.currentState.Exit();
+                this.currentState.ManualExit();
             }
 
-            currentState = previousState = firstState;
-            stateDuration = float.MaxValue;
+            this.currentState = this.previousState = this.firstState;
+            this.stateDuration = float.MaxValue;
 
-            currentState.Enter();
+            this.currentState.Enter();
         }
 
         public void ChangeState(IState toState) 
         {
-            if (currentState != null) {
-                currentState.Exit();
-                currentState.ManualExit();
+            if (this.currentState != null) {
+                this.currentState.Exit();
+                this.currentState.ManualExit();
             }
 
-            previousState = currentState;
-            currentState = toState;
-            stateDuration = 0;
+            this.previousState = this.currentState;
+            this.currentState = toState;
+            this.stateDuration = 0;
 
-            currentState.ManualEnter();
-            currentState.Enter();
+            this.currentState.ManualEnter();
+            this.currentState.Enter();
  
-            OnTransition?.Invoke(previousState, currentState);
+            this.OnTransition?.Invoke(this.previousState, this.currentState);
         }
 
         private void ChangeState(IState toState, Action behavior)
         {
-            currentState?.Exit();
+            this.currentState?.Exit();
 
             behavior?.Invoke();
 
-            previousState = currentState;
-            currentState = toState;
-            stateDuration = 0;
+            this.previousState = this.currentState;
+            this.currentState = toState;
+            this.stateDuration = 0;
 
-            currentState.Enter();
+            this.currentState.Enter();
 
-            OnTransition?.Invoke(previousState, currentState);
+            this.OnTransition?.Invoke(this.previousState, this.currentState);
         }
 
         public void Update(float dt)
         {
-            stateDuration += dt;
-            currentState.Update();
+            this.stateDuration += dt;
+            this.currentState.Update();
 
-            if (transitions.TryGetValue(currentState, out var stateTransitions)) {
+            if (this.transitions.TryGetValue(this.currentState, out var stateTransitions)) {
                 var transition = stateTransitions.Find(Transition.CanTransition);
-                if (transition) ChangeState(transition.toState, transition.behavior);
+                if (transition) this.ChangeState(transition.toState, transition.behavior);
             }
 
             #if UNITY_EDITOR
-            debug = $"Current State : {currentState.GetType().Name}\nPrevious State : {previousState.GetType().Name}\nDuration : {stateDuration}";
+            this.debug = $"Current State : {this.currentState.GetType().Name}\nPrevious State : {this.previousState.GetType().Name}\nDuration : {this.stateDuration}";
             #endif
         }
     }
@@ -105,11 +106,11 @@ namespace Attrition.PlayerCharacter
         public  readonly Action behavior;
 
         public Transition(IState toState, TransitionDelegate canTransition)
-            => (exists, this.toState, this.canTransition, this.behavior)
+            => (this.exists, this.toState, this.canTransition, this.behavior)
             =  (true, toState, canTransition, null);
 
         public Transition(IState toState, TransitionDelegate canTransition, Action behavior)
-            => (exists, this.toState, this.canTransition, this.behavior)
+            => (this.exists, this.toState, this.canTransition, this.behavior)
             =  (true, toState, canTransition, behavior);
     }
 
@@ -144,26 +145,26 @@ namespace Attrition.PlayerCharacter
         public override void Enter()  
         {
             base.Enter();
-            superState.Enter();
+            this.superState.Enter();
         }
         public override void Update() 
         {
-            superState.Update();
+            this.superState.Update();
             base.Update();
         }
         public override void Exit()   
         {
-            superState.Exit();
+            this.superState.Exit();
             base.Exit();
         }
         public override void ManualEnter() 
         {
             base.ManualEnter();
-            superState.ManualEnter();
+            this.superState.ManualEnter();
         }
         public override void ManualExit() 
         {
-            superState.ManualExit();
+            this.superState.ManualExit();
             base.ManualExit();
         }
     }

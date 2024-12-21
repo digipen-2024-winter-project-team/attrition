@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Attrition.DamageSystem
+namespace Attrition.Damge_System
 {
     /// <summary>
     /// Class for carrying damage information from dealer to receiver, and reporting results back to dealer.
@@ -46,9 +46,9 @@ namespace Attrition.DamageSystem
         /// <returns> The calculated damage value based on the receiver's combat team. </returns>
         public float Receive(bool invincible, CombatTeam team, GameObject receiver)
         {
-            float value = GetValue(team);
+            float value = this.GetValue(team);
             
-            results.Add(new(value, invincible, receiver));
+            this.results.Add(new(value, invincible, receiver));
 
             return value;
         }
@@ -56,19 +56,19 @@ namespace Attrition.DamageSystem
         /// <summary>
         /// Get a list of the damage results.
         /// </summary>
-        public DamageResult[] GetResults() => results.ToArray();
+        public DamageResult[] GetResults() => this.results.ToArray();
         
         /// <summary>
         /// Get the calculated damage value based on the receiver's combat team.
         /// </summary>
         public float GetValue(CombatTeam receiverTeam)
         {
-            if (receiverTeam == null) return rawValue;
+            if (receiverTeam == null) return this.rawValue;
 
-            var interaction = team.GetInteraction(receiverTeam);
-            if (interaction == null) return rawValue;
+            var interaction = this.team.GetInteraction(receiverTeam);
+            if (interaction == null) return this.rawValue;
 
-            return rawValue * interaction.damageMultiplier;
+            return this.rawValue * interaction.damageMultiplier;
         }
     }
 }

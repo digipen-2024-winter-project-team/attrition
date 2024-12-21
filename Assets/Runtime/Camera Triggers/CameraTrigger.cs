@@ -1,12 +1,9 @@
-using System;
-using Unity.Cinemachine;
-using UnityEngine;
 using Attrition.Common;
-#if UNITY_EDITOR
+using Unity.Cinemachine;
 using UnityEditor;
-#endif
+using UnityEngine;
 
-namespace Attrition.CameraTriggers
+namespace Attrition.Camera_Triggers
 {
     public class CameraTrigger : MonoBehaviour
     {
@@ -16,7 +13,7 @@ namespace Attrition.CameraTriggers
         {
             if (other.CompareTag("Player"))
             {
-                cinemachineCamera.Priority = 1;
+                this.cinemachineCamera.Priority = 1;
             }
         }
 
@@ -24,7 +21,7 @@ namespace Attrition.CameraTriggers
         {
             if (other.CompareTag("Player"))
             {
-                cinemachineCamera.Priority = 0;
+                this.cinemachineCamera.Priority = 0;
             }
         }
 
@@ -45,7 +42,7 @@ namespace Attrition.CameraTriggers
         {
             if (TriggerGizmoVisibility == GizmoVisibility.AlwaysShow)
             {
-                DrawGizmos();
+                this.DrawGizmos();
             }
         }
 
@@ -53,13 +50,13 @@ namespace Attrition.CameraTriggers
         {
             if (TriggerGizmoVisibility == GizmoVisibility.ShowWhenSelected)
             {
-                DrawGizmos();
+                this.DrawGizmos();
             }
         }
 
         private void DrawGizmos()
         {
-            var colliders = GetComponentsInChildren<Collider>();
+            var colliders = this.GetComponentsInChildren<Collider>();
 
             var bounds = colliders[0].bounds;
 
