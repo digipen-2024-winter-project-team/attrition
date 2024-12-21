@@ -15,6 +15,7 @@ namespace Attrition
             {
                 this.guid = guid;
                 path = AssetDatabase.GUIDToAssetPath(this.guid);
+                asset = AssetDatabase.LoadAssetAtPath<SceneAsset>(path);
                 name = asset.name;
             }
 
