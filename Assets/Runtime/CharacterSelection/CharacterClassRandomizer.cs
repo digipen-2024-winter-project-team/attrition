@@ -43,6 +43,6 @@ namespace Attrition.CharacterSelection
                 }
             }
         }
-    }git status
+    }
     
 }
