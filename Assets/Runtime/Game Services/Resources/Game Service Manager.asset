@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c553b83e54944d7888f55f965e371f, type: 3}
+  m_Name: Game Service Manager
+  m_EditorClassIdentifier: 
+  services:
+  - {fileID: 11400000, guid: 6675b0fcf01b74a0cb13ed97e64e9f60, type: 2}
