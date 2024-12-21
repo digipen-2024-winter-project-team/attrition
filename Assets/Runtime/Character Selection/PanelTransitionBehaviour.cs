@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using Attrition.Common.DOTweenParameters;
+﻿using Attrition.Common.DOTweenParameters;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.Character_Selection
 {

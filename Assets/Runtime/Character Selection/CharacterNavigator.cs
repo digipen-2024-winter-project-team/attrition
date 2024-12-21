@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Attrition.Common.SerializedEvents;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.Character_Selection
 {

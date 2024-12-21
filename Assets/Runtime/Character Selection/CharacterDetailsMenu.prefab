@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 1545659019204023517}
   - component: {fileID: 851009680046369547}
   - component: {fileID: 7489539723358559524}
+  - component: {fileID: 7441802051375645504}
   m_Layer: 5
   m_Name: CharacterDetailsMenu
   m_TagString: Untagged
@@ -1132,6 +1133,19 @@ MonoBehaviour:
     OnKilled:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &7441802051375645504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900831001333699588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b0ce70f5bb4e1da32fd95fb6d4be20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6922570808336332146}
 --- !u!1 &3242669548136200450
 GameObject:
   m_ObjectHideFlags: 0

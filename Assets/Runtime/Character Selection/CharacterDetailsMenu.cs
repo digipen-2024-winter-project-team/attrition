@@ -1,7 +1,5 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Attrition.Character_Selection
@@ -40,14 +38,6 @@ namespace Attrition.Character_Selection
             {
                 this.characterClass = value;
                 this.UpdateContents();
-            }
-        }
-
-        private void OnEnable()
-        {
-            if (Application.isPlaying)
-            {
-                EventSystem.current.SetSelectedGameObject(this.buttonComponent.gameObject);
             }
         }
 
