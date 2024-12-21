@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22db1cf01e3a4e95a7a6aeccdbbf0181, type: 3}
+  m_Name: NameData
+  m_EditorClassIdentifier: 
+  prefixes:
+  - Mor
+  - Dar
+  - Vel
+  - Zor
+  - Drak
+  - Mal
+  - Syth
+  - Nyx
+  - Vor
+  - Thal
+  - Kan
+  - Ral
+  - Vex
+  - Gre
+  - Xar
+  - Tor
+  - Fen
+  - Lun
+  - Cry
+  - Sol
+  roots:
+  - gor
+  - eth
+  - ras
+  - dred
+  - mort
+  - vyn
+  - lith
+  - skar
+  - tarn
+  - zeer
+  - thok
+  - karn
+  - zor
+  - myr
+  - vex
+  - ryn
+  - quin
+  - farn
+  - bal
+  - zuth
+  suffixes:
+  - ius
+  - ael
+  - or
+  - ath
+  - ion
+  - thos
+  - yx
+  - ar
+  - ok
+  - ain
+  - en
+  - il
+  - um
+  - ek
+  - is
+  - an
+  - oth
+  - ir
+  - os
+  - eth
