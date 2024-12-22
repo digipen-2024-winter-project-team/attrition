@@ -1,4 +1,5 @@
 ﻿using System;
+using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Name_Generation;
 using UnityEngine;
 
@@ -7,18 +8,23 @@ namespace Attrition.Character_Selection
     public class Identity : MonoBehaviour
     {
         [SerializeField]
-        private string displayName;
+        private StringVariable displayName;
         [SerializeField]
-        private CharacterClass characterClass;
+        private CharacterClassVariable characterClass;
         [SerializeField]
         private NameData nameData;
         
         public string DisplayName
         {
-            get => this.displayName;
-            private set => this.displayName = value;
+            get => this.displayName.Value;
+            private set => this.displayName.Value = value;
         }
-        public CharacterClass CharacterClass { get; private set; }
+        
+        public CharacterClass CharacterClass
+        {
+            get => this.characterClass.Value;
+            private set => this.characterClass.Value = value;
+        }
 
         private void OnEnable()
         {
