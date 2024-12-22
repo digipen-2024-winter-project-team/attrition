@@ -91,6 +91,7 @@ namespace Attrition.PlayerCharacter
             {
                 cameraForward = CinemachineBrain.transform.forward;
                 cameraForward.y = 0;
+                cameraForward.Normalize();
                 
                 previousInputAngle = inputAngle;
                 previousMoveInput = moveInput;
