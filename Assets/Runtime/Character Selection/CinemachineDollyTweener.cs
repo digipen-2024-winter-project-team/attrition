@@ -1,4 +1,5 @@
 ﻿using Attrition.Common;
+using Attrition.Common.DOTweenParameters;
 using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -8,9 +9,11 @@ namespace Attrition.Character_Selection
     public class CinemachineDollyTweener : MonoBehaviour
     {
         [SerializeField] private CinemachineSplineDolly dolly;
-        [SerializeField] private float dollyDuration = 1f;
-        [SerializeField] private Ease dollyEase = Ease.InOutQuad;
-
+        // [SerializeField] private float dollyDuration = 1f;
+        // [SerializeField] private Ease dollyEase = Ease.InOutQuad;
+        [SerializeField]
+        private DOTweenParameters dollyAnimation;
+        
         public float CurrentPositionOnSpline => this.dolly.CameraPosition;
         public CinemachineSplineDolly Dolly => this.dolly;
 
@@ -34,9 +37,8 @@ namespace Attrition.Character_Selection
                     () => this.dolly.CameraPosition,
                     x => this.dolly.CameraPosition = Mathf.Repeat(x, 1f),
                     targetPositionOnSpline,
-                    this.dollyDuration)
-                .SetUpdate(UpdateType.Late, true)
-                .SetEase(this.dollyEase);
+                    this.dollyAnimation.Duration)
+                .ApplyParameters(this.dollyAnimation);
         }
     }
 }
