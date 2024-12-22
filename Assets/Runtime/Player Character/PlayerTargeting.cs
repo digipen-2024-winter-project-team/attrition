@@ -1,9 +1,11 @@
-using System.Linq;
-using Attrition.Common.Physics;
+using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using Attrition.Common.Physics;
 
-namespace Attrition.Player_Character
+namespace Attrition.PlayerCharacter
 {
     public class PlayerTargeting : Player.Component
     {
@@ -19,44 +21,41 @@ namespace Attrition.Player_Character
         
         private Targetable targeting;
 
-        public Transform Target => this.targeting == null ? null : this.targeting.transform;
+        public Transform Target => targeting == null ? null : targeting.transform;
         
         private Vector2 indicatorPosition;
         private Vector2 indicatorVelocity;
         
-        private Vector2 GetUVPosition(Vector3 position) =>
-            (Vector2)this.CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
-
         private void Start()
         {
-            this.indicatorPosition = this.startingUVPosition;
+            indicatorPosition = startingUVPosition;
         }
 
         private void Update()
         {
-            if (this.chooseTarget.action.WasPerformedThisFrame())
+            if (chooseTarget.action.WasPerformedThisFrame())
             {
-                if (this.targeting != null)
+                if (targeting != null)
                 {
-                    this.indicatorPosition += this.GetUVPosition(this.targeting.transform.position);
+                    indicatorPosition += GetUVPosition(targeting.transform.position);
                 }
                 else
                 {
-                    this.indicatorPosition = this.startingUVPosition;
+                    indicatorPosition = startingUVPosition;
                 }
                 
                 var targetDistances = FindObjectsByType<Targetable>(FindObjectsSortMode.None)
                     .Select(targetable =>
                     {
-                        Vector3 vector = targetable.transform.position - this.transform.position;
+                        Vector3 vector = targetable.transform.position - transform.position;
                         float distance = vector.magnitude;
                         return (targetable, vector, distance);
                     })
                     .ToArray();
 
-                Vector3 aimDirection = this.Movement.MoveDirection != Vector3.zero
-                    ? this.Movement.MoveDirection
-                    : this.transform.forward;
+                Vector3 aimDirection = Movement.MoveDirection != Vector3.zero
+                    ? Movement.MoveDirection
+                    : transform.forward;
                 float maxDistance = targetDistances.Length > 0 
                     ? targetDistances.Max(obj => obj.distance)
                     : 1;
@@ -71,46 +70,46 @@ namespace Attrition.Player_Character
 
                         float distanceScore = 1f - distance / maxDistance;
 
-                        float score = (this.dotWeight * dotScore + distanceScore * this.distanceWeight)
-                                      / (this.dotWeight + this.distanceWeight);
+                        float score = (dotWeight * dotScore + distanceScore * distanceWeight)
+                                      / (dotWeight + distanceWeight);
                         
                         return score;
                     })
                     .LastOrDefault().targetable;
 
-                this.targeting = newTarget == this.targeting 
+                targeting = newTarget == targeting 
                     ? null 
                     : newTarget;
                 
-                if (this.targeting != null)
+                if (targeting != null)
                 {
-                    this.indicatorPosition -= this.GetUVPosition(this.targeting.transform.position);
+                    indicatorPosition -= GetUVPosition(targeting.transform.position);
                 }
             }
 
-            if (this.targeting != null)
+            if (targeting != null)
             {
-                bool hitSomething = Physics.Raycast(this.transform.position, this.targeting.transform.position - this.transform.position,
-                    out var hit, this.maxDistance, this.targetingMask);
+                bool hitSomething = Physics.Raycast(transform.position, targeting.transform.position - transform.position,
+                    out var hit, maxDistance, targetingMask);
                 
                 if (!hitSomething || hit.collider.gameObject.layer == GameInfo.Ground.LayerIndex)
                 {
-                    this.targeting = null;
+                    targeting = null;
                 }
             }
             
-            this.indicator.gameObject.SetActive(this.targeting != null);
+            indicator.gameObject.SetActive(targeting != null);
         }
 
         private void LateUpdate()
         {
-            if (this.targeting != null)
+            if (targeting != null)
             {
-                this.indicatorPosition = Vector2.SmoothDamp(this.indicatorPosition, Vector2.zero, ref this.indicatorVelocity, this.indicatorSpeed);
+                indicatorPosition = Vector2.SmoothDamp(indicatorPosition, Vector2.zero, ref indicatorVelocity, indicatorSpeed);
 
-                Vector2 targetUV = this.GetUVPosition(this.targeting.transform.position) + this.indicatorPosition;
-                var parentRect = ((RectTransform)this.indicator.parent).rect;
-                this.indicator.anchoredPosition = parentRect.size * targetUV;
+                Vector2 targetUV = GetUVPosition(targeting.transform.position) + indicatorPosition;
+                var parentRect = ((RectTransform)indicator.parent).rect;
+                indicator.anchoredPosition = parentRect.size * targetUV;
                 
                 print(targetUV);
             }

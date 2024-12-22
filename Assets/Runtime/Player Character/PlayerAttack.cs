@@ -1,5 +1,5 @@
 using Attrition.Common.Physics;
-using Attrition.Damge_System;
+using Attrition.DamageSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

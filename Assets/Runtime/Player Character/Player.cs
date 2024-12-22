@@ -1,7 +1,8 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using Attrition.PlayerCharacter.Health;
 
-namespace Attrition.Player_Character
+namespace Attrition.PlayerCharacter
 {
     public class Player : MonoBehaviour
     {
@@ -10,17 +11,22 @@ namespace Attrition.Player_Character
         [SerializeField] private CinemachineBrain cinemachineBrain;
         [SerializeField] private new Rigidbody rigidbody;
         [SerializeField] private new CapsuleCollider collider;
+        [SerializeField] private PlayerHealth health;
         
         public class Component : MonoBehaviour
         {
             [SerializeField] private Player player;
 
-            protected Player Player => this.player;
-            protected PlayerMovement Movement => this.player.movement;
-            protected PlayerTargeting Targeting => this.player.targeting;
-            protected CinemachineBrain CinemachineBrain => this.player.cinemachineBrain;
-            protected Rigidbody Rigidbody => this.player.rigidbody;
-            protected Collider Collider => this.player.collider;
+            protected Player Player => player;
+            protected PlayerMovement Movement => player.movement;
+            protected PlayerTargeting Targeting => player.targeting;
+            protected CinemachineBrain CinemachineBrain => player.cinemachineBrain;
+            protected Rigidbody Rigidbody => player.rigidbody;
+            protected Collider Collider => player.collider;
+            protected PlayerHealth Health => player.health;
+            
+            protected Vector2 GetUVPosition(Vector3 position) =>
+                (Vector2)CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
         }
     }
 }

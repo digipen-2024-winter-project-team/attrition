@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Attrition.Damge_System
+namespace Attrition.DamageSystem
 {
     /// <summary>
     /// Struct for carrying damage result information from receiver back to dealer.

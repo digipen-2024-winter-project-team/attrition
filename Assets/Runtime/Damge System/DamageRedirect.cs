@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Attrition.Damge_System
+namespace Attrition.DamageSystem
 {
     public class DamageRedirect : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 
-namespace Attrition.Camera_Triggers
+namespace Attrition.CameraTriggers
 {
     public class CameraTrigger : MonoBehaviour
     {

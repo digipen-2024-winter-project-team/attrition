@@ -1,11 +1,15 @@
-using Attrition.Camera_Triggers;
-using Attrition.Common;
-using Unity.Cinemachine;
+using System;
 using UnityEditor;
 using UnityEngine;
+using Attrition.Common;
+using Attrition.CameraTriggers;
+using Attrition.DamageSystem;
+using Attrition.PlayerCharacter;
+using Unity.Cinemachine;
+using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace Attrition.Level_Tools
+namespace Attrition.LevelTools
 {
     public class LevelToolsWindow : EditorWindow
     {
@@ -17,19 +21,19 @@ namespace Attrition.Level_Tools
 
         private void OnEnable()
         {
-            EditorApplication.playModeStateChanged += this.OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
         }
 
         private void OnDisable()
         {
-            EditorApplication.playModeStateChanged -= this.OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
         }
 
         private void OnPlayModeStateChanged(PlayModeStateChange change)
         {
             if (change == PlayModeStateChange.EnteredPlayMode && EditorPrefs.GetBool(startWithFullBrightKey, false))
             {
-                this.SpawnFullbrightLight();
+                SpawnFullbrightLight();
             }
         }
 
@@ -38,9 +42,9 @@ namespace Attrition.Level_Tools
 
         private void SpawnFullbrightLight()
         {
-            this.fullbrightLight = new GameObject("Full bright");
+            fullbrightLight = new GameObject("Full bright");
             
-            var light = this.fullbrightLight.AddComponent<Light>();
+            var light = fullbrightLight.AddComponent<Light>();
             light.intensity = 0.25f;
             light.type = LightType.Directional;
             
@@ -62,15 +66,15 @@ namespace Attrition.Level_Tools
             EditorGUILayout.Space();
             
             GUI.enabled = Application.isPlaying;
-            if (GUILayout.Button($"Full Bright: {(this.fullbrightLight != null ? "ON" : "OFF")}"))
+            if (GUILayout.Button($"Full Bright: {(fullbrightLight != null ? "ON" : "OFF")}"))
             {
-                if (this.fullbrightLight == null)
+                if (fullbrightLight == null)
                 {
-                    this.SpawnFullbrightLight();
+                    SpawnFullbrightLight();
                 }
                 else
                 {
-                    Destroy(this.fullbrightLight);
+                    Destroy(fullbrightLight);
                 }
             }
             GUI.enabled = true;
@@ -96,6 +100,22 @@ namespace Attrition.Level_Tools
                 if (changeCheck.changed)
                 {
                     EditorPrefs.SetInt(CameraTrigger.TriggerGizmoVisibilityKey, selection);
+                }
+            }
+
+            EditorGUILayout.Space();
+
+            if (GUILayout.Button("Player Take Damage"))
+            {
+                PlayerTakeDamage();
+                
+                void PlayerTakeDamage()
+                {
+                    var player = FindFirstObjectByType<Player>();
+
+                    if (player == null) return;
+
+                    player.GetComponent<Damageable>().TakeDamage(new(1, null, null));
                 }
             }
         }

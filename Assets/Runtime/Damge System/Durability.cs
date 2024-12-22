@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace Attrition.Damge_System
+namespace Attrition.DamageSystem
 {
     public class Durability : MonoBehaviour
     {

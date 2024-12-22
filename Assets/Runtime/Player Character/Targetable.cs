@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Attrition.Player_Character
+namespace Attrition.PlayerCharacter
 {
     public class Targetable : MonoBehaviour
     {

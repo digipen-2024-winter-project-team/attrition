@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Attrition.Player_Character
+namespace Attrition.PlayerCharacter
 {
     [Serializable]
     public class StateMachine 

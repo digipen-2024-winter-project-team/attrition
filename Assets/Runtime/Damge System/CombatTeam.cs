@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Attrition.Damge_System
+namespace Attrition.DamageSystem
 {
     [CreateAssetMenu(menuName = "Attrition/Combat/Combat Team")]
     public class CombatTeam : ScriptableObject
