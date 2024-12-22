@@ -16,6 +16,7 @@ namespace Attrition.PlayerCharacter.Health
         [SerializeField] private CombatTeam team;
         [SerializeField] private float deathTimerDuration;
         [SerializeField] private float deathTimerLossPerHitpoint;
+        [SerializeField] private UnityEvent<DamageInfo> enteringDying;
         [Header("Debug UI")]
         [SerializeField] private RectTransform uiParent;
         [SerializeField] private TextMeshProUGUI healthUI;
@@ -52,6 +53,11 @@ namespace Attrition.PlayerCharacter.Health
             if (hitpoints > 0)
             {
                 hitpoints = Mathf.MoveTowards(hitpoints, 0, value);
+
+                if (hitpoints == 0)
+                {
+                    enteringDying.Invoke(damageInfo);
+                }
             }
             else
             {
