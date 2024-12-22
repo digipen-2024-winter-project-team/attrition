@@ -63,7 +63,7 @@ namespace Attrition.DamageSystem
         /// </summary>
         public float GetValue(CombatTeam receiverTeam)
         {
-            if (receiverTeam == null) return rawValue;
+            if (receiverTeam == null || team == null) return rawValue;
 
             var interaction = team.GetInteraction(receiverTeam);
             if (interaction == null) return rawValue;

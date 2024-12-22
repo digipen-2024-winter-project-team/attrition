@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using Attrition.Common;
 using Attrition.CameraTriggers;
+using Attrition.DamageSystem;
+using Attrition.PlayerCharacter;
 using Unity.Cinemachine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
@@ -98,6 +100,22 @@ namespace Attrition.LevelTools
                 if (changeCheck.changed)
                 {
                     EditorPrefs.SetInt(CameraTrigger.TriggerGizmoVisibilityKey, selection);
+                }
+            }
+
+            EditorGUILayout.Space();
+
+            if (GUILayout.Button("Player Take Damage"))
+            {
+                PlayerTakeDamage();
+                
+                void PlayerTakeDamage()
+                {
+                    var player = FindFirstObjectByType<Player>();
+
+                    if (player == null) return;
+
+                    player.GetComponent<Damageable>().TakeDamage(new(1, null, null));
                 }
             }
         }
