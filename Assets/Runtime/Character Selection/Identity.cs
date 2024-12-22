@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Attrition.Character_Selection
 {
-    public class CharacterIdentity : MonoBehaviour
+    public class Identity : MonoBehaviour
     {
         [SerializeField]
         private string displayName;

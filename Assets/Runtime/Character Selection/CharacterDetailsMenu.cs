@@ -68,7 +68,7 @@ namespace Attrition.Character_Selection
             }
             
             this.boundTo = character;
-            var identity = character.GetComponent<CharacterIdentity>();
+            var identity = character.GetComponent<Identity>();
             var @class = identity.CharacterClass;
 
             this.CharacterName = identity.DisplayName;

@@ -12,7 +12,7 @@ namespace Attrition.Character_Selection
         [SerializeField]
         private Transform browseFollowTarget;
         [SerializeField]
-        private CharacterIdentity identity;
+        private Identity identity;
 
         public CharacterClass CharacterClass
         {

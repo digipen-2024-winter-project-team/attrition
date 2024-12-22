@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Attrition.Character_Selection
 {
-    [RequireComponent(typeof(CharacterIdentity))]
+    [RequireComponent(typeof(Identity))]
     public class CharacterModelController : MonoBehaviour
     {
         [Serializable]
@@ -19,7 +19,7 @@ namespace Attrition.Character_Selection
         private Transform modelContainer;
         [SerializeField]
         private List<ModelKeyValuePair> models;
-        private CharacterIdentity identity;
+        private Identity identity;
         private SelectableCharacterBehaviour character;
         
         private void Awake()
@@ -81,7 +81,7 @@ namespace Attrition.Character_Selection
         {
             if (this.identity == null)
             {
-                this.identity = this.GetComponent<CharacterIdentity>();
+                this.identity = this.GetComponent<Identity>();
             }
 
             if (this.character == null)
