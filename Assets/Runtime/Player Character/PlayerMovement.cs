@@ -233,7 +233,7 @@ namespace Attrition.PlayerCharacter
                 context.dodgeSpeedCurve.Start();
 
                 Vector3 moveDirection = context.moveDirection;
-                dodgeDirection = context.transform.forward;
+                dodgeDirection = moveDirection;
 
                 if (context.movement.action.WasPressedThisFrame())
                 {
