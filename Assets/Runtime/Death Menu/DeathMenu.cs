@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Attrition.Common;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -13,22 +14,20 @@ namespace Attrition
         [SerializeField] private GameObject content;
         [SceneAsset]
         [SerializeField] private string mainMenuScene;
+        [SerializeField] private float fadeDuration;
+        [SerializeField] private AnimationCurve fadeCurve;
+        [SerializeField] private CanvasGroup fadeGroup;
         [SerializeField] private float animationStartDelay;
         [SerializeField] private float animationItemDuration;
         [SerializeField] private List<GameObject> animationItems;
         [SerializeField] private GameObject firstSelected;
-
+        
         private void Start()
         {
             content.SetActive(false);
         }
 
         public void PlayDeathScreenAnimation()
-        {
-            StartCoroutine(DeathScreenAnimation());
-        }
-        
-        private IEnumerator DeathScreenAnimation()
         {
             content.SetActive(true);
             
@@ -37,16 +36,21 @@ namespace Attrition
                 item.SetActive(false);
             }
 
-            yield return new WaitForSeconds(animationStartDelay);
+            fadeGroup.alpha = 0;
             
-            foreach (var item in animationItems)
-            {
-                item.SetActive(true);
-                
-                yield return new WaitForSeconds(animationItemDuration);
-            }
+            var fadeTween = DOTween.To(() => fadeGroup.alpha, value => fadeGroup.alpha = value, 1, fadeDuration)
+                .SetEase(fadeCurve);
             
-            EventSystem.current.SetSelectedGameObject(firstSelected);
+            var animationSequence = DOTween.Sequence()
+                .Append(fadeTween)
+                .AppendInterval(animationStartDelay);
+            
+            animationItems.ForEach(item => animationSequence
+                .AppendCallback(() => item.SetActive(true))
+                .AppendInterval(animationItemDuration));
+
+            animationSequence
+                .OnComplete(() => EventSystem.current.SetSelectedGameObject(firstSelected));
         }
 
         public void ReturnToMain()
