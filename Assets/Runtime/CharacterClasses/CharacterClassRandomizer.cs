@@ -1,63 +1,46 @@
-﻿// using System.Collections.Generic;
-// using System.Linq;
-// using Attrition.CharacterSelection;
-// using Attrition.Common;
-// using UnityEngine;
-// using Random = UnityEngine.Random;
-//
-// namespace Attrition.CharacterClasses
-// {
-//     [DefaultExecutionOrder(10)]
-//     public class CharacterClassRandomizer : MonoBehaviour
-//     {
-//         [SerializeField]
-//         private List<CharacterClass> availableClasses;
-//         [SerializeField]
-//         private List<SelectableCharacterBehaviour> characters;
-//
-//         public IReadOnlyList<SelectableCharacterBehaviour> Characters => this.characters;
-//         
-//         private void OnEnable()
-//         {
-//             this.Randomize();
-//         }
-//
-//         private void Randomize()
-//         {
-//             CharacterClass PickRandomClass()
-//             {
-//                 var randomIndex = Random.Range(0, this.availableClasses.Count);
-//                 return this.availableClasses[randomIndex];
-//             }
-//
-//             foreach (var character in this.characters)
-//             {
-//                 var characterClass = PickRandomClass();
-//
-//                 var characterClassBehaviours = this.characters
-//                     .Select(c => c.GetComponent<CharacterClassBehaviour>())
-//                     .Where(cb => cb != null)
-//                     .ToList();
-//                 
-//                 while (characterClassBehaviours.Any(ccb => ccb.CharacterClass == characterClass))
-//                 {
-//                     characterClassBehaviours = this.characters
-//                         .Select(c => c.GetComponent<CharacterClassBehaviour>())
-//                         .Where(cb => cb != null)
-//                         .ToList();
-//                     
-//                     characterClass = PickRandomClass();
-//                 }
-//                 
-//                 character.gameObject.name = $"{characterClass.DisplayName}";
-//                 character = characterClass;
-//                 
-//                 if (character.TryGetComponent(out CharacterModelController modelController))
-//                 {
-//                     modelController.UpdateCharacterModel();
-//                 }
-//             }
-//         }
-//     }
-//     
-// }
+﻿using System;
+using System.Collections.Generic;
+using Attrition.Common;
+using Attrition.Common.Picking;
+using Attrition.Common.Picking.Builder;
+using UnityEngine;
+
+namespace Attrition.CharacterClasses
+{
+    [DefaultExecutionOrder(10)]
+    [RequireComponent(typeof(CharacterClassBehaviour))]
+    public class CharacterClassRandomizer2 : MonoBehaviour
+    {
+        [SerializeField]
+        private List<CharacterClass> availableClasses;
+        private CharacterClassBehaviour classBehaviour;
+        private Picker<CharacterClass> picker;
+
+        private static List<CharacterClass> alreadyPicked;
+        
+        private void Awake()
+        {
+            this.classBehaviour ??= this.GetComponent<CharacterClassBehaviour>();
+            
+            var builder = new PickerBuilder<CharacterClass>();
+            this.picker = builder
+                .UseRandom()
+                .UniqueFrom(this.availableClasses)
+                .UniqueFrom(alreadyPicked)
+                .Build();
+        }
+
+        private void OnEnable()
+        {
+            this.Randomize();
+        }
+
+        public void Randomize()
+        {
+            var picked = this.picker.Pick(this.availableClasses);
+            alreadyPicked.Add(picked);
+
+            this.classBehaviour.CharacterClass = picked;
+        }
+    }
+}

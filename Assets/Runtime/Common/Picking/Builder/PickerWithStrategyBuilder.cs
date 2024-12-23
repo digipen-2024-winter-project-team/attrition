@@ -33,6 +33,28 @@ namespace Attrition.Common.Picking.Builder
         }
         
         /// <summary>
+        /// Configures the picker to allow picking only from a whitelist of items.
+        /// </summary>
+        /// <param name="whitelist">The collection of whitelisted items.</param>
+        /// <returns>The builder configured with a whitelist pick strategy decorator.</returns>
+        public PickerWithStrategyBuilder<T> IncludeOnlyIn(IEnumerable<T> whitelist)
+        {
+            var decorator = new WhitelistPickStrategyDecorator<T>(this.picker.Strategy, whitelist);
+            return this.WithDecorator(decorator);
+        }
+
+        /// <summary>
+        /// Configures the picker to prevent picking from a blacklist of items.
+        /// </summary>
+        /// <param name="blacklist">The collection of blacklisted items.</param>
+        /// <returns>The builder configured with a blacklist pick strategy decorator.</returns>
+        public PickerWithStrategyBuilder<T> ExcludeAnyIn(IEnumerable<T> blacklist)
+        {
+            var decorator = new BlacklistPickStrategyDecorator<T>(this.picker.Strategy, blacklist);
+            return this.WithDecorator(decorator);
+        }
+        
+        /// <summary>
         /// Adds a decorator to the existing strategy within the picker.
         /// </summary>
         /// <param name="decorator">The decorator to wrap the current strategy.</param>
@@ -48,8 +70,7 @@ namespace Attrition.Common.Picking.Builder
             this.picker = new(decorator);
             return this;
         }
-
-
+        
         /// <summary>
         /// Builds the picker with the configured strategies.
         /// </summary>

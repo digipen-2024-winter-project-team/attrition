@@ -21,7 +21,7 @@ namespace Attrition.Common.Picking.Decorators
         public UniquePickStrategyDecorator(IPickStrategy<T> innerStrategy, IEnumerable<T> alreadyPicked = null)
             : base(innerStrategy)
         {
-            this.pickedItems = alreadyPicked != null ? new HashSet<T>(alreadyPicked) : new HashSet<T>();
+            this.pickedItems = (alreadyPicked != null) ? new(alreadyPicked) : new HashSet<T>();
         }
 
         /// <summary>
@@ -46,7 +46,10 @@ namespace Attrition.Common.Picking.Decorators
 
             lock (this.pickedItems)
             {
-                var availableItems = itemList.Except(this.pickedItems).ToList();
+                var availableItems = itemList
+                    .Except(this.pickedItems)
+                    .ToList();
+                
                 if (availableItems.Count == 0)
                 {
                     throw new InvalidOperationException("All items have already been picked.");
