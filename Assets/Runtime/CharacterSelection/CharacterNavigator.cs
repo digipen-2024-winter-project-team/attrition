@@ -1,13 +1,19 @@
 ﻿using System.Collections;
+using System.Linq;
+using Attrition.CharacterClasses;
+using Attrition.Common.Containers;
 using Attrition.Common.SerializedEvents;
 using UnityEngine;
 
-namespace Attrition.Character_Selection
+namespace Attrition.CharacterSelection
 {
     public class CharacterNavigator : MonoBehaviour
     {
         [SerializeField]
-        private CharacterClassRandomizer classRandomizer;
+        private float navigationCooldown = 1f;
+        [SerializeField]
+        private float focusCooldown = 1f;
+        
         [SerializeField]
         private CinemachineDollyTweener dollyController;
         [SerializeField]
@@ -15,22 +21,34 @@ namespace Attrition.Character_Selection
         [SerializeField]
         private CharacterSelectionStateHandler stateHandler;
         [SerializeField]
-        private float navigationCooldown = 1f;
+        private CharacterClassRandomizer2 classRandomizer;
         [SerializeField]
-        private float focusCooldown = 1f;
+        private GameObjectContainer characterContainer;
+        
         private bool isNavigationOnCooldown;
         private bool isFocusOnCooldown;
+        private int currentCharacterIndex;
+        private bool isNavigatingRight;
+        
+        private SelectableCharacterBehaviour CurrentCharacter => 
+            this.characterContainer[this.currentCharacterIndex].GetComponent<SelectableCharacterBehaviour>();
+        
         
         [field: SerializeField]
         public SerializedEvent<SelectableCharacterBehaviour> Focused { get; set; }
         [field: SerializeField]
         public SerializedEvent<SelectableCharacterBehaviour> Unfocused { get; set; }
-
-        private int currentCharacterIndex;
-        private bool isNavigatingRight;
-
-        private SelectableCharacterBehaviour CurrentCharacter => this.classRandomizer.Characters[this.currentCharacterIndex];
         
+        private void Awake()
+        {
+            this.GetDependencies();
+        }
+
+        private void Reset()
+        {
+            this.GetDependencies();
+        }
+
         private void OnEnable()
         {
             this.stateHandler.OnStateChanged.AddListener(this.HandleStateChanged);
@@ -116,10 +134,12 @@ namespace Attrition.Character_Selection
         
         private void Navigate()
         {
+            var charactersCount = this.characterContainer.Contents.Count();
+            
             // Update the current character index based on the navigation direction.
             this.currentCharacterIndex = this.isNavigatingRight
-                ? (this.currentCharacterIndex - 1 + this.classRandomizer.Characters.Count) % this.classRandomizer.Characters.Count
-                : (this.currentCharacterIndex + 1) % this.classRandomizer.Characters.Count;
+                ? (this.currentCharacterIndex - 1 + this.characterContainer.Contents.Count()) % charactersCount
+                : (this.currentCharacterIndex + 1) % charactersCount;
 
             // Move the dolly to the updated position, respecting the direction.
             this.dollyController.MoveToPosition(
@@ -144,6 +164,11 @@ namespace Attrition.Character_Selection
         private void HandleStateChanged(CharacterSelectionStateHandler.SelectionState newState)
         {
             // Placeholder for additional logic triggered by state changes.
+        }
+
+        private void GetDependencies()
+        {
+            
         }
     }
 }

@@ -1,169 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2662101671936115191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7000760741092357492}
-  - component: {fileID: 4894766450459964372}
-  - component: {fileID: 592663322038555680}
-  - component: {fileID: 6387582530099284906}
-  - component: {fileID: 1182270198900922787}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7000760741092357492
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662101671936115191}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 3979909766093856417}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4894766450459964372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662101671936115191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3174f3f0504d74a9d2eb4dbcd770cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navigateAction: {fileID: -8784545083839296357, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  characterNavigation: {fileID: 6387582530099284906}
---- !u!114 &592663322038555680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662101671936115191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba54c1105924f5cb42ea1ef85316caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  onStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6387582530099284906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662101671936115191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf859042cfc481891188e441e60352c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  classRandomizer: {fileID: 1182270198900922787}
-  dollyController: {fileID: 7176759737731783498}
-  pitchController: {fileID: 4236745020725697035}
-  stateHandler: {fileID: 592663322038555680}
-  navigationCooldown: 1.15
-  focusCooldown: 2
-  <Focused>k__BackingField:
-    raised:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4541722803711567934}
-          m_TargetAssemblyTypeName: Attrition.Character_Selection.CharacterDetailsMenu,
-            Attrition.Runtime
-          m_MethodName: Bind
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2056392910886033201}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 5996583217848065553}
-          m_TargetAssemblyTypeName: Attrition.Character_Selection.PanelTransitionBehaviour,
-            Attrition.Runtime
-          m_MethodName: PlayTransitionIn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  <Unfocused>k__BackingField:
-    raised:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5996583217848065553}
-          m_TargetAssemblyTypeName: Attrition.Character_Selection.PanelTransitionBehaviour,
-            Attrition.Runtime
-          m_MethodName: PlayTransitionOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1182270198900922787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662101671936115191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786cd5890fdad57419cb30056d063a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availableClasses:
-  - {fileID: 11400000, guid: 79db479956f3b61439470e09c82d843e, type: 2}
-  - {fileID: 11400000, guid: 49d4289ed466a6c4b998a1ab885de3b2, type: 2}
-  - {fileID: 11400000, guid: 9f58a769478a7ae49874d5bc4dcc0451, type: 2}
-  - {fileID: 11400000, guid: c597751f79e7df5489b33fcccc1a0350, type: 2}
-  - {fileID: 11400000, guid: 1f600169d846ddf4084fa51085e7e716, type: 2}
-  characters:
-  - {fileID: 8475445921653351567}
-  - {fileID: 670673171396865406}
-  - {fileID: 2702055801726545928}
 --- !u!1 &3480400294737747875
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,10 +300,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dolly: {fileID: 3526215818177198133}
   dollyAnimation:
-    Duration: 1
+    Duration: 1.5
     Delay: 0
     SpeedBased: 0
-    UseAnimationCurve: 0
+    UseAnimationCurve: 1
     Ease: 18
     AnimationCurve:
       serializedVersion: 2
@@ -476,19 +312,19 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 1
+        outSlope: 3.000003
         tangentMode: 0
-        weightedMode: 0
+        weightedMode: 3
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.333333
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 1
+        inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
+        weightedMode: 3
+        inWeight: 0.33333302
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -537,6 +373,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3979909766093856417}
+  - component: {fileID: 7961160359895522533}
+  - component: {fileID: 1281393635423589106}
+  - component: {fileID: 4636449598958896954}
+  - component: {fileID: 6495514560495890130}
+  - component: {fileID: 8221297106872973216}
   m_Layer: 0
   m_Name: CharacterSelection
   m_TagString: Untagged
@@ -562,10 +403,152 @@ Transform:
   - {fileID: 8125685155793804210}
   - {fileID: 7519208403346747511}
   - {fileID: 3067331462860002227}
-  - {fileID: 7000760741092357492}
   - {fileID: 7696117056262347689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7961160359895522533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719325843088836332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c89e5f7644bb5b9c4113c48be1c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: {fileID: 11400000, guid: 45cebf7b34491aa47bba866511c7c1cd, type: 2}
+  playerClass: {fileID: 11400000, guid: 8b6072e4dc6f20249a94b4b369b6d6fe, type: 2}
+--- !u!114 &1281393635423589106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719325843088836332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba54c1105924f5cb42ea1ef85316caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4636449598958896954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719325843088836332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf859042cfc481891188e441e60352c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  classRandomizer: {fileID: 6495514560495890130}
+  dollyController: {fileID: 7176759737731783498}
+  pitchController: {fileID: 4236745020725697035}
+  stateHandler: {fileID: 1281393635423589106}
+  navigationCooldown: 1.15
+  focusCooldown: 2
+  <Focused>k__BackingField:
+    raised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4541722803711567934}
+          m_TargetAssemblyTypeName: Attrition.Character_Selection.CharacterDetailsMenu,
+            Attrition.Runtime
+          m_MethodName: Bind
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2056392910886033201}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 5996583217848065553}
+          m_TargetAssemblyTypeName: Attrition.Character_Selection.PanelTransitionBehaviour,
+            Attrition.Runtime
+          m_MethodName: PlayTransitionIn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  <Unfocused>k__BackingField:
+    raised:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5996583217848065553}
+          m_TargetAssemblyTypeName: Attrition.Character_Selection.PanelTransitionBehaviour,
+            Attrition.Runtime
+          m_MethodName: PlayTransitionOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &6495514560495890130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719325843088836332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786cd5890fdad57419cb30056d063a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableClasses:
+  - {fileID: 11400000, guid: 79db479956f3b61439470e09c82d843e, type: 2}
+  - {fileID: 11400000, guid: 49d4289ed466a6c4b998a1ab885de3b2, type: 2}
+  - {fileID: 11400000, guid: 9f58a769478a7ae49874d5bc4dcc0451, type: 2}
+  - {fileID: 11400000, guid: c597751f79e7df5489b33fcccc1a0350, type: 2}
+  - {fileID: 11400000, guid: 1f600169d846ddf4084fa51085e7e716, type: 2}
+  characters:
+  - {fileID: 8475445921653351567}
+  - {fileID: 670673171396865406}
+  - {fileID: 2702055801726545928}
+--- !u!114 &8221297106872973216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719325843088836332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3174f3f0504d74a9d2eb4dbcd770cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigateAction: {fileID: -8784545083839296357, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  characterNavigation: {fileID: 4636449598958896954}
 --- !u!1 &7560376513466155758
 GameObject:
   m_ObjectHideFlags: 0

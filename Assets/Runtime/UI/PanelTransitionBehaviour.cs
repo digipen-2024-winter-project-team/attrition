@@ -2,7 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Attrition.Character_Selection
+namespace Attrition.UI
 {
     public class PanelTransitionBehaviour : MonoBehaviour
     {

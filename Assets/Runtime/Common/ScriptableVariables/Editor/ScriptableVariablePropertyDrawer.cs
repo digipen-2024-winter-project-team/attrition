@@ -1,5 +1,5 @@
 ﻿using System;
-using Attrition.Character_Selection;
+using Attrition.CharacterClasses;
 using Attrition.Common.ScriptableVariables;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using UnityEditor;

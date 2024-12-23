@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Attrition.Character_Selection
+namespace Attrition.CharacterClasses
 {
     [CreateAssetMenu(menuName = "Scriptables/Character Class")]
     public class CharacterClass : ScriptableObject

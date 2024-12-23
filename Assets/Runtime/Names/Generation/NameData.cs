@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Attrition.Name_Generation
+namespace Attrition.Names.Generation
 {
     [CreateAssetMenu(fileName = "NameData", menuName = "Scriptables/Name Data")]
     public class NameData : ScriptableObject, INameData

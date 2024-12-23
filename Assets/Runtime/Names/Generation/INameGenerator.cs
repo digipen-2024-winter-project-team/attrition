@@ -1,4 +1,4 @@
-﻿namespace Attrition.Name_Generation
+﻿namespace Attrition.Names.Generation
 {
     public interface INameGenerator
     {

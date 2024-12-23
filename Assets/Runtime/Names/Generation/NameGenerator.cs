@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Attrition.Name_Generation
+namespace Attrition.Names.Generation
 {
     public class NameGenerator : INameGenerator
     {

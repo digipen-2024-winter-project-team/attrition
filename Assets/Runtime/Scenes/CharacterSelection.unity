@@ -933,10 +933,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1536212664653519371, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: someFloat
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3979909766093856417, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -980,42 +976,6 @@ PrefabInstance:
     - target: {fileID: 5719325843088836332, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
       propertyPath: m_Name
       value: CharacterSelection
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.Duration
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.UseAnimationCurve
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[0].outSlope
-      value: 3.000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333302
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[0].outWeight
-      value: 0.333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[0].weightedMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7176759737731783498, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: dollyAnimation.AnimationCurve.m_Curve.Array.data[1].weightedMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7602597187518845946, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
-      propertyPath: someFloat
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

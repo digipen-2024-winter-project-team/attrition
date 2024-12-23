@@ -1,10 +1,11 @@
-﻿using Attrition.Common;
+﻿using Attrition.CharacterSelection;
+using Attrition.Common;
 using Attrition.Names;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Attrition.Character_Selection
+namespace Attrition.UI
 {
     [ExecuteAlways]
     public class CharacterDetailsMenu : MonoBehaviour

@@ -1,4 +1,4 @@
-﻿using Attrition.Character_Selection;
+﻿using Attrition.CharacterClasses;
 using UnityEngine;
 
 namespace Attrition.Common.ScriptableVariables.DataTypes

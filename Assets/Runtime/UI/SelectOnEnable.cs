@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Attrition.Character_Selection
+namespace Attrition.UI
 {
     public class SelectOnEnable : MonoBehaviour
     {

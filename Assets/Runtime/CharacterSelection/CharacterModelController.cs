@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Attrition.CharacterClasses;
+using Attrition.Common;
 using UnityEngine;
 
-namespace Attrition.Character_Selection
+namespace Attrition.CharacterSelection
 {
-    [RequireComponent(typeof(Identity))]
+    [RequireComponent(typeof(CharacterClassBehaviour))]
     public class CharacterModelController : MonoBehaviour
     {
         [Serializable]
@@ -19,17 +21,17 @@ namespace Attrition.Character_Selection
         private Transform modelContainer;
         [SerializeField]
         private List<ModelKeyValuePair> models;
-        private Identity identity;
+        private CharacterClassBehaviour characterClassBehaviour;
         private SelectableCharacterBehaviour character;
         
         private void Awake()
         {
-            this.ResolveDependencies();
+            this.GetDependencies();
         }
 
         private void Reset()
         {
-            this.ResolveDependencies();
+            this.GetDependencies();
         }
 
         private void OnEnable()
@@ -44,17 +46,17 @@ namespace Attrition.Character_Selection
                 child.gameObject.SetActive(false);
             }
 
-            if (this.identity == null)
+            if (this.characterClassBehaviour == null)
             {
-                this.ResolveDependencies();
+                this.GetDependencies();
 
-                if (this.identity == null)
+                if (this.characterClassBehaviour == null)
                 {
                     return;
                 }
             }
             
-            var characterClass = this.identity.CharacterClass;
+            var characterClass = this.characterClassBehaviour.CharacterClass;
             
             if (characterClass == null)
             {
@@ -62,7 +64,7 @@ namespace Attrition.Character_Selection
             }
 
             var model = this.models
-                .Where(kvp => kvp.Class == this.identity.CharacterClass)
+                .Where(kvp => kvp.Class == this.characterClassBehaviour.CharacterClass)
                 .Select(kvp => kvp.Transform)
                 .FirstOrDefault();
             
@@ -77,11 +79,11 @@ namespace Attrition.Character_Selection
             }
         }
         
-        private void ResolveDependencies()
+        private void GetDependencies()
         {
-            if (this.identity == null)
+            if (this.characterClassBehaviour == null)
             {
-                this.identity = this.GetComponent<Identity>();
+                this.characterClassBehaviour = this.GetComponent<CharacterClassBehaviour>();
             }
 
             if (this.character == null)
