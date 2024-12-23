@@ -2,6 +2,7 @@
 using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
 using Attrition.CharacterSelection.UI;
+using Attrition.ClassCharacterModel;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Common.SerializedEvents;
@@ -57,8 +58,7 @@ namespace Attrition.CharacterSelection.Selection
         private void OnEnable()
         {
             this.inputHandler.EnableInput();
-            
-            
+            this.detailsMenu.Submitted.Invoked += this.OnDetailsMenuSubmitted;
         }
 
         private void Initialize()
@@ -79,6 +79,12 @@ namespace Attrition.CharacterSelection.Selection
                     this.dollyCamera);
             
             this.applicator = new(this.playerName, this.playerClass);
+        }
+        
+        private void OnDetailsMenuSubmitted()
+        {
+            var currentSelection = this.navigator.CurrentSelection;
+            this.applicator.ApplyToPlayableCharacter(currentSelection.gameObject);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Attrition.Common;
+﻿using System;
+using Attrition.CharacterClasses;
+using Attrition.Common;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -23,7 +25,14 @@ namespace Attrition.CharacterSelection.Characters
         {
             this.selectionAnimationController = new(this.animator);
             this.selectionCameraController = new(this.focusCamera);
+            
         }
+
+        private void OnEnable()
+        {
+            
+        }
+
         public void Focus()
         {
             this.selectionAnimationController.PlayStandUpAnimation();

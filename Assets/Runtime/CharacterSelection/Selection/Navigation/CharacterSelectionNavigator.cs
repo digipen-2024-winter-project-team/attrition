@@ -12,6 +12,8 @@ namespace Attrition.CharacterSelection.Selection.Navigation
         private readonly CharacterSelectionStateHandler stateHandler;
         private readonly Cooldown navigationCooldown;
         private readonly Cooldown focusCooldown;
+        
+        public CharacterSelectionCharacterBehaviour CurrentSelection => this.selector.CurrentSelection;
 
         public CharacterSelectionNavigator(
             CharacterSelectionController controller,

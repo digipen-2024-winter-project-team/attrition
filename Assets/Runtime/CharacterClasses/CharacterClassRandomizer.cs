@@ -4,6 +4,7 @@ using Attrition.Common;
 using Attrition.Common.Picking;
 using Attrition.Common.Picking.Builder;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Attrition.CharacterClasses
 {
@@ -12,11 +13,14 @@ namespace Attrition.CharacterClasses
     public class CharacterClassRandomizer : MonoBehaviour
     {
         [SerializeField]
+        private bool randomizeOnEnable = true;
+        [SerializeField]
         private List<CharacterClass> availableClasses;
+        [FormerlySerializedAs("shouldRandomizeOnEnable")]
         private CharacterClassBehaviour classBehaviour;
         private Picker<CharacterClass> picker;
 
-        private static List<CharacterClass> alreadyPicked;
+        private static readonly List<CharacterClass> AlreadyPicked = new();
         
         private void Awake()
         {
@@ -25,21 +29,24 @@ namespace Attrition.CharacterClasses
             var builder = new PickerBuilder<CharacterClass>();
             this.picker = builder
                 .UseRandom()
-                .ExcludeAnyIn(alreadyPicked)
+                .ExcludeAnyIn(AlreadyPicked)
                 .Build();
         }
 
         private void OnEnable()
         {
-            this.Randomize();
+            if (this.randomizeOnEnable && this.classBehaviour != null && this.classBehaviour.CharacterClass != null)
+            {
+                this.Randomize();
+            }
         }
 
         public void Randomize()
         {
             var picked = this.picker.PickFrom(this.availableClasses);
-            alreadyPicked.Add(picked);
-
-            this.classBehaviour.CharacterClass = picked;
+            AlreadyPicked.Add(picked);
+            
+            this.classBehaviour.SetClass(picked);
         }
     }
 }
