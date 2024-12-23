@@ -1,6 +1,8 @@
 ﻿using Attrition.Common.SerializedEvents;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 namespace Attrition.Runtime.Common.SerializedEvents.Editor
@@ -112,4 +114,120 @@ namespace Attrition.Runtime.Common.SerializedEvents.Editor
             }
         }
     }
+    
+    #region C# Primitive Types
+    [CustomPropertyDrawer(typeof(SerializedEvent<string>))]
+    public class SerializedEventStringPropertyDrawer : SerializedEventPropertyDrawer<string> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<int>))]
+    public class SerializedEventIntPropertyDrawer : SerializedEventPropertyDrawer<int> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<float>))]
+    public class SerializedEventFloatPropertyDrawer : SerializedEventPropertyDrawer<float> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<bool>))]
+    public class SerializedEventBoolPropertyDrawer : SerializedEventPropertyDrawer<bool> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<double>))]
+    public class SerializedEventDoublePropertyDrawer : SerializedEventPropertyDrawer<double> { }
+    #endregion
+    
+    #region Unity Entity Component Types
+    [CustomPropertyDrawer(typeof(SerializedEvent<GameObject>))]
+    public class SerializedEventGameObjectPropertyDrawer : SerializedEventPropertyDrawer<GameObject> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Transform>))]
+    public class SerializedEventTransformPropertyDrawer : SerializedEventPropertyDrawer<Transform> { }
+    
+        [CustomPropertyDrawer(typeof(SerializedEvent<Rigidbody>))]
+    public class SerializedEventRigidbodyPropertyDrawer : SerializedEventPropertyDrawer<Rigidbody> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Rigidbody2D>))]
+    public class SerializedEventRigidbody2DPropertyDrawer : SerializedEventPropertyDrawer<Rigidbody2D> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Collider>))]
+    public class SerializedEventColliderPropertyDrawer : SerializedEventPropertyDrawer<Collider> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Collider2D>))]
+    public class SerializedEventCollider2DPropertyDrawer : SerializedEventPropertyDrawer<Collider2D> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<MeshRenderer>))]
+    public class SerializedEventMeshRendererPropertyDrawer : SerializedEventPropertyDrawer<MeshRenderer> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<SkinnedMeshRenderer>))]
+    public class SerializedEventSkinnedMeshRendererPropertyDrawer : SerializedEventPropertyDrawer<SkinnedMeshRenderer> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<SpriteRenderer>))]
+    public class SerializedEventSpriteRendererPropertyDrawer : SerializedEventPropertyDrawer<SpriteRenderer> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Light>))]
+    public class SerializedEventLightPropertyDrawer : SerializedEventPropertyDrawer<Light> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Camera>))]
+    public class SerializedEventCameraPropertyDrawer : SerializedEventPropertyDrawer<Camera> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Animator>))]
+    public class SerializedEventAnimatorPropertyDrawer : SerializedEventPropertyDrawer<Animator> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<AudioSource>))]
+    public class SerializedEventAudioSourcePropertyDrawer : SerializedEventPropertyDrawer<AudioSource> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Canvas>))]
+    public class SerializedEventCanvasPropertyDrawer : SerializedEventPropertyDrawer<Canvas> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<CanvasRenderer>))]
+    public class SerializedEventCanvasRendererPropertyDrawer : SerializedEventPropertyDrawer<CanvasRenderer> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<EventSystem>))]
+    public class SerializedEventEventSystemPropertyDrawer : SerializedEventPropertyDrawer<EventSystem> { }
+    #endregion
+    
+    #region Unity Data Types
+    [CustomPropertyDrawer(typeof(SerializedEvent<Vector2>))]
+    public class SerializedEventVector2PropertyDrawer : SerializedEventPropertyDrawer<Vector2> { }
+    
+    [CustomPropertyDrawer(typeof(SerializedEvent<Vector2Int>))]
+    public class SerializedEventVector2IntPropertyDrawer : SerializedEventPropertyDrawer<Vector2Int> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Vector3>))]
+    public class SerializedEventVector3PropertyDrawer : SerializedEventPropertyDrawer<Vector3> { }
+    
+    [CustomPropertyDrawer(typeof(SerializedEvent<Vector3Int>))]
+    public class SerializedEventVector3IntPropertyDrawer : SerializedEventPropertyDrawer<Vector3Int> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Color>))]
+    public class SerializedEventColorPropertyDrawer : SerializedEventPropertyDrawer<Color> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Quaternion>))]
+    public class SerializedEventQuaternionPropertyDrawer : SerializedEventPropertyDrawer<Quaternion> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Rect>))]
+    public class SerializedEventRectPropertyDrawer : SerializedEventPropertyDrawer<Rect> { }
+    #endregion
+    
+    #region Asset Types
+    [CustomPropertyDrawer(typeof(SerializedEvent<Material>))]
+    public class SerializedEventMaterialPropertyDrawer : SerializedEventPropertyDrawer<Material> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Texture>))]
+    public class SerializedEventTexturePropertyDrawer : SerializedEventPropertyDrawer<Texture> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<AudioClip>))]
+    public class SerializedEventAudioClipPropertyDrawer : SerializedEventPropertyDrawer<AudioClip> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<AnimationClip>))]
+    public class SerializedEventAnimationClipPropertyDrawer : SerializedEventPropertyDrawer<AnimationClip> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Shader>))]
+    public class SerializedEventShaderPropertyDrawer : SerializedEventPropertyDrawer<Shader> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Sprite>))]
+    public class SerializedEventSpritePropertyDrawer : SerializedEventPropertyDrawer<Sprite> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Mesh>))]
+    public class SerializedEventMeshPropertyDrawer : SerializedEventPropertyDrawer<Mesh> { }
+
+    [CustomPropertyDrawer(typeof(SerializedEvent<Font>))]
+    public class SerializedEventFontPropertyDrawer : SerializedEventPropertyDrawer<Font> { }
+    #endregion
 }
