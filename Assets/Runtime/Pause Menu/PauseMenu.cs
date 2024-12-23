@@ -14,12 +14,16 @@ namespace Attrition
         [SerializeField] private GameObject firstSelected;
         [SceneAsset]
         [SerializeField] private string mainMenuScene;
-
+        [SerializeField] private GameObject quitConfirmationContent;
+        [SerializeField] private GameObject quitConfirmationFirstSelected;
+        [SerializeField] private GameObject quitButton;
+        
         private bool paused;
 
         private void Start()
         {
             content.SetActive(false);
+            quitConfirmationContent.SetActive(false);
         }
 
         private void OnEnable()
@@ -56,8 +60,20 @@ namespace Attrition
 
         public void QuitToMainMenu()
         {
+            quitConfirmationContent.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(quitConfirmationFirstSelected);
+        }
+
+        public void QuitConfirm()
+        {
             Pause(false);
             SceneManager.LoadScene(mainMenuScene);
+        }
+
+        public void QuitCancel()
+        {
+            quitConfirmationContent.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(quitButton);
         }
     }
 }
