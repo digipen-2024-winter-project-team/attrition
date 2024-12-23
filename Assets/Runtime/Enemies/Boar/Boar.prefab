@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8335511006596480185}
   - component: {fileID: 1359108973303923865}
   - component: {fileID: 1303861862239774458}
-  - component: {fileID: 3835747122644846260}
-  - component: {fileID: -3788525159462590025}
   - component: {fileID: 6321470713925311054}
   - component: {fileID: 5836949155235858520}
+  - component: {fileID: 4716752262690142393}
+  - component: {fileID: 5769622819500407706}
   m_Layer: 0
   m_Name: Boar
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1477235426820542058}
+  - {fileID: 6415184279429354633}
   - {fileID: 6363140426558304165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,66 +88,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!114 &3835747122644846260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566079342572261674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b76879cb54fd49b8949f3b30f4545b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damaged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9218028422017652554}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &-3788525159462590025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566079342572261674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d116d20dc9754345afd89b5235d428a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitpoints: 0
-  damageable: {fileID: 3835747122644846260}
-  maxHitpoints: 6
-  startWithMaxHitpoints: 1
-  invincibilityDuration: 0
-  team: {fileID: 11400000, guid: 5a12c0b3c493d456aa8e99253f4569bc, type: 2}
-  destroyed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1566079342572261674}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6321470713925311054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +104,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 6321703024798991081
   - rid: 6321703053881770688
+  - rid: 6321703099913732874
   references:
     version: 2
     RefIds:
@@ -183,6 +124,14 @@ MonoBehaviour:
           m_Value1: 13150901864224722637
         Name: Room
         m_Value: {fileID: 0}
+    - rid: 6321703099913732874
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2478847535248523338
+          m_Value1: 10831501548255462611
+        Name: Mesh
+        m_Value: {fileID: 785657247398728885}
 --- !u!65 &5836949155235858520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -204,92 +153,121 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3, y: 2, z: 1.9}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!1 &3113607683026906842
-GameObject:
+--- !u!114 &4716752262690142393
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1477235426820542058}
-  - component: {fileID: 4935874493746528728}
-  - component: {fileID: 5383821972248562477}
-  m_Layer: 0
-  m_Name: PrototypeBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1477235426820542058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113607683026906842}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 0, y: 0.8, z: -0.5}
-  m_LocalScale: {x: 45, y: 50, z: 50}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8335511006596480185}
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 180}
---- !u!33 &4935874493746528728
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113607683026906842}
-  m_Mesh: {fileID: -2124705421725058983, guid: 09628e3674468174b96d34c7c9c1d60f, type: 3}
---- !u!23 &5383821972248562477
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113607683026906842}
+  m_GameObject: {fileID: 1566079342572261674}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 0ac01eb3bbb2d214e8b33c93f79e97d5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480b15834a1bb9f4ea274a428b6d9cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 0
+  damageable: {fileID: 5769622819500407706}
+  maxHitpoints: 6
+  startWithMaxHitpoints: 1
+  invincibilityDuration: 0
+  team: {fileID: 0}
+  destroyed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5769622819500407706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566079342572261674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262ef854f4534fe4eb79ecd9f2d1a203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9218028422017652554}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &777890370136216587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8335511006596480185}
+    m_Modifications:
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379102151944460856, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+      propertyPath: m_Name
+      value: BoarAnimated
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+--- !u!95 &785657247398728885 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 12569827520741566, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+  m_PrefabInstance: {fileID: 777890370136216587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6415184279429354633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
+  m_PrefabInstance: {fileID: 777890370136216587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1240273783164110213
 PrefabInstance:
   m_ObjectHideFlags: 0
