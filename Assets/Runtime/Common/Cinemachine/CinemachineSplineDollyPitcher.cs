@@ -1,7 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.Common.Cinemachine
 {
     public class CinemachineSplineDollyPitcher : MonoBehaviour
     {

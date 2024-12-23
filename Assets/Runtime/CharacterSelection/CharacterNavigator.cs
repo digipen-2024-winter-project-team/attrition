@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using Attrition.CharacterClasses;
+using Attrition.Common.Cinemachine;
 using Attrition.Common.Containers;
 using Attrition.Common.SerializedEvents;
 using UnityEngine;
