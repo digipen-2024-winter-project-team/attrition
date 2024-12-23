@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Attrition.Common;
+using Attrition.Names;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,10 +70,11 @@ namespace Attrition.Character_Selection
             }
             
             this.boundTo = character;
-            var identity = character.GetComponent<Identity>();
-            var @class = identity.CharacterClass;
+            var nameBehaviour = character.GetComponent<NameBehaviour>();
+            var classBehaviour = character.GetComponent<CharacterClassBehaviour>();
+            var @class = classBehaviour.CharacterClass;
 
-            this.CharacterName = identity.DisplayName;
+            this.CharacterName = nameBehaviour.DisplayName;
             this.CharacterClass = @class.DisplayName;
         }
 
