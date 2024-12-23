@@ -1013,6 +1013,10 @@ MonoBehaviour:
   boundTo: {fileID: 0}
   characterName: '[NULL]'
   characterClass: '[NULL]'
+  submitted:
+    invoked:
+      m_PersistentCalls:
+        m_Calls: []
   nameTextComponent: {fileID: 2821028113080150786}
   classTextComponent: {fileID: 7347326245386707247}
   buttonComponent: {fileID: 6475034163590887229}

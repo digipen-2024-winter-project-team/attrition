@@ -1,5 +1,6 @@
 ﻿using Attrition.CharacterSelection.Characters;
 using Attrition.Common;
+using Attrition.Common.SerializedEvents;
 using Attrition.Names;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Attrition.CharacterSelection.UI
         private string characterName;
         [SerializeField]
         private string characterClass;
+        [SerializeField]
+        private SerializedEvent submitted;
         [Header("Component References")]
         [SerializeField]
         private TextMeshProUGUI nameTextComponent;
@@ -42,6 +45,11 @@ namespace Attrition.CharacterSelection.UI
                 this.characterClass = value;
                 this.UpdateContents();
             }
+        }
+        
+        public IReadOnlySerializedEvent Submitted
+        {
+            get => this.submitted;
         }
 
         private void OnValidate()
@@ -84,6 +92,7 @@ namespace Attrition.CharacterSelection.UI
             if (Application.isPlaying)
             {
                 this.buttonComponent.onClick.Invoke();
+                this.submitted?.Invoke();
             }
         }
     }

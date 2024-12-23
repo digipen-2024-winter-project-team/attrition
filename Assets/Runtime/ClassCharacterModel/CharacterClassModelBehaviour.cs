@@ -22,6 +22,8 @@ namespace Attrition.ClassCharacterModel
         [SerializeField]
         private SerializedEvent<Animator> modelUpdated;
         private CharacterClassModelController modelController;
+        
+        public IReadOnlySerializedEvent<Animator> ModelUpdated => this.modelUpdated;
 
         private void Awake()
         {

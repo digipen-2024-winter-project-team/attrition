@@ -1,6 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
+using Attrition.CharacterSelection.UI;
 using Attrition.Common;
+using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Common.SerializedEvents;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -27,20 +30,55 @@ namespace Attrition.CharacterSelection.Selection
         
         [Header("References")]
         [SerializeField]
+        private List<CharacterSelectionCharacterBehaviour> characters;
+        [SerializeField]
+        private StringVariable playerName;
+        [SerializeField]
+        private CharacterClassVariable playerClass;
+        [SerializeField]
         private InputActionReference navigateAction;
         [SerializeField]
         private CinemachineCamera dollyCamera;
-
+        [SerializeField]
+        private CharacterDetailsMenu detailsMenu;
+        
         private CharacterSelectionInputHandler inputHandler;
         private CharacterSelectionStateHandler stateHandler;
-        private CharacterSelectionApplicator applicator;
         private CharacterSelectionNavigator navigator;
+        private CharacterSelectionApplicator applicator;
 
-        public SerializedEvent<CharacterSelectionStateHandler.SelectionState> StateChanged => this.stateChanged;
+        public IReadOnlySerializedEvent<CharacterSelectionStateHandler.SelectionState> StateChanged => this.stateChanged;
         
-        private void GetDependencies()
+        private void Awake()
+        {
+            this.Initialize();
+        }
+
+        private void OnEnable()
+        {
+            this.inputHandler.EnableInput();
+            
+            
+        }
+
+        private void Initialize()
         {
             this.inputHandler = new(this.navigateAction, this.navigator);
+            
+            this.stateHandler = new(
+                () => this.currentState,
+                (value) => this.currentState = value,
+                this.stateChanged,
+                this.initialState);
+            
+            this.navigator =
+                new(
+                    this,
+                    this.characters, 
+                    this.stateHandler,
+                    this.dollyCamera);
+            
+            this.applicator = new(this.playerName, this.playerClass);
         }
     }
 }
