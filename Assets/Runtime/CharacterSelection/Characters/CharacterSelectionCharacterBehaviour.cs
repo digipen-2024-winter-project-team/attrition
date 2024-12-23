@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Attrition.CharacterSelection.Characters
 {
-    public class SelectableCharacterBehaviour : MonoBehaviour
+    public class CharacterSelectionCharacterBehaviour : MonoBehaviour
     {
         [SerializeField]
         private CinemachineCamera focusCamera;
@@ -14,33 +14,33 @@ namespace Attrition.CharacterSelection.Characters
         private Transform browseFollowTarget;
         private CharacterClassBehaviour classBehaviour;
 
-        private SelectableCharacterAnimationController animationController;
-        private SelectableCharacterCameraFocusController cameraController;
+        private CharacterSelectionAnimationController selectionAnimationController;
+        private CharacterSelectionCameraFocusController selectionCameraController;
 
         private void Awake()
         {
-            this.animationController = new(this.animator);
-            this.cameraController = new(this.focusCamera);
+            this.selectionAnimationController = new(this.animator);
+            this.selectionCameraController = new(this.focusCamera);
         }
         
         public Transform BrowseFollowTarget => this.browseFollowTarget;
 
         public void Focus()
         {
-            this.animationController.PlayStandUpAnimation();
-            this.cameraController.Focus();
+            this.selectionAnimationController.PlayStandUpAnimation();
+            this.selectionCameraController.Focus();
         }
 
         public void Unfocus()
         {
-            this.animationController.PlaySitDownAnimation();
-            this.cameraController.Unfocus();
+            this.selectionAnimationController.PlaySitDownAnimation();
+            this.selectionCameraController.Unfocus();
         }
 
         public void SetAnimator(Animator animator)
         {
             this.animator = animator;
-            this.animationController = new(animator);
+            this.selectionAnimationController = new(animator);
         }
     }
 }

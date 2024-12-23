@@ -11,7 +11,7 @@ namespace Attrition.CharacterSelection.UI
     public class CharacterDetailsMenu : MonoBehaviour
     {
         [SerializeField]
-        private SelectableCharacterBehaviour boundTo;
+        private CharacterSelectionCharacterBehaviour boundTo;
         [SerializeField]
         private string characterName;
         [SerializeField]
@@ -63,16 +63,16 @@ namespace Attrition.CharacterSelection.UI
             }
         }
 
-        public void Bind(SelectableCharacterBehaviour character)
+        public void Bind(CharacterSelectionCharacterBehaviour characterSelectionCharacter)
         {
-            if (character == null)
+            if (characterSelectionCharacter == null)
             {
                 return;
             }
             
-            this.boundTo = character;
-            var nameBehaviour = character.GetComponent<NameBehaviour>();
-            var classBehaviour = character.GetComponent<CharacterClassBehaviour>();
+            this.boundTo = characterSelectionCharacter;
+            var nameBehaviour = characterSelectionCharacter.GetComponent<NameBehaviour>();
+            var classBehaviour = characterSelectionCharacter.GetComponent<CharacterClassBehaviour>();
             var @class = classBehaviour.CharacterClass;
 
             this.CharacterName = nameBehaviour.DisplayName;

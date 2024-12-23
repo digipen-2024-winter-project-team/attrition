@@ -2,14 +2,14 @@
 
 namespace Attrition.CharacterSelection.Characters
 {
-    public class SelectableCharacterAnimationController
+    public class CharacterSelectionAnimationController
     {
         private static readonly int IsSittingDown = Animator.StringToHash("IsSittingDown");
         private static readonly int IsStandingUp = Animator.StringToHash("IsStandingUp");
         
         private readonly Animator animator;
 
-        public SelectableCharacterAnimationController(Animator animator)
+        public CharacterSelectionAnimationController(Animator animator)
         {
             this.animator = animator;
         }

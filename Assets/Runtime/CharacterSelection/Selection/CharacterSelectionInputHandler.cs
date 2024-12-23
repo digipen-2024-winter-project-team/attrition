@@ -8,9 +8,10 @@ namespace Attrition.CharacterSelection.Selection
     {
         [SerializeField]
         private InputActionReference navigateAction;
+        [FormerlySerializedAs("characterNavigation")]
         [FormerlySerializedAs("characterSelection")]
         [SerializeField]
-        private CharacterNavigator characterNavigation;
+        private CharacterSelectionNavigator characterSelectionNavigation;
 
         private void OnEnable()
         {
@@ -26,7 +27,7 @@ namespace Attrition.CharacterSelection.Selection
         private void OnNavigate(InputAction.CallbackContext context)
         {
             var value = context.ReadValue<Vector2>();
-            this.characterNavigation.Navigate(value);
+            this.characterSelectionNavigation.Navigate(value);
         }
     }
 }

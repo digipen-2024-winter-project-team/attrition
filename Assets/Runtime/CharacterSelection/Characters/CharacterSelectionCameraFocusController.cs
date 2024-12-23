@@ -2,11 +2,11 @@
 
 namespace Attrition.CharacterSelection.Characters
 {
-    public class SelectableCharacterCameraFocusController
+    public class CharacterSelectionCameraFocusController
     {
         private readonly CinemachineCamera focusCamera;
 
-        public SelectableCharacterCameraFocusController(CinemachineCamera camera)
+        public CharacterSelectionCameraFocusController(CinemachineCamera camera)
         {
             this.focusCamera = camera;
         }

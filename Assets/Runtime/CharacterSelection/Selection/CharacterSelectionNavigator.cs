@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Attrition.CharacterSelection.Selection
 {
-    public class CharacterNavigator : MonoBehaviour
+    public class CharacterSelectionNavigator : MonoBehaviour
     {
         [SerializeField]
         private float navigationCooldown = 1f;
@@ -32,14 +32,14 @@ namespace Attrition.CharacterSelection.Selection
         private int currentCharacterIndex;
         private bool isNavigatingRight;
         
-        private SelectableCharacterBehaviour CurrentCharacter => 
-            this.characterContainer[this.currentCharacterIndex].GetComponent<SelectableCharacterBehaviour>();
+        private CharacterSelectionCharacterBehaviour CurrentCharacterSelectionCharacter => 
+            this.characterContainer[this.currentCharacterIndex].GetComponent<CharacterSelectionCharacterBehaviour>();
         
         
         [field: SerializeField]
-        public SerializedEvent<SelectableCharacterBehaviour> Focused { get; set; }
+        public SerializedEvent<CharacterSelectionCharacterBehaviour> Focused { get; set; }
         [field: SerializeField]
-        public SerializedEvent<SelectableCharacterBehaviour> Unfocused { get; set; }
+        public SerializedEvent<CharacterSelectionCharacterBehaviour> Unfocused { get; set; }
         
         private void Awake()
         {
@@ -145,22 +145,22 @@ namespace Attrition.CharacterSelection.Selection
 
             // Move the dolly to the updated position, respecting the direction.
             this.dollyController.MoveToPosition(
-                this.CurrentCharacter.BrowseFollowTarget.position, 
+                this.CurrentCharacterSelectionCharacter.BrowseFollowTarget.position, 
                 this.isNavigatingRight);
         }
 
         private void FocusCurrentCharacter()
         {
-            this.CurrentCharacter.Focus();
+            this.CurrentCharacterSelectionCharacter.Focus();
             this.stateHandler.SetState(CharacterSelectionStateHandler.SelectionState.Focused);
-            this.Focused.Raise(this.CurrentCharacter);
+            this.Focused.Raise(this.CurrentCharacterSelectionCharacter);
         }
 
         private void UnfocusCurrentCharacter()
         {
-            this.CurrentCharacter.Unfocus();
+            this.CurrentCharacterSelectionCharacter.Unfocus();
             this.stateHandler.SetState(CharacterSelectionStateHandler.SelectionState.Browsing);
-            this.Unfocused.Raise(this.CurrentCharacter);
+            this.Unfocused.Raise(this.CurrentCharacterSelectionCharacter);
         }
 
         private void HandleStateChanged(CharacterSelectionStateHandler.SelectionState newState)

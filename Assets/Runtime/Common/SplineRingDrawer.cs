@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Splines;
 
-namespace Attrition.CharacterSelection.Selection
+namespace Attrition.Common
 {
     [RequireComponent(typeof(SplineContainer))]
     public class SplineRingDrawer : MonoBehaviour
