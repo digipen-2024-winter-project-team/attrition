@@ -60,6 +60,12 @@ namespace Attrition.PlayerCharacter
 
         private void Update()
         {
+            if (Health.Dead)
+            {
+                Velocity = Vector3.zero;
+                return;
+            }
+            
             UpdatePhysicalState();
             UpdateInput();
 

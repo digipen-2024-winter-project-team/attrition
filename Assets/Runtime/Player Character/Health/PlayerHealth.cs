@@ -17,6 +17,7 @@ namespace Attrition.PlayerCharacter.Health
         [SerializeField] private float deathTimerDuration;
         [SerializeField] private float deathTimerLossPerHitpoint;
         [SerializeField] private UnityEvent<DamageInfo> enteringDying;
+        [SerializeField] private UnityEvent died;
         [Header("Debug UI")]
         [SerializeField] private RectTransform uiParent;
         [SerializeField] private TextMeshProUGUI healthUI;
@@ -28,6 +29,8 @@ namespace Attrition.PlayerCharacter.Health
         
         public bool Invincible => Time.time < invincibilityExpiration;
 
+        public bool Dead => hitpoints == 0 && deathTimer == 0;
+        
         public void AddInvincibilityTime(float duration) =>
             invincibilityExpiration = Mathf.Max(invincibilityExpiration, Time.time + duration);
         
@@ -41,6 +44,8 @@ namespace Attrition.PlayerCharacter.Health
 
         private void OnDamaged(DamageInfo damageInfo)
         {
+            if (Dead) return;
+            
             float value = damageInfo.Receive(Invincible, team, gameObject);
 
             if (Invincible)
@@ -62,19 +67,24 @@ namespace Attrition.PlayerCharacter.Health
             else
             {
                 deathTimer = Mathf.MoveTowards(deathTimer, 0, value * deathTimerLossPerHitpoint);
+
+                if (deathTimer == 0)
+                {
+                    Die();
+                }
             }
         }
 
         private void Update()
         {
-            if (hitpoints == 0)
+            if (hitpoints == 0 && deathTimer > 0)
             {
                 deathTimer = Mathf.MoveTowards(deathTimer, 0, Time.deltaTime);
-            }
 
-            if (deathTimer == 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (deathTimer == 0)
+                {
+                    Die();
+                }
             }
 
             string health = hitpoints > 0
@@ -85,6 +95,14 @@ namespace Attrition.PlayerCharacter.Health
             healthUI.color = Invincible
                 ? Color.red
                 : Color.white;
+        }
+
+        public void Die()
+        {
+            hitpoints = 0;
+            deathTimer = 0;
+            
+            died.Invoke();
         }
 
         private void LateUpdate()
