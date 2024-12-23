@@ -31,7 +31,7 @@ namespace Attrition.Runtime.Common.Picking.Tests
                 .Build();
 
             // ACT
-            var pickedItem = picker.Pick(availableItems);
+            var pickedItem = picker.PickFrom(availableItems);
 
             // ASSERT
             Assert.IsTrue(whitelist.Contains(pickedItem), "Picker should only pick items from the whitelist.");

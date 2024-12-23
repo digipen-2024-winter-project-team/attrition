@@ -17,14 +17,13 @@ namespace Attrition.CharacterSelection.Characters
         private CharacterSelectionAnimationController selectionAnimationController;
         private CharacterSelectionCameraFocusController selectionCameraController;
 
+        public Transform BrowseFollowTarget => this.browseFollowTarget;
+        
         private void Awake()
         {
             this.selectionAnimationController = new(this.animator);
             this.selectionCameraController = new(this.focusCamera);
         }
-        
-        public Transform BrowseFollowTarget => this.browseFollowTarget;
-
         public void Focus()
         {
             this.selectionAnimationController.PlayStandUpAnimation();

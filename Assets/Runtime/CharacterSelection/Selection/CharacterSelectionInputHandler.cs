@@ -1,33 +1,48 @@
-﻿using UnityEngine;
+﻿using Attrition.CharacterSelection.Selection.Navigation;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection.Selection
 {
-    public class CharacterSelectionInputHandler : MonoBehaviour
+    public class CharacterSelectionInputHandler
     {
-        [SerializeField]
-        private InputActionReference navigateAction;
-        [FormerlySerializedAs("characterNavigation")]
-        [FormerlySerializedAs("characterSelection")]
-        [SerializeField]
-        private CharacterSelectionNavigator characterSelectionNavigation;
+        private readonly InputAction navigateAction;
+        private readonly CharacterSelectionNavigator navigator;
 
-        private void OnEnable()
+        public CharacterSelectionInputHandler(InputAction navigateAction, CharacterSelectionNavigator navigator)
         {
-            this.navigateAction.action.Enable();
-            this.navigateAction.action.performed += this.OnNavigate;
+            this.navigateAction = navigateAction;
+            this.navigator = navigator;
+
+            this.EnableInput();
         }
 
-        private void OnDisable()
+        public void EnableInput()
         {
-            this.navigateAction.action.performed -= this.OnNavigate;
+            if (this.navigateAction == null)
+            {
+                return;
+            }
+
+            this.navigateAction.Enable();
+            this.navigateAction.performed += this.OnNavigate;
+        }
+
+        public void DisableInput()
+        {
+            if (this.navigateAction == null)
+            {
+                return;
+            }
+
+            this.navigateAction.performed -= this.OnNavigate;
+            this.navigateAction.Disable();
         }
 
         private void OnNavigate(InputAction.CallbackContext context)
         {
             var value = context.ReadValue<Vector2>();
-            this.characterSelectionNavigation.Navigate(value);
+            this.navigator?.Navigate(value);
         }
     }
 }

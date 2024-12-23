@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace Attrition.CharacterClasses
 {
-    [DefaultExecutionOrder(10)]
+    [DefaultExecutionOrder(ExecutionOrder.EntitySetup)]
     [RequireComponent(typeof(CharacterClassBehaviour))]
-    public class CharacterClassRandomizer2 : MonoBehaviour
+    public class CharacterClassRandomizer : MonoBehaviour
     {
         [SerializeField]
         private List<CharacterClass> availableClasses;
@@ -25,8 +25,7 @@ namespace Attrition.CharacterClasses
             var builder = new PickerBuilder<CharacterClass>();
             this.picker = builder
                 .UseRandom()
-                .UniqueFrom(this.availableClasses)
-                .UniqueFrom(alreadyPicked)
+                .ExcludeAnyIn(alreadyPicked)
                 .Build();
         }
 
@@ -37,7 +36,7 @@ namespace Attrition.CharacterClasses
 
         public void Randomize()
         {
-            var picked = this.picker.Pick(this.availableClasses);
+            var picked = this.picker.PickFrom(this.availableClasses);
             alreadyPicked.Add(picked);
 
             this.classBehaviour.CharacterClass = picked;

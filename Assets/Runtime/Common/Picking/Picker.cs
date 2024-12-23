@@ -31,7 +31,7 @@ namespace Attrition.Common.Picking
         /// </summary>
         /// <param name="items">The collection of items to pick from.</param>
         /// <returns>The selected item.</returns>
-        public T Pick(IEnumerable<T> items)
+        public T PickFrom(IEnumerable<T> items)
         {
             return this.Strategy.Pick(items);
         }

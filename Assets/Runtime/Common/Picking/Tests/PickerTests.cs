@@ -23,7 +23,7 @@ namespace Attrition.Runtime.Common.Picking.Tests
             var items = new List<int> { 1, 2, 3 };
 
             /* ACT */
-            var result = picker.Pick(items);
+            var result = picker.PickFrom(items);
 
             /* ASSERT */
             Assert.AreEqual(1, result);
@@ -41,9 +41,9 @@ namespace Attrition.Runtime.Common.Picking.Tests
             var items = new List<int> { 1, 2, 3 };
 
             /* ACT */
-            var result1 = picker.Pick(items);
-            var result2 = picker.Pick(items);
-            var result3 = picker.Pick(items);
+            var result1 = picker.PickFrom(items);
+            var result2 = picker.PickFrom(items);
+            var result3 = picker.PickFrom(items);
 
             /* ASSERT */
             Assert.AreEqual(1, result1);

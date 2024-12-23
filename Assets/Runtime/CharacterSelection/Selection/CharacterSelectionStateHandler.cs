@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using Attrition.CharacterSelection.Characters;
+using Attrition.Common.SerializedEvents;
 
 namespace Attrition.CharacterSelection.Selection
 {
-    public class CharacterSelectionStateHandler : MonoBehaviour
+    public class CharacterSelectionStateHandler
     {
         public enum SelectionState
         {
@@ -11,32 +12,64 @@ namespace Attrition.CharacterSelection.Selection
             Focused,
         }
 
-        [SerializeField]
-        private SelectionState currentState = SelectionState.Browsing;
-        [SerializeField]
-        private UnityEvent<SelectionState> onStateChanged;
+        private readonly Func<SelectionState> stateGetter;
+        private readonly Action<SelectionState> stateSetter;
+        private readonly SerializedEvent<SelectionState> stateChanged;
+
+        public CharacterSelectionStateHandler(
+            Func<SelectionState> stateGetter,
+            Action<SelectionState> stateSetter,
+            SerializedEvent<SelectionState> stateChanged,
+            SelectionState initialState = SelectionState.Browsing)
+        {
+            this.stateGetter = stateGetter;
+            this.stateSetter = stateSetter;
+            this.stateChanged = stateChanged;
+            
+            this.SetState(initialState);
+        }
+
+        public bool IsBrowsing => this.GetState() == SelectionState.Browsing;
+        public bool IsFocused => this.GetState() == SelectionState.Focused;
         
-        public UnityEvent<SelectionState> OnStateChanged => this.onStateChanged;
-
-        public bool IsBrowsing => this.currentState == SelectionState.Browsing;
-        public bool IsFocused => this.currentState == SelectionState.Focused;
-
-        private void OnValidate()
+        public void FocusCharacter(CharacterSelectionCharacterBehaviour character)
         {
-            this.SetState(this.currentState);
+            if (character == null)
+            {
+                return;
+            }
+
+            character.Focus();
+            this.SetState(SelectionState.Focused);
         }
 
-        public void SetState(SelectionState newState)
+        public void UnfocusCharacter(CharacterSelectionCharacterBehaviour character)
         {
-            if (this.currentState == newState) return;
+            if (character == null)
+            {
+                return;
+            }
 
-            this.currentState = newState;
-            this.OnStateChanged?.Invoke(this.currentState);
+            character.Unfocus();
+            this.SetState(SelectionState.Browsing);
         }
 
-        public SelectionState GetCurrentState()
+        private SelectionState GetState()
         {
-            return this.currentState;
+            return this.stateGetter.Invoke();
+        }
+        
+        private void SetState(SelectionState state)
+        {
+            var currentState = this.GetState();
+            
+            if (currentState == state)
+            {
+                return;
+            }
+
+            this.stateSetter.Invoke(state);
+            this.stateChanged?.Invoke(currentState);
         }
     }
 }

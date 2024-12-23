@@ -20,17 +20,6 @@ namespace Attrition.Common.Picking.Builder
         {
             this.picker = picker;
         }
-
-        /// <summary>
-        /// Configures the picker to ensure unique selection from the given collection.
-        /// </summary>
-        /// <param name="fromItems">The collection of items to ensure unique selection from.</param>
-        /// <returns>The builder configured with a unique pick strategy decorator.</returns>
-        public PickerWithStrategyBuilder<T> UniqueFrom(IEnumerable<T> fromItems)
-        {
-            var decorator = new UniquePickStrategyDecorator<T>(this.picker.Strategy, fromItems);
-            return this.WithDecorator(decorator);
-        }
         
         /// <summary>
         /// Configures the picker to allow picking only from a whitelist of items.
