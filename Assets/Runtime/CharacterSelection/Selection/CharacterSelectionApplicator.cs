@@ -5,26 +5,29 @@ using UnityEngine;
 
 namespace Attrition.CharacterSelection.Selection
 {
-    public class CharacterSelectionApplier : MonoBehaviour
+    public class CharacterSelectionApplicator
     {
-        [SerializeField]
-        private StringVariable playerName;
-        [SerializeField]
-        private CharacterClassVariable playerClass;
+        private readonly StringVariable playerName;
+        private readonly CharacterClassVariable playerClass;
 
-        private void Awake()
+        public CharacterSelectionApplicator(StringVariable playerName, CharacterClassVariable playerClass)
         {
-            this.playerName ??= ScriptableObject.CreateInstance<StringVariable>();
-            this.playerClass ??= ScriptableObject.CreateInstance<CharacterClassVariable>();
+            this.playerName = playerName;
+            this.playerClass = playerClass;
         }
-
-        public void Apply(GameObject selectedCharacter)
+        
+        public void ApplyToPlayableCharacter(GameObject selectedCharacter)
         {
+            if (selectedCharacter == null)
+            {
+                return;
+            }
+
             if (selectedCharacter.TryGetComponent(out NameBehaviour nameBehaviour))
             {
                 this.playerName.Value = nameBehaviour.DisplayName;
             }
-            
+
             if (selectedCharacter.TryGetComponent(out CharacterClassBehaviour classBehaviour))
             {
                 this.playerClass.Value = classBehaviour.CharacterClass;
