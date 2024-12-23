@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.CharacterSelection.Characters
 {
     public class SelectableCharacterAnimationController
     {

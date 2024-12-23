@@ -2,7 +2,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.CharacterSelection.Characters
 {
     public class SelectableCharacterBehaviour : MonoBehaviour
     {

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Linq;
 using Attrition.CharacterClasses;
+using Attrition.CharacterSelection.Characters;
 using Attrition.Common.Cinemachine;
 using Attrition.Common.Containers;
 using Attrition.Common.SerializedEvents;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.CharacterSelection.Selection
 {
     public class CharacterNavigator : MonoBehaviour
     {

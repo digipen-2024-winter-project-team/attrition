@@ -3,7 +3,7 @@ using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Names;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.CharacterSelection.Selection
 {
     public class CharacterSelectionApplier : MonoBehaviour
     {

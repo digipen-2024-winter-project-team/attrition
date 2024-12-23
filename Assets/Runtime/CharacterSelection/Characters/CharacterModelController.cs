@@ -5,7 +5,7 @@ using Attrition.CharacterClasses;
 using Attrition.Common;
 using UnityEngine;
 
-namespace Attrition.CharacterSelection
+namespace Attrition.CharacterSelection.Characters
 {
     [RequireComponent(typeof(CharacterClassBehaviour))]
     public class CharacterModelController : MonoBehaviour
