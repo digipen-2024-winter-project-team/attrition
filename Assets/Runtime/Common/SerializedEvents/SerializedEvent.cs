@@ -8,7 +8,7 @@ namespace Attrition.Common.SerializedEvents
     /// A serializable event wrapper that supports custom invocation order.
     /// </summary>
     [Serializable]
-    public class SerializedEvent
+    public class SerializedEvent : IReadOnlySerializedEvent
     {
         /// <summary>
         /// The UnityEvent that gets invoked.
@@ -42,7 +42,7 @@ namespace Attrition.Common.SerializedEvents
     /// </summary>
     /// <typeparam name="T">The type of argument passed with the event.</typeparam>
     [Serializable]
-    public class SerializedEvent<T>
+    public class SerializedEvent<T> : IReadOnlySerializedEvent<T>
     {
         /// <summary>
         /// The UnityEvent with a parameter of type <typeparamref name="T"/> that gets invoked.
