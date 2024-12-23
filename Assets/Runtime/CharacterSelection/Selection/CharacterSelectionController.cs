@@ -63,8 +63,6 @@ namespace Attrition.CharacterSelection.Selection
 
         private void Initialize()
         {
-            this.inputHandler = new(this.navigateAction, this.navigator);
-            
             this.stateHandler = new(
                 () => this.currentState,
                 (value) => this.currentState = value,
@@ -78,7 +76,10 @@ namespace Attrition.CharacterSelection.Selection
                     this.stateHandler,
                     this.dollyCamera);
             
+            this.inputHandler = new(this.navigateAction, this.navigator);
+            
             this.applicator = new(this.playerName, this.playerClass);
+            
         }
         
         private void OnDetailsMenuSubmitted()

@@ -7,6 +7,7 @@ namespace Attrition.CharacterSelection.Selection.Navigation
 {
     public class CharacterSelectionNavigator
     {
+        private readonly CharacterSelectionController controller;
         private readonly CharacterSelector selector;
         private readonly CharacterSelectionCameraController cameraController;
         private readonly CharacterSelectionStateHandler stateHandler;
@@ -21,19 +22,27 @@ namespace Attrition.CharacterSelection.Selection.Navigation
             CharacterSelectionStateHandler stateHandler,
             CinemachineCamera dollyCamera)
         {
+            this.controller = controller;
             this.selector = new(characters);
             this.cameraController = new(dollyCamera);
-            this.navigationCooldown = new Cooldown(controller);
-            this.focusCooldown = new Cooldown(controller);
+            this.stateHandler = stateHandler;
+            this.navigationCooldown = new(controller);
+            this.focusCooldown = new(controller);
         }
 
         public void Navigate(Vector2 direction)
         {
-            direction = Vector2Int.RoundToInt(direction);
+            // Round the input direction to the nearest integer vector
+            var roundedDirection = Vector2Int.RoundToInt(direction);
+
+            // Check for cooldowns
+            var focusReady = !this.focusCooldown.IsOnCooldown;
+            var navigationReady = !this.navigationCooldown.IsOnCooldown;
 
             if (this.stateHandler.IsFocused)
             {
-                if (direction.y < 0 && !this.focusCooldown.IsOnCooldown)
+                // Unfocus the character if navigating down
+                if (roundedDirection.y < 0 && focusReady)
                 {
                     this.stateHandler.UnfocusCharacter(this.selector.CurrentSelection);
                     this.StartCooldowns();
@@ -41,21 +50,23 @@ namespace Attrition.CharacterSelection.Selection.Navigation
             }
             else if (this.stateHandler.IsBrowsing)
             {
-                if (direction.y > 0 && !this.focusCooldown.IsOnCooldown)
+                if (roundedDirection.y > 0 && focusReady)
                 {
+                    // Focus the character if navigating up
                     this.stateHandler.FocusCharacter(this.selector.CurrentSelection);
                     this.StartCooldowns();
                 }
-                else if (direction.x != 0 && !this.navigationCooldown.IsOnCooldown)
+                else if (roundedDirection.x != 0 && navigationReady)
                 {
-                    var isNavigatingRight = direction.x > 0;
+                    // Navigate left or right
+                    var isNavigatingRight = roundedDirection.x > 0;
                     this.selector.Navigate(isNavigatingRight);
                     this.cameraController.MoveTo(this.selector.CurrentSelection, isNavigatingRight);
                     this.StartCooldowns();
                 }
             }
         }
-
+        
         private void StartCooldowns()
         {
             this.navigationCooldown.StartCooldown();

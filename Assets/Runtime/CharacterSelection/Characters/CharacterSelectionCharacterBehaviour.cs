@@ -1,5 +1,6 @@
 ﻿using System;
 using Attrition.CharacterClasses;
+using Attrition.ClassCharacterModel;
 using Attrition.Common;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Attrition.CharacterSelection.Characters
 {
     public class CharacterSelectionCharacterBehaviour : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField]
         private CinemachineCamera focusCamera;
         [SerializeField]
@@ -25,11 +27,6 @@ namespace Attrition.CharacterSelection.Characters
         {
             this.selectionAnimationController = new(this.animator);
             this.selectionCameraController = new(this.focusCamera);
-            
-        }
-
-        private void OnEnable()
-        {
             
         }
 
