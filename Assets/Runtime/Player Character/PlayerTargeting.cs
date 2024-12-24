@@ -26,9 +26,6 @@ namespace Attrition.PlayerCharacter
         private Vector2 indicatorPosition;
         private Vector2 indicatorVelocity;
         
-        private Vector2 GetUVPosition(Vector3 position) =>
-            (Vector2)CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
-
         private void Start()
         {
             indicatorPosition = startingUVPosition;
