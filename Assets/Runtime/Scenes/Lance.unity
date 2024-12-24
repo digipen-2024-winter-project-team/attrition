@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 157029655}
   - component: {fileID: 157029654}
   - component: {fileID: 157029653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (01)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2600,7 +2600,7 @@ GameObject:
   - component: {fileID: 190495756}
   - component: {fileID: 190495755}
   - component: {fileID: 190495754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6310,7 +6310,7 @@ GameObject:
   - component: {fileID: 393581691}
   - component: {fileID: 393581690}
   - component: {fileID: 393581689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (01)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16502,7 +16502,7 @@ GameObject:
   - component: {fileID: 862202145}
   - component: {fileID: 862202144}
   - component: {fileID: 862202143}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27072,7 +27072,7 @@ GameObject:
   - component: {fileID: 872708065}
   - component: {fileID: 872708064}
   - component: {fileID: 872708063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34670,7 +34670,7 @@ GameObject:
   - component: {fileID: 1210762454}
   - component: {fileID: 1210762453}
   - component: {fileID: 1210762452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs (02)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42563,7 +42563,7 @@ GameObject:
   - component: {fileID: 1368839734}
   - component: {fileID: 1368839733}
   - component: {fileID: 1368839732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs (01)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51473,31 +51473,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5243254
+      value: 1.0243254
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.5
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8535535
+      value: -0.02006402
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.35355338
+      value: 0.0005891344
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35355338
+      value: 0.99936783
       objectReference: {fileID: 0}
     - target: {fileID: 6711424030869751109, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.1464466
+      value: 0.029344162
       objectReference: {fileID: 0}
     - target: {fileID: 7130108603805512091, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.x
