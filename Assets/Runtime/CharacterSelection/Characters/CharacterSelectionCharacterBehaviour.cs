@@ -1,7 +1,4 @@
-﻿using System;
-using Attrition.CharacterClasses;
-using Attrition.ClassCharacterModel;
-using Attrition.Common;
+﻿using Attrition.CharacterClasses;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -11,32 +8,31 @@ namespace Attrition.CharacterSelection.Characters
     {
         [Header("References")]
         [SerializeField]
-        private CinemachineCamera focusCamera;
+        private CinemachineCamera inspectCamera;
         [SerializeField]
         private Animator animator;
         [SerializeField]
-        private Transform browseFollowTarget;
+        private Transform cycleFollowTarget;
         private CharacterClassBehaviour classBehaviour;
 
         private CharacterSelectionAnimationController selectionAnimationController;
         private CharacterSelectionCameraFocusController selectionCameraController;
 
-        public Transform BrowseFollowTarget => this.browseFollowTarget;
-        
+        public Transform CycleFollowTarget => this.cycleFollowTarget;
+
         private void Awake()
         {
             this.selectionAnimationController = new(this.animator);
-            this.selectionCameraController = new(this.focusCamera);
-            
+            this.selectionCameraController = new(this.inspectCamera);
         }
 
-        public void Focus()
+        public void Inspect()
         {
             this.selectionAnimationController.PlayStandUpAnimation();
             this.selectionCameraController.Focus();
         }
 
-        public void Unfocus()
+        public void Uninspect()
         {
             this.selectionAnimationController.PlaySitDownAnimation();
             this.selectionCameraController.Unfocus();

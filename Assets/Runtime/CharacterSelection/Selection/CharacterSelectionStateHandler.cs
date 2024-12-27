@@ -8,8 +8,8 @@ namespace Attrition.CharacterSelection.Selection
     {
         public enum SelectionState
         {
-            Browsing,
-            Focused,
+            CycleMode,
+            InspectMode,
         }
 
         private readonly Func<SelectionState> stateGetter;
@@ -20,7 +20,7 @@ namespace Attrition.CharacterSelection.Selection
             Func<SelectionState> stateGetter,
             Action<SelectionState> stateSetter,
             SerializedEvent<SelectionState> stateChanged,
-            SelectionState initialState = SelectionState.Browsing)
+            SelectionState initialState = SelectionState.CycleMode)
         {
             this.stateGetter = stateGetter;
             this.stateSetter = stateSetter;
@@ -29,29 +29,29 @@ namespace Attrition.CharacterSelection.Selection
             this.SetState(initialState);
         }
 
-        public bool IsBrowsing => this.GetState() == SelectionState.Browsing;
-        public bool IsFocused => this.GetState() == SelectionState.Focused;
+        public bool IsInCycleMode => this.GetState() == SelectionState.CycleMode;
+        public bool IsInInspectMode => this.GetState() == SelectionState.InspectMode;
         
-        public void FocusCharacter(CharacterSelectionCharacterBehaviour character)
+        public void InspectCharacter(CharacterSelectionCharacterBehaviour character)
         {
             if (character == null)
             {
                 return;
             }
 
-            character.Focus();
-            this.SetState(SelectionState.Focused);
+            character.Inspect();
+            this.SetState(SelectionState.InspectMode);
         }
 
-        public void UnfocusCharacter(CharacterSelectionCharacterBehaviour character)
+        public void UninspectCharacter(CharacterSelectionCharacterBehaviour character)
         {
             if (character == null)
             {
                 return;
             }
 
-            character.Unfocus();
-            this.SetState(SelectionState.Browsing);
+            character.Uninspect();
+            this.SetState(SelectionState.CycleMode);
         }
 
         private SelectionState GetState()

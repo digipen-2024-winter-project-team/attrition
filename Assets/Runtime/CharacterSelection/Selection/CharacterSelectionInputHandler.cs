@@ -41,6 +41,11 @@ namespace Attrition.CharacterSelection.Selection
 
         private void OnNavigate(InputAction.CallbackContext context)
         {
+            if (context.phase != InputActionPhase.Performed)
+            {
+                return;
+            }
+            
             var value = context.ReadValue<Vector2>();
             this.navigator?.Navigate(value);
         }

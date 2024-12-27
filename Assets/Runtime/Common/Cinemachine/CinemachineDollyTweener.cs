@@ -7,29 +7,29 @@ namespace Attrition.Common.Cinemachine
 {
     public class CinemachineDollyTweener : MonoBehaviour
     {
-        [SerializeField] private CinemachineSplineDolly dolly;
-        // [SerializeField] private float dollyDuration = 1f;
-        // [SerializeField] private Ease dollyEase = Ease.InOutQuad;
+        [SerializeField]
+        private CinemachineSplineDolly dolly;
         [SerializeField]
         private DOTweenParameters.DOTweenParameters dollyAnimation;
         
         public float CurrentPositionOnSpline => this.dolly.CameraPosition;
         public CinemachineSplineDolly Dolly => this.dolly;
+        public DOTweenParameters.DOTweenParameters DollyAnimation => this.dollyAnimation;
 
-        public void MoveToPosition(Vector3 targetPosition, bool isNavigatingLeft)
+        public void MoveToPosition(Vector3 targetPosition, bool isNavigatingRight)
         {
             var spline = this.dolly.Spline.Spline;
             var currentPositionOnSpline = this.dolly.CameraPosition;
             var targetPositionOnSpline = spline.GetSplinePositionNearestToPoint(targetPosition);
 
-            // Ensure movement respects the navigation direction.
-            if (isNavigatingLeft && targetPositionOnSpline > currentPositionOnSpline)
+            // Adjust for navigation direction
+            if (isNavigatingRight && targetPositionOnSpline < currentPositionOnSpline)
             {
-                targetPositionOnSpline -= 1f; // Force movement left.
+                targetPositionOnSpline += 1f; // Move forward/right
             }
-            else if (!isNavigatingLeft && targetPositionOnSpline < currentPositionOnSpline)
+            else if (!isNavigatingRight && targetPositionOnSpline > currentPositionOnSpline)
             {
-                targetPositionOnSpline += 1f; // Force movement right.
+                targetPositionOnSpline -= 1f; // Move backward/left
             }
 
             DOTween.To(
@@ -38,6 +38,8 @@ namespace Attrition.Common.Cinemachine
                     targetPositionOnSpline,
                     this.dollyAnimation.Duration)
                 .ApplyParameters(this.dollyAnimation);
+
+            Debug.Log($"Dolly moving: Current = {currentPositionOnSpline}, Target = {targetPositionOnSpline}, Navigating Right = {isNavigatingRight}");
         }
     }
 }

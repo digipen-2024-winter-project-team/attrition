@@ -1,5 +1,4 @@
 ﻿using Attrition.CharacterClasses;
-using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Names;
 using UnityEngine;

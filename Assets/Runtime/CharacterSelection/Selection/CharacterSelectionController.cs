@@ -2,13 +2,13 @@
 using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
 using Attrition.CharacterSelection.UI;
-using Attrition.ClassCharacterModel;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Common.SerializedEvents;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection.Selection
 {
@@ -24,10 +24,12 @@ namespace Attrition.CharacterSelection.Selection
         public SerializedEvent<CharacterSelectionStateHandler.SelectionState> stateChanged;
         
         [Header("Navigation")]
+        [Tooltip("The amount of time it takes to cycle between characters.")]
         [SerializeField]
-        private float navigationCooldown = 1f;
+        private float cycleDuration = 1f;
+        [Tooltip("The amount of time it takes to inspect a character.")]
         [SerializeField]
-        private float focusCooldown = 1f;
+        private float inspectDuration = 1f;
         
         [Header("References")]
         [SerializeField]
@@ -47,6 +49,11 @@ namespace Attrition.CharacterSelection.Selection
         private CharacterSelectionStateHandler stateHandler;
         private CharacterSelectionNavigator navigator;
         private CharacterSelectionApplicator applicator;
+        private CharacterSelectionCameraController cameraController;
+
+        public float CycleDuration => this.cycleDuration;
+        public float InspectDuration => this.inspectDuration;
+        public IList<CharacterSelectionCharacterBehaviour> Characters => this.characters;
 
         public IReadOnlySerializedEvent<CharacterSelectionStateHandler.SelectionState> StateChanged => this.stateChanged;
         
@@ -69,12 +76,13 @@ namespace Attrition.CharacterSelection.Selection
                 this.stateChanged,
                 this.initialState);
             
+            this.cameraController = new(this, this.dollyCamera);
+            
             this.navigator =
                 new(
                     this,
-                    this.characters, 
                     this.stateHandler,
-                    this.dollyCamera);
+                    this.cameraController);
             
             this.inputHandler = new(this.navigateAction, this.navigator);
             
