@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace Attrition
+namespace Attrition.PauseMenu
 {
     public class PauseMenu : MonoBehaviour
     {
