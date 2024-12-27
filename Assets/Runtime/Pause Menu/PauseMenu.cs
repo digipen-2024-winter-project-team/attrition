@@ -54,6 +54,7 @@ namespace Attrition.PauseMenu
             else
             {
                 Time.timeScale = 1;
+                quitConfirmationContent.SetActive(false);
                 content.SetActive(false);
             }
         }
