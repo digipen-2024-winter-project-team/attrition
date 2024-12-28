@@ -459,6 +459,10 @@ PrefabInstance:
       value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: animatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: 43af94ee851a8df4284827aeeeec45f3, type: 2}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
       propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4501419597168656996}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Attrition.CharacterClasses;
 using Attrition.Common;
 using Attrition.Common.SerializedEvents;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
@@ -16,9 +17,11 @@ namespace Attrition.ClassCharacterModel
             public CharacterClass Class;
             public Animator Animator;
         }
-
+        
         [SerializeField]
         private Transform modelContainer;
+        [SerializeField]
+        private AnimatorController animatorController;
         [SerializeField]
         private List<ClassModelData> models;
         [SerializeField]
@@ -69,6 +72,7 @@ namespace Attrition.ClassCharacterModel
         /// <param name="characterClass">The character class to activate the corresponding model.</param>
         public void SetCharacterModelByClass(CharacterClass characterClass)
         {
+            this.modelController.SetAnimatorController(this.animatorController);
             this.modelController.UpdateActiveModel(characterClass);
         }
         

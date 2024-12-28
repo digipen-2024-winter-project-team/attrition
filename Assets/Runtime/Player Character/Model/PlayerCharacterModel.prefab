@@ -48,12 +48,72 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7407509547777121952, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: m_Name
+      value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407509547777121952, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8281803774450645898, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
       propertyPath: m_Name
-      value: Class Character Model
+      value: PlayerCharacterModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: animatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: 369a201564271a74f82bdb447f9d3b2d, type: 2}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7308732384420011376}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetAnimator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Attrition.Player_Character.Animation.PlayerAnimationHandler, Attrition.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498849572669369998, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8281803774450645898, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7308732384420011376}
   m_SourcePrefab: {fileID: 100100000, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+--- !u!1 &8040810048763208446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8281803774450645898, guid: 19e0fb1803a11244a9e6241c5008b199, type: 3}
+  m_PrefabInstance: {fileID: 2123537952493705588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7308732384420011376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040810048763208446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d835329abb4cff8f369637eae000ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

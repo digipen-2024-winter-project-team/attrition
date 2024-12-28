@@ -3,6 +3,7 @@ using System.Linq;
 using Attrition.CharacterClasses;
 using Attrition.Common;
 using Attrition.Common.SerializedEvents;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
@@ -21,10 +22,11 @@ namespace Attrition.ClassCharacterModel
         /// <summary>
         /// Initializes a new instance of the <see cref="CharacterClassModelController"/> class.
         /// </summary>
-        /// <param name="models">A list of class model data containing character classes and their associated animators.</param>
+        /// <param name="characterClassModelBehaviour"></param>
         /// <param name="modelContainer">The container transform holding all the model objects.</param>
-        public CharacterClassModelController(
-            Transform modelContainer,
+        /// <param name="models">A list of class model data containing character classes and their associated animators.</param>
+        /// <param name="modelUpdated"></param>
+        public CharacterClassModelController(Transform modelContainer,
             List<CharacterClassModelBehaviour.ClassModelData> models,
             SerializedEvent<Animator> modelUpdated)
         {
@@ -37,6 +39,14 @@ namespace Attrition.ClassCharacterModel
                 .ToDictionary(model => model.Class, model => model.Animator);
         }
 
+        public void SetAnimatorController(AnimatorController animatorController)
+        {
+            foreach (var animator in this.dictionary.Values)
+            {
+                animator.runtimeAnimatorController = animatorController;
+            }
+        }
+        
         /// <summary>
         /// Activates the character model corresponding to the given character class
         /// and disables all other models.
