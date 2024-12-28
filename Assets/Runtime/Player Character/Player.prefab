@@ -10503,19 +10503,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2738551944909489687, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: field of view
-      value: 39.970814
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2738551944909489687, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: far clip plane
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2738551944909489687, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: near clip plane
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2738551944909489687, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8011251499864774030, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_Name
@@ -10523,31 +10523,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 7.9176035
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 4.66
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 12.865551
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9752987
+      value: 0.66446304
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.04008904
+      value: 0.24184473
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.2170385
+      value: 0.66446304
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.008921231
+      value: -0.24184473
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10807,14 +10807,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7532736759206164474, guid: 879a64c314afe67499a22f69edf0ff57, type: 3}
-      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532736759206164474, guid: 879a64c314afe67499a22f69edf0ff57, type: 3}
-      propertyPath: modelUpdated.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6308272930204121767}
     - target: {fileID: 8040810048763208446, guid: 879a64c314afe67499a22f69edf0ff57, type: 3}
       propertyPath: m_Name
       value: Model
