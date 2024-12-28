@@ -8,7 +8,7 @@ namespace Attrition.Common.ScriptableVariables
     /// This class provides functionality for value storage, notification of value changes, and events for monitoring changes.
     /// </summary>
     /// <typeparam name="TValue">The type of the value stored by the variable.</typeparam>
-    public abstract class ScriptableVariable<TValue> : ScriptableObject
+    public abstract class ScriptableVariable<TValue> : ScriptableObject, IReadOnlyScriptableVariable<TValue>
     {
         /// <summary>
         /// The stored value of the variable.
