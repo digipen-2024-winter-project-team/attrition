@@ -350,6 +350,7 @@ MonoBehaviour:
     OnKilled:
       m_PersistentCalls:
         m_Calls: []
+  loopedNavigationMode: 2
 --- !u!114 &4236745020725697035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,8 +421,79 @@ MonoBehaviour:
     invoked:
       m_PersistentCalls:
         m_Calls: []
-  cycleDuration: 1
-  inspectDuration: 1
+  navigationDirection: 0
+  cycleCooldown:
+    duration: 1.5
+    isRunning: 0
+    elapsed:
+      invoked:
+        m_PersistentCalls:
+          m_Calls: []
+  inspectCooldown:
+    duration: 1.5
+    isRunning: 0
+    elapsed:
+      invoked:
+        m_PersistentCalls:
+          m_Calls: []
+  cooldownGracePeriod: 0.75
+  inspectStarted:
+    invoked:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4541722803711567934}
+          m_TargetAssemblyTypeName: Attrition.CharacterSelection.UI.CharacterDetailsMenu,
+            Attrition.Runtime
+          m_MethodName: Bind
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2056392910886033201}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 5996583217848065553}
+          m_TargetAssemblyTypeName: Attrition.UI.PanelTransitionBehaviour, Attrition.Runtime
+          m_MethodName: PlayTransitionIn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  inspectedStopped:
+    invoked:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5996583217848065553}
+          m_TargetAssemblyTypeName: Attrition.UI.PanelTransitionBehaviour, Attrition.Runtime
+          m_MethodName: PlayTransitionOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   characters:
   - {fileID: 8475445921653351567}
   - {fileID: 670673171396865406}
@@ -1479,7 +1551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3494333980297440529, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Character 2
       objectReference: {fileID: 0}
     - target: {fileID: 8567634250379436418, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2000,15 +2072,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa197b2947c4f9458b12b465d33bedc, type: 3}
+--- !u!1 &2056392910886033201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2900831001333699588, guid: 2aa197b2947c4f9458b12b465d33bedc, type: 3}
+  m_PrefabInstance: {fileID: 3803311979164189493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4541722803711567934 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 851009680046369547, guid: 2aa197b2947c4f9458b12b465d33bedc, type: 3}
   m_PrefabInstance: {fileID: 3803311979164189493}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2056392910886033201}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ed0456ebbe4b1e82db8c1a806b4182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5996583217848065553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7489539723358559524, guid: 2aa197b2947c4f9458b12b465d33bedc, type: 3}
+  m_PrefabInstance: {fileID: 3803311979164189493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056392910886033201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30677f75c0db4991bbca9643b97caedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8706886501464106779 stripped
@@ -2034,7 +2122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3494333980297440529, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Character 1
       objectReference: {fileID: 0}
     - target: {fileID: 4355248035568685626, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2123,7 +2211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3494333980297440529, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Character 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355248035568685626, guid: 4b8846a07a1884f4cbb1609a8c25e3fa, type: 3}
       propertyPath: m_LocalRotation.w

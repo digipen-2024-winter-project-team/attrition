@@ -45,9 +45,22 @@ namespace Attrition.CharacterSelection.Selection
             {
                 return;
             }
+
+            var input = context.ReadValue<Vector2>();
             
-            var value = context.ReadValue<Vector2>();
-            this.navigator?.Navigate(value);
+            Direction? direction = input switch
+            {
+                { x: > 0, y: 0 } => Direction.Right,
+                { x: < 0, y: 0 } => Direction.Left,
+                { x: 0, y: > 0 } => Direction.Up,
+                { x: 0, y: < 0 } => Direction.Down,
+                _ => null
+            };
+
+            if (direction.HasValue)
+            {
+                this.navigator?.Navigate(direction.Value);
+            }
         }
     }
 }

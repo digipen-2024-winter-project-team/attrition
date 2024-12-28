@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
 using Attrition.CharacterSelection.UI;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.Common.SerializedEvents;
+using Attrition.Common.Timing;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,14 +24,23 @@ namespace Attrition.CharacterSelection.Selection
         private CharacterSelectionStateHandler.SelectionState currentState;
         [SerializeField]
         public SerializedEvent<CharacterSelectionStateHandler.SelectionState> stateChanged;
-        
+
+        [FormerlySerializedAs("navigationNavigationDirection")]
         [Header("Navigation")]
+        [SerializeField]
+        private NavigationDirection navigationDirection;
         [Tooltip("The amount of time it takes to cycle between characters.")]
         [SerializeField]
-        private float cycleDuration = 1f;
+        private Cooldown cycleCooldown;
         [Tooltip("The amount of time it takes to inspect a character.")]
         [SerializeField]
-        private float inspectDuration = 1f;
+        private Cooldown inspectCooldown;
+        [SerializeField]
+        private float cooldownGracePeriod = 0.5f;
+        [SerializeField]
+        private SerializedEvent<CharacterSelectionCharacterBehaviour> inspectStarted;
+        [SerializeField]
+        private SerializedEvent<CharacterSelectionCharacterBehaviour> inspectedStopped;
         
         [Header("References")]
         [SerializeField]
@@ -51,12 +62,18 @@ namespace Attrition.CharacterSelection.Selection
         private CharacterSelectionApplicator applicator;
         private CharacterSelectionCameraController cameraController;
 
-        public float CycleDuration => this.cycleDuration;
-        public float InspectDuration => this.inspectDuration;
+        public float CycleDuration => this.cycleCooldown.Duration;
+        public float InspectDuration => this.inspectCooldown.Duration;
+        public float CooldownGracePeriod => this.cooldownGracePeriod;
         public IList<CharacterSelectionCharacterBehaviour> Characters => this.characters;
 
         public IReadOnlySerializedEvent<CharacterSelectionStateHandler.SelectionState> StateChanged => this.stateChanged;
-        
+        public NavigationDirection NavigationDirection
+        {
+            get => this.navigationDirection;
+            set => this.navigationDirection = value;
+        }
+
         private void Awake()
         {
             this.Initialize();
@@ -66,6 +83,14 @@ namespace Attrition.CharacterSelection.Selection
         {
             this.inputHandler.EnableInput();
             this.detailsMenu.Submitted.Invoked += this.OnDetailsMenuSubmitted;
+            this.navigator.Navigate(Direction.Right);
+        }
+
+        private void Update()
+        {
+            var deltaTime = Time.deltaTime;
+            this.cycleCooldown.Tick(deltaTime);
+            this.inspectCooldown.Tick(deltaTime);
         }
 
         private void Initialize()
@@ -82,12 +107,15 @@ namespace Attrition.CharacterSelection.Selection
                 new(
                     this,
                     this.stateHandler,
-                    this.cameraController);
+                    this.cameraController,
+                    this.cycleCooldown,
+                    this.inspectCooldown,
+                    this.inspectStarted,
+                    this.inspectedStopped);
             
             this.inputHandler = new(this.navigateAction, this.navigator);
             
             this.applicator = new(this.playerName, this.playerClass);
-            
         }
         
         private void OnDetailsMenuSubmitted()

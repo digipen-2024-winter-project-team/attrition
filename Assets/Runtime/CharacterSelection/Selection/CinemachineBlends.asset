@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomBlends:
   - From: VCam_Dolly
-    To: VCam_Focus
+    To: VCam_Inspect
     Blend:
       Style: 7
-      Time: 2
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve:
@@ -42,11 +42,11 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - From: VCam_Focus
+  - From: VCam_Inspect
     To: VCam_Dolly
     Blend:
       Style: 7
-      Time: 2
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve:

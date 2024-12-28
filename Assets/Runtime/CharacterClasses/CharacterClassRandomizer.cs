@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Attrition.Common;
 using Attrition.Common.Picking;
 using Attrition.Common.Picking.Builder;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.CharacterClasses
 {
@@ -15,8 +13,9 @@ namespace Attrition.CharacterClasses
         [SerializeField]
         private bool randomizeOnEnable = true;
         [SerializeField]
+        private bool overwriteExisting = false;
+        [SerializeField]
         private List<CharacterClass> availableClasses;
-        [FormerlySerializedAs("shouldRandomizeOnEnable")]
         private CharacterClassBehaviour classBehaviour;
         private Picker<CharacterClass> picker;
 
@@ -35,7 +34,9 @@ namespace Attrition.CharacterClasses
 
         private void OnEnable()
         {
-            if (this.randomizeOnEnable && this.classBehaviour != null && this.classBehaviour.CharacterClass != null)
+            var shouldRandomize = this.overwriteExisting || this.classBehaviour.CharacterClass == null;
+
+            if (this.randomizeOnEnable && this.classBehaviour != null && shouldRandomize)
             {
                 this.Randomize();
             }

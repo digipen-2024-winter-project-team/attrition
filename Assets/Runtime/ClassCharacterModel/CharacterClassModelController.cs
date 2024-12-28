@@ -107,10 +107,12 @@ namespace Attrition.ClassCharacterModel
         /// </remarks>
         private void EnableModel(Animator animator)
         {
-            if (animator != null)
+            if (animator == null)
             {
-                animator.gameObject.SetActive(true);
+                Debug.LogError($"Cannot enable model: Animator is null.");
             }
+            
+            animator.gameObject.SetActive(true);
         }
     }
 }

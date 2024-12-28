@@ -21,19 +21,20 @@ namespace Attrition.CharacterSelection.Selection.Navigation
 
             this.dollyTweener = dollyCamera.GetComponent<CinemachineDollyTweener>()
                                 ?? throw new InvalidOperationException("Missing CinemachineDollyTweener component.");
-
-            
-            this.UpdateAnimationParameters();
         }
 
         public void MoveTo(CharacterSelectionCharacterBehaviour targetCharacter, bool isNavigatingRight)
         {
+            this.UpdateAnimationParameters();
+            
             if (targetCharacter == null)
             {
                 throw new ArgumentNullException(nameof(targetCharacter));
             }
-
-            this.dollyTweener.MoveToPosition(targetCharacter.CycleFollowTarget.position, isNavigatingRight);
+            
+            this.dollyTweener.LoopedNavigationMode = isNavigatingRight ? LoopedNavigationMode.Forward : LoopedNavigationMode.Backward;
+            this.dollyTweener.Duration = this.controller.CycleDuration;
+            this.dollyTweener.MoveToPosition(targetCharacter.CycleFollowTarget.position);
         }
 
         private void UpdateAnimationParameters()
