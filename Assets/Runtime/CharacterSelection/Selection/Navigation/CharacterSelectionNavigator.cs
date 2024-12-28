@@ -126,8 +126,8 @@ namespace Attrition.CharacterSelection.Selection.Navigation
         public static Direction Inverse(this Direction direction) =>
             direction switch
             {
-                Direction.Up => Direction.Down,
-                Direction.Down => Direction.Up,
+                Direction.Up => Direction.Up,
+                Direction.Down => Direction.Down,
                 Direction.Left => Direction.Right,
                 Direction.Right => Direction.Left,
                 _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)

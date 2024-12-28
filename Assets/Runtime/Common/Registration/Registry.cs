@@ -6,7 +6,7 @@ namespace Attrition.Common.Registration
     public class Registry<TEntity> : IRegistry<TEntity>
     {
         private readonly HashSet<TEntity> entities = new();
-
+        
         public event Action<TEntity> Registered;
         public event Action<TEntity> Deregistered;
 

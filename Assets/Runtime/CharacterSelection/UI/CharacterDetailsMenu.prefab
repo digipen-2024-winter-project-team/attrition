@@ -1037,7 +1037,7 @@ MonoBehaviour:
   translateOutTo: {x: 800, y: 0}
   translateInAnimation:
     Duration: 1
-    Delay: 0.75
+    Delay: 0
     SpeedBased: 0
     UseAnimationCurve: 0
     Ease: 18
@@ -1091,7 +1091,7 @@ MonoBehaviour:
     Delay: 0
     SpeedBased: 0
     UseAnimationCurve: 0
-    Ease: 17
+    Ease: 18
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
