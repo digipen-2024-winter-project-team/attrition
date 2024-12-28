@@ -1,10 +1,12 @@
-﻿using Attrition.CharacterClasses;
+﻿using System;
+using Attrition.CharacterClasses;
 using Attrition.CharacterSelection.Characters;
 using Attrition.Common;
 using Attrition.Common.SerializedEvents;
 using Attrition.Names;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Attrition.CharacterSelection.UI
@@ -53,6 +55,16 @@ namespace Attrition.CharacterSelection.UI
             get => this.submitted;
         }
 
+        private void OnEnable()
+        {
+            this.buttonComponent.onClick.AddListener(this.OnSubmitButtonClicked);
+        }
+
+        private void OnDisable()
+        {
+            this.buttonComponent.onClick.RemoveListener(this.OnSubmitButtonClicked);
+        }
+
         private void OnValidate()
         {
             this.Bind(this.boundTo);
@@ -92,9 +104,13 @@ namespace Attrition.CharacterSelection.UI
         {
             if (Application.isPlaying)
             {
-                this.buttonComponent.onClick.Invoke();
                 this.submitted?.Invoke();
             }
+        }
+        
+        private void OnSubmitButtonClicked()
+        {
+            this.Submit();
         }
     }
 }

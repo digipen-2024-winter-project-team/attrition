@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &500923811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4904547091229742979, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+  m_PrefabInstance: {fileID: 7521564548762149127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394d47892403452db768557da2e75bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1936581507
 Mesh:
   m_ObjectHideFlags: 0
@@ -972,6 +983,35 @@ PrefabInstance:
     - target: {fileID: 3979909766093856417, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 500923811}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Submit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Attrition.CharacterSelection.Selection.CharacterSelectionController,
+        Attrition.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541722803711567934, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
+      propertyPath: submitted.invoked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5719325843088836332, guid: 82825085286b913408a0ca5ae05706b2, type: 3}
       propertyPath: m_Name

@@ -36,9 +36,22 @@ namespace Attrition.ClassCharacterModel
 
         private void OnEnable()
         {
-            if (this.classBehaviour != null && this.classBehaviour.ClassChanged != null)
+            if (this.classBehaviour != null)
             {
-                this.classBehaviour.ClassChanged.Invoked += this.OnClassChanged;
+                if (this.classBehaviour.ClassChanged != null)
+                {
+                    this.classBehaviour.ClassChanged.Invoked += this.OnClassChanged;
+                }
+                else
+                {
+                    Debug.LogError($"No {nameof(this.classBehaviour)} {nameof(this.classBehaviour.ClassChanged)} event found for {this.name}.");
+                }
+                
+                this.SetCharacterModelByClass(this.classBehaviour.CharacterClass);   
+            }
+            else
+            {
+                Debug.LogError($"No {nameof(this.classBehaviour)} found for {this.gameObject.name}.");
             }
         }
 
@@ -49,8 +62,7 @@ namespace Attrition.ClassCharacterModel
                 this.classBehaviour.ClassChanged.Invoked -= this.OnClassChanged;
             }
         }
-
-
+        
         /// <summary>
         /// Sets the character model based on the given character class.
         /// </summary>

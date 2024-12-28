@@ -10,6 +10,7 @@ using Attrition.Common.Timing;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Attrition.CharacterSelection.Selection
@@ -91,6 +92,13 @@ namespace Attrition.CharacterSelection.Selection
             var deltaTime = Time.deltaTime;
             this.cycleCooldown.Tick(deltaTime);
             this.inspectCooldown.Tick(deltaTime);
+        }
+
+        public void Submit()
+        {
+            this.applicator.ApplyToPlayableCharacter(this.navigator.CurrentSelection.gameObject);
+            // TODO: Replace this with call to a scene loader service
+            SceneManager.LoadScene("Sandbox");
         }
 
         private void Initialize()
