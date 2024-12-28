@@ -1,18 +1,19 @@
-﻿using System;
-using Attrition.PlayerCharacter;
-using UnityEditor.Animations;
+﻿using Attrition.PlayerCharacter;
 using UnityEngine;
 
 namespace Attrition.Player_Character.Animation
 {
     public class PlayerAnimationHandler : MonoBehaviour
     {
-        private PlayerMovement mover;
         private Animator animator;
+        private PlayerMovement mover;
 
         private void Awake()
         {
-            this.SetAnimator(this.GetComponent<Animator>());
+            var firstEnabledAnimator = this.GetComponentInChildren<Animator>(false);
+            this.SetAnimator(firstEnabledAnimator);
+
+            this.mover = this.GetComponentInParent<PlayerMovement>();
         }
 
         public void SetAnimator(Animator animator)

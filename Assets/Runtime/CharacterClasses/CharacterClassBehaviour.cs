@@ -37,6 +37,11 @@ namespace Attrition.CharacterClasses
             this.characterClass ??= ScriptableObject.CreateInstance<CharacterClassVariable>();
         }
 
+        private void OnEnable()
+        {
+            this.SetClass(this.characterClass.Value);
+        }
+
         private void OnDestroy()
         {
             if (this.wasTemporaryScriptableObjectCreated) 
