@@ -19,38 +19,35 @@ namespace Attrition.Common.Graphing
         {
             this.adjacencies = adjacencies;
         }
+
+        public IEnumerable<IEdge<TNodeData, TEdgeData>> GetEdges<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>
+        {
+            return this.adjacencies.GetEdgesFrom(node);
+        }
         
-        public virtual INode<TNodeData, TEdgeData> AddNode(TNodeData value)
-        {
-            var node = new Node<TNodeData, TEdgeData>(this, value);
-            this.adjacencies.AddNode(node);
-            return node;
-        }
-
-        public virtual INode<TNodeData, TEdgeData> AddNode(INode<TNodeData, TEdgeData> node)
+        public TNode AddNode<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>
         {
             this.adjacencies.AddNode(node);
             return node;
         }
 
-        public virtual void RemoveNode(INode<TNodeData, TEdgeData> node)
+        public virtual void RemoveNode<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>
         {
             this.adjacencies.RemoveNode(node);
         }
 
-        public virtual IEdge<TNodeData, TEdgeData> AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData value = default)
-        {
-            var edge = new Edge<TNodeData, TEdgeData>(this, from, to, value);
-            return this.AddEdge(edge);
-        }
-
-        public IEdge<TNodeData, TEdgeData> AddEdge(IEdge<TNodeData, TEdgeData> edge)
+        public TEdge AddEdge<TEdge>(TEdge edge)
+            where TEdge : IEdge<TNodeData, TEdgeData>
         {
             this.adjacencies.AddEdge(edge);
             return edge;
         }
 
-        public virtual void RemoveEdge(IEdge<TNodeData, TEdgeData> edge)
+        public virtual void RemoveEdge<TEdge>(TEdge edge)
+            where TEdge : IEdge<TNodeData, TEdgeData>
         {
             this.adjacencies.RemoveEdge(edge);
         }

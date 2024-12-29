@@ -8,53 +8,69 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
     public class GraphTests
     {
         private IGraph<string, int> graph;
+        private INode<string, int> foo;
+        private INode<string, int> bar;
+        private INode<string, int> baz;
+        private IEdge<string, int> foobar;
+        private IEdge<string, int> barbaz;
 
         [SetUp]
         public void SetUp()
         {
             this.graph = new MockGraph<string, int>();
+
+            this.foo = new Node<string, int>(this.graph, "foo");
+            this.bar = new Node<string, int>(this.graph, "bar");
+            this.baz = new Node<string, int>(this.graph, "baz");
+            this.foobar = new Edge<string, int>(this.graph, this.foo, this.bar, 1);
+            this.barbaz = new Edge<string, int>(this.graph, this.bar, this.baz, 1);
         }
         
         [Test]
         public void GivenGraphWithNodes_WhenNodesRequested_ThenReturnsAllNodes()
         {
             /* ARRANGE */
-            var nodeA = this.graph.AddNode("A");
-            var nodeB = this.graph.AddNode("B");
-
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
+            
             /* ACT */
             var nodes = this.graph.Nodes.ToList();
 
             /* ASSERT */
             Assert.NotNull(nodes);
-            Assert.IsTrue(nodes.Contains(nodeA));
-            Assert.IsTrue(nodes.Contains(nodeB));
+            Assert.IsTrue(nodes.Contains(this.foo));
+            Assert.IsTrue(nodes.Contains(this.bar));
+            Assert.IsTrue(nodes.Contains(this.baz));
         }
         
         [Test]
         public void GivenGraphWithEdges_WhenEdgesRequested_ThenReturnsAllEdges()
         {
             /* ARRANGE */
-            var nodeA = this.graph.AddNode("A");
-            var nodeB = this.graph.AddNode("B");
-            var edge = this.graph.AddEdge(nodeA, nodeB, 1);
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
+            this.graph.AddEdge(this.foobar);
+            this.graph.AddEdge(this.barbaz);
 
             /* ACT */
-            var edges = this.graph.Edges;
+            var edges = this.graph.Edges.ToList();
 
             /* ASSERT */
             Assert.NotNull(edges);
-            Assert.IsTrue(edges.Contains(edge));
+            Assert.IsTrue(edges.Contains(this.foobar));
+            Assert.IsTrue(edges.Contains(this.barbaz));
         }
 
         [Test]
         public void GivenEmptyUndirectedGraph_WhenNodeAddedByValue_ThenGraphContainsNode()
         {
             /* ARRANGE */
-            var nodeValue = "TestNode";
+            
 
             /* ACT */
-            var node = this.graph.AddNode(nodeValue);
+            var node = this.graph.AddNode(this.foo);
 
             /* ASSERT */
             Assert.NotNull(node);
@@ -66,69 +82,77 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
         public void GivenEmptyUndirectedGraph_WhenNodeAddedByNode_ThenGraphContainsNode()
         {
             /* ARRANGE */
-            var node = new Node<string, int>(this.graph, "TestNode");
+            
 
             /* ACT */
-            this.graph.AddNode(node);
+            this.graph.AddNode(this.foo);
 
             /* ASSERT */
             Assert.NotNull(this.graph.Nodes);
-            Assert.IsTrue(this.graph.Nodes.Contains(node));
+            Assert.IsTrue(this.graph.Nodes.Contains(this.foo));
         }
         
         [Test]
         public void GivenGraphWithNodes_WhenNodeRemoved_ThenNodeNotInGraph()
         {
             /* ARRANGE */
-            var node = this.graph.AddNode("TestNode");
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
 
             /* ACT */
-            this.graph.RemoveNode(node);
+            this.graph.RemoveNode(this.bar);
 
             /* ASSERT */
             Assert.NotNull(this.graph.Nodes);
-            Assert.IsFalse(this.graph.Nodes.Contains(node));
+            Assert.IsFalse(this.graph.Nodes.Contains(this.bar));
         }
         
         [Test]
         public void GivenGraphWithNodes_WhenEdgeAdded_ThenEdgeInGraph()
         {
             /* ARRANGE */
-            var nodeA = this.graph.AddNode("A");
-            var nodeB = this.graph.AddNode("B");
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
 
             /* ACT */
-            var edge = this.graph.AddEdge(nodeA, nodeB, 1);
+            this.graph.AddEdge(this.foobar);
 
             /* ASSERT */
-            Assert.NotNull(edge);
+            Assert.NotNull(this.foobar);
             Assert.NotNull(this.graph.Edges);
-            Assert.IsTrue(this.graph.Edges.Contains(edge));
+            Assert.IsTrue(this.graph.Edges.Contains(this.foobar));
         }
         
         [Test]
         public void GivenGraphWithEdges_WhenEdgeRemoved_ThenEdgeNotInGraph()
         {
             /* ARRANGE */
-            var nodeA = this.graph.AddNode("A");
-            var nodeB = this.graph.AddNode("B");
-            var edge = this.graph.AddEdge(nodeA, nodeB, 1);
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
+            this.graph.AddEdge(this.foobar);
+            this.graph.AddEdge(this.barbaz);
 
             /* ACT */
-            this.graph.RemoveEdge(edge);
+            this.graph.RemoveEdge(this.foobar);
 
             /* ASSERT */
             Assert.NotNull(this.graph.Edges);
-            Assert.IsFalse(this.graph.Edges.Contains(edge));
+            Assert.IsFalse(this.graph.Edges.Contains(this.foobar));
         }
         
         [Test]
         public void GivenGraphWithNodes_WhenGraphCleared_ThenGraphIsEmpty()
         {
             /* ARRANGE */
-            var nodeA = this.graph.AddNode("A");
-            var nodeB = this.graph.AddNode("B");
-            var edge = this.graph.AddEdge(nodeA, nodeB, 1);
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
+
+            this.graph.AddEdge(this.foobar);
+            this.graph.AddEdge(this.barbaz);
 
             /* ACT */
             this.graph.Clear();
