@@ -1,21 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 
 namespace Attrition.Common.Graphing
 {
-    public class GraphingSample
+    public class GraphingSample : MonoBehaviour
     {
-        private readonly IGraph<string, float> graph;
+        private IGraph<string, float> graph;
         private Node<string, float> foo;
         private Node<string, float> bar;
         private Node<string, float> baz;
         private Edge<string, float> foobar;
         private Edge<string, float> barbaz;
-
-        public GraphingSample()
-        {
-            this.graph = new UndirectedGraph<string, float>();
-            this.graph = this.BuildGraph();
-        }
 
         public IGraph<string, float> BuildGraph()
         {
@@ -24,7 +20,13 @@ namespace Attrition.Common.Graphing
             this.baz = new(this.graph, "baz");
             this.foobar = new(this.graph, this.foo, this.bar);
             this.barbaz = new(this.graph, this.bar, this.baz);
-
+            
+            this.graph.AddNode(this.foo);
+            this.graph.AddNode(this.bar);
+            this.graph.AddNode(this.baz);
+            this.graph.AddEdge(this.foobar);
+            this.graph.AddEdge(this.barbaz);
+            
             return this.graph;
         }
 
@@ -34,8 +36,19 @@ namespace Attrition.Common.Graphing
             
             foreach (var node in searcher.Search(this.graph, this.foo, this.baz))
             {
-                Debug.Log(node.Value);
+                Debug.Log($"{node.Value} :: Has {node.GetNeighbors().Count()} neighbors.");
             }
+        }
+
+        private void Awake()
+        {
+            this.graph = new UndirectedGraph<string, float>();
+        }
+
+        private void OnEnable()
+        {
+            this.graph = this.BuildGraph();
+            this.TraverseGraph();
         }
     }
 }

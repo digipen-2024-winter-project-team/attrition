@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Attrition.Common.Graphing
 {
@@ -22,6 +24,14 @@ namespace Attrition.Common.Graphing
         {
             var edge = new Edge<TNodeData, TEdgeData>(graph, source, target, value);
             return graph.AddEdge(edge);
+        }
+
+        public static IEnumerable<INode<TNodeData, TEdgeData>> GetNeighbors<TNodeData, TEdgeData>(
+            this INode<TNodeData, TEdgeData> node)
+        {
+            return node.Graph.GetEdges(node)
+                .Where(edge => edge.From == node || edge.To == node)
+                .Select(edge => edge.From == node ? edge.To : edge.From);
         }
     }
 }

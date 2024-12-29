@@ -8,6 +8,9 @@ namespace Attrition.Common.Graphing
         
         IEnumerable<IEdge<TNodeData, TEdgeData>> Edges { get; }
         
+        IEnumerable<IEdge<TNodeData, TEdgeData>> GetEdges<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>;
+        
         TNode AddNode<TNode>(TNode node)
             where TNode : INode<TNodeData, TEdgeData>;
         

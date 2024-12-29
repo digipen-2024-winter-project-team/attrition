@@ -20,6 +20,12 @@ namespace Attrition.Common.Graphing
             this.adjacencies = adjacencies;
         }
 
+        public IEnumerable<IEdge<TNodeData, TEdgeData>> GetEdges<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>
+        {
+            return this.adjacencies.GetEdgesFrom(node);
+        }
+        
         public TNode AddNode<TNode>(TNode node)
             where TNode : INode<TNodeData, TEdgeData>
         {
