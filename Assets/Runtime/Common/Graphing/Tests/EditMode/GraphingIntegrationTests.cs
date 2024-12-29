@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Linq;
 using Attrition.Common.Graphing;
 using NUnit.Framework;
 
@@ -19,7 +19,7 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
         [SetUp]
         public void SetUp()
         {
-            this.graph = new Graph<string, int>();
+            this.graph = new UndirectedGraph<string, int>();
             
             this.foo = new(this.graph, "foo");
             this.bar = new(this.graph, "bar");
@@ -28,19 +28,19 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
             this.quux = new(this.graph, "quux");
         }
 
-        // [Test]
-        // public void GivenEmptyGraph_WhenNodeAdded_ThenGraphContainsNode()
-        // {
-        //     /* ARRANGE */
-        //     
-        //     
-        //     /* ACT */
-        //     var first = this.graph.AddNode(this.foo);
-        //     
-        //     /* ASSERT */
-        //     Assert.NotNull(first);
-        //     Assert.AreSame(this.foo, first);
-        //     Assert.Contains(this.foo, (ICollection)this.graph.Nodes);
-        // }
+        [Test]
+        public void GivenEmptyUndirectedGraph_WhenNodeAdded_ThenGraphContainsNode()
+        {
+            /* ARRANGE */
+            
+            
+            /* ACT */
+            this.graph.AddNode(this.foo);
+            
+            /* ASSERT */
+            Assert.NotNull(this.graph);
+            Assert.NotNull(this.graph.Nodes);
+            Assert.IsTrue(this.graph.Nodes.Contains(this.foo));
+        }
     }
 }

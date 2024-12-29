@@ -19,13 +19,13 @@ namespace Attrition.Common.Graphing
 
         public IGraph<string, float> BuildGraph()
         {
-            this.foo = new(graph, "foo");
-            this.bar = new(graph, "bar");
-            this.baz = new(graph, "baz");
-            this.foobar = new(graph, this.foo, this.bar);
-            this.barbaz = new(graph, this.bar, this.baz);
+            this.foo = new(this.graph, "foo");
+            this.bar = new(this.graph, "bar");
+            this.baz = new(this.graph, "baz");
+            this.foobar = new(this.graph, this.foo, this.bar);
+            this.barbaz = new(this.graph, this.bar, this.baz);
 
-            return graph;
+            return this.graph;
         }
 
         public void TraverseGraph()
