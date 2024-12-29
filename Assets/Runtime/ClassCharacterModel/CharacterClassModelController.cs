@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Attrition.CharacterClasses;
-using Attrition.Common;
 using Attrition.Common.SerializedEvents;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
@@ -39,7 +37,7 @@ namespace Attrition.ClassCharacterModel
                 .ToDictionary(model => model.Class, model => model.Animator);
         }
 
-        public void SetAnimatorController(AnimatorController animatorController)
+        public void SetAnimatorController(RuntimeAnimatorController animatorController)
         {
             foreach (var animator in this.dictionary.Values)
             {
