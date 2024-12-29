@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using Attrition.Common.Physics;
+using Attrition.CombatTargeting;
 
 namespace Attrition.PlayerCharacter
 {

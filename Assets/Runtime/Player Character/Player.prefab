@@ -5102,6 +5102,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcbcfb10685641f9a5767d3a206cf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6049198308484000908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626126632666880583}
+  - component: {fileID: 3437181589248440903}
+  - component: {fileID: 5514630024031816319}
+  m_Layer: 8
+  m_Name: Targetable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626126632666880583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049198308484000908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7130108603805512091}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3437181589248440903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049198308484000908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb1a3ebfdcf4bd092e0b9e3875c5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 11400000, guid: c654721327b0e2e4ea52cfbb8f90d252, type: 2}
+--- !u!136 &5514630024031816319
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049198308484000908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6214557373023233790
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,6 +5246,7 @@ Transform:
   - {fileID: 3509393261893423042}
   - {fileID: 2548191067299764513}
   - {fileID: 6900041856735775403}
+  - {fileID: 626126632666880583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &552184772847157552
@@ -5320,7 +5390,7 @@ MonoBehaviour:
   maxHitpoints: 3
   damageable: {fileID: 7767287245421831739}
   invincibilityDuration: 0.5
-  team: {fileID: 11400000, guid: c2e1336b3f857411e92d15d03ac5bb40, type: 2}
+  team: {fileID: 11400000, guid: c654721327b0e2e4ea52cfbb8f90d252, type: 2}
   deathTimerDuration: 300
   deathTimerLossPerHitpoint: 60
   enteringDying:
@@ -5400,7 +5470,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6308272930204121767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b76879cb54fd49b8949f3b30f4545b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 262ef854f4534fe4eb79ecd9f2d1a203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damaged:
@@ -10470,23 +10540,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.64100003
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.68
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.050781
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.95923173
+      value: 0.8191521
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.28262082
+      value: 0.5735764
       objectReference: {fileID: 0}
     - target: {fileID: 9031669064876487642, guid: 6024388c46aad412fbd245200e266afd, type: 3}
       propertyPath: m_LocalRotation.y
