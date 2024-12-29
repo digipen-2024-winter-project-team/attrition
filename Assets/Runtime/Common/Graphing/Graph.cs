@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Attrition.Common.Graphing
 {
-    public class Graph<TNodeData, TEdgeData> : IGraph<TNodeData, TEdgeData>
+    public abstract class Graph<TNodeData, TEdgeData> : IGraph<TNodeData, TEdgeData>
     {
         public IEnumerable<INode<TNodeData, TEdgeData>> Nodes { get; }
         public IEnumerable<IEdge<TNodeData, TEdgeData>> Edges { get; }

@@ -13,13 +13,12 @@ namespace Attrition.Common.Graphing
 
         public GraphingSample()
         {
+            this.graph = new UndirectedGraph<string, float>();
             this.graph = this.BuildGraph();
         }
 
         public IGraph<string, float> BuildGraph()
         {
-            var graph = new Graph<string, float>();
-
             this.foo = new(graph, "foo");
             this.bar = new(graph, "bar");
             this.baz = new(graph, "baz");
