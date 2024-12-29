@@ -274,7 +274,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3522784037944823944}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.6
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -333,8 +333,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Height: 0.6
+  m_Radius: 0.2
+  m_Height: 1.2
   m_Direction: 2
   m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &7842147399836225793
@@ -503,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 4880270332616159605}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -528,7 +528,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.2, z: 0.4}
+  m_Size: {x: 0.4, y: 0.2, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!114 &3616631474574486836
 MonoBehaviour:
@@ -5695,7 +5695,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8627538252752891972}
