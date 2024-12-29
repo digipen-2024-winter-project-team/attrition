@@ -15,6 +15,11 @@ namespace Attrition.Common.Graphing
             this.adjacencies = new AdjacencyList<TNodeData, TEdgeData>();
         }
         
+        protected Graph(IAdjacencyList<TNodeData, TEdgeData> adjacencies)
+        {
+            this.adjacencies = adjacencies;
+        }
+        
         public virtual INode<TNodeData, TEdgeData> AddNode(TNodeData value)
         {
             var node = new Node<TNodeData, TEdgeData>(this, value);
