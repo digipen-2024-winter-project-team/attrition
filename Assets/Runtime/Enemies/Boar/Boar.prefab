@@ -237,19 +237,7 @@ MonoBehaviour:
   team: {fileID: 11400000, guid: 4ce6bbd235eb84703aa040c83cd07473, type: 2}
   destroyed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4296969147693792371}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6183816959253433870
 MonoBehaviour:
   m_ObjectHideFlags: 0
