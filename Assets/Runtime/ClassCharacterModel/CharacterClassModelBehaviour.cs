@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Attrition.CharacterClasses;
 using Attrition.Common;
 using Attrition.Common.SerializedEvents;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
@@ -21,14 +20,14 @@ namespace Attrition.ClassCharacterModel
         [SerializeField]
         private Transform modelContainer;
         [SerializeField]
-        private AnimatorController animatorController;
+        private RuntimeAnimatorController animatorController;
         [SerializeField]
         private List<ClassModelData> models;
         [SerializeField]
         private SerializedEvent<Animator> modelUpdated;
         private CharacterClassModelController modelController;
         private CharacterClassBehaviour classBehaviour;
-
+        
         public IReadOnlySerializedEvent<Animator> ModelUpdated => this.modelUpdated;
 
         private void Awake()
