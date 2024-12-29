@@ -12,6 +12,7 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private CombatTeam team;
         [SerializeField] private float damageValue;
         [SerializeField] private InputActionReference attackAction;
+        [SerializeField] private GameObject attackParticle;
         
         private void Update()
         {
@@ -23,11 +24,13 @@ namespace Attrition.PlayerCharacter
 
         private void Attack()
         {
+            Instantiate(attackParticle, transform.position, Quaternion.identity*transform.rotation);
             foreach (var collision in hitboxCollision.Colliders)
             {
                 if (Damageable.Find(collision.gameObject, out var damageable))
                 {
                     var results = damageable.TakeDamage(new(damageValue, gameObject, team));
+                    
                 }
             }
         }
