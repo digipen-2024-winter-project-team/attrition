@@ -19,15 +19,23 @@ namespace Attrition.DamageSystem
         /// The GameObject which received the damage.
         /// </summary>
         public readonly GameObject receiver;
-
+        /// <summary>
+        /// The Combat Team of the receiver.
+        /// </summary>
+        public readonly CombatTeam receiverTeam;
+        
         /// <summary>
         /// Constructs a new Damage Result object. Handled Internally
         /// </summary>
-        public DamageResult(float value, bool ignored, GameObject receiver)
+        public DamageResult(float value, bool ignored, GameObject receiver, CombatTeam receiverTeam)
         {
             this.value = value;
             this.ignored = ignored;
             this.receiver = receiver;
+            this.receiverTeam = receiverTeam;
         }
+
+        public override string ToString()
+            => $"Receiver: {receiver.name}   Value: {value}   Ignored: {ignored}   Receiver Team: {receiverTeam.name}";
     }
 }

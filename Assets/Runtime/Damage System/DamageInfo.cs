@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Attrition.DamageSystem
@@ -48,7 +49,7 @@ namespace Attrition.DamageSystem
         {
             float value = GetValue(team);
             
-            results.Add(new(value, invincible, receiver));
+            results.Add(new(value, invincible, receiver, team));
 
             return value;
         }
@@ -69,6 +70,15 @@ namespace Attrition.DamageSystem
             if (interaction == null) return rawValue;
 
             return rawValue * interaction.damageMultiplier;
+        }
+
+        public override string ToString()
+        {
+
+            string summary = results.Any(result => !result.ignored) ? "Taken" : "Ignored";
+            string allResults = string.Join("\n", results.Select(result => $" - {result}"));
+
+            return $"(DamageInfo) Dealer: {dealer.name}   Raw Value: {rawValue}   Team: {team.name}   Summary: {summary}\nResults\n{allResults}";
         }
     }
 }
