@@ -11,6 +11,7 @@ namespace Attrition.Common.Graphing
         INode<TNodeData, TEdgeData> AddNode(INode<TNodeData, TEdgeData> node);
         void RemoveNode(INode<TNodeData, TEdgeData> node);
         IEdge<TNodeData, TEdgeData> AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData value = default);
+        IEdge<TNodeData, TEdgeData> AddEdge(IEdge<TNodeData, TEdgeData> edge);
         void RemoveEdge(IEdge<TNodeData, TEdgeData> edge);
         
         void Clear();

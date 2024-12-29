@@ -1,54 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Attrition.Common.Graphing
 {
     public class AdjacencyList<TNodeData, TEdgeData> : IAdjacencyList<TNodeData, TEdgeData>
     {
-        private readonly Dictionary<INode<TNodeData, TEdgeData>, List<IEdge<TNodeData, TEdgeData>>> adjacencies;
+        private readonly Dictionary<INode<TNodeData, TEdgeData>, List<IEdge<TNodeData, TEdgeData>>> dictionary;
 
-        public IEnumerable<INode<TNodeData, TEdgeData>> Nodes => this.adjacencies.Keys;
-        public IEnumerable<IEdge<TNodeData, TEdgeData>> Edges => this.adjacencies.Values
+        public IEnumerable<INode<TNodeData, TEdgeData>> Nodes => this.dictionary.Keys;
+        public IEnumerable<IEdge<TNodeData, TEdgeData>> Edges => this.dictionary.Values
             .SelectMany(edges => edges);
         
         public AdjacencyList()
         {
-            this.adjacencies = new();
+            this.dictionary = new();
         }
 
         public void AddNode(INode<TNodeData, TEdgeData> node)
         {
-            if (!this.adjacencies.ContainsKey(node))
+            if (!this.dictionary.ContainsKey(node))
             {
-                this.adjacencies[node] = new();
+                this.dictionary[node] = new();
             }
         }
 
         public void RemoveNode(INode<TNodeData, TEdgeData> node)
         {
-            if (this.adjacencies.Remove(node))
+            if (this.dictionary.Remove(node))
             {
-                foreach (var edges in this.adjacencies.Values)
+                foreach (var edges in this.dictionary.Values)
                 {
                     edges.RemoveAll(edge => edge.To.Equals(node));
                 }
             }
         }
 
-        public void AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData cost = default)
+        public void AddEdge(IEdge<TNodeData, TEdgeData> edge)
         {
-            if (!this.adjacencies.ContainsKey(from))
+            var node = edge.From;
+            
+            if (!this.dictionary.ContainsKey(node))
             {
-                throw new InvalidOperationException("The 'from' node is not in the graph.");
+                this.AddNode(node);
             }
 
-            this.adjacencies[from].Add(new Edge<TNodeData, TEdgeData>(null, from, to, cost));
+            this.dictionary[node].Add(edge);
         }
 
+        public void RemoveEdge(IEdge<TNodeData, TEdgeData> edge)
+        {
+            var node = edge.From;
+            
+            if (this.dictionary.ContainsKey(node))
+            {
+                this.dictionary[node].Remove(edge);
+            }
+        }
+
+        public void RemoveAllEdgesFrom(INode<TNodeData, TEdgeData> node)
+        {
+            if (this.dictionary.ContainsKey(node))
+            {
+                this.dictionary[node].Clear();
+            }
+        }
+        
         public IEnumerable<IEdge<TNodeData, TEdgeData>> GetEdgesFrom(INode<TNodeData, TEdgeData> node)
         {
-            return this.adjacencies.TryGetValue(node, out var edges) ? edges : Enumerable.Empty<IEdge<TNodeData, TEdgeData>>();
+            return this.dictionary.ContainsKey(node) ? this.dictionary[node] : Enumerable.Empty<IEdge<TNodeData, TEdgeData>>();
+        }
+
+        public void Clear()
+        {
+            this.dictionary.Clear();
         }
     }
 }

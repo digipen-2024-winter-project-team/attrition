@@ -8,7 +8,10 @@ namespace Attrition.Common.Graphing
         IEnumerable<IEdge<TNodeData, TEdgeData>> Edges { get; }
         void AddNode(INode<TNodeData, TEdgeData> node);
         void RemoveNode(INode<TNodeData, TEdgeData> node);
-        void AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData cost = default);
+        void AddEdge(IEdge<TNodeData, TEdgeData> edge);
+        void RemoveEdge(IEdge<TNodeData, TEdgeData> edge);
+        void RemoveAllEdgesFrom(INode<TNodeData, TEdgeData> node);
         IEnumerable<IEdge<TNodeData, TEdgeData>> GetEdgesFrom(INode<TNodeData, TEdgeData> node);
+        void Clear();
     }
 }

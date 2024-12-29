@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Attrition.Common.Graphing
 {
@@ -35,22 +35,29 @@ namespace Attrition.Common.Graphing
 
         public virtual void RemoveNode(INode<TNodeData, TEdgeData> node)
         {
-            throw new System.NotImplementedException();
+            this.adjacencies.RemoveNode(node);
         }
 
         public virtual IEdge<TNodeData, TEdgeData> AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData value = default)
         {
-            throw new System.NotImplementedException();
+            var edge = new Edge<TNodeData, TEdgeData>(this, from, to, value);
+            return this.AddEdge(edge);
+        }
+
+        public IEdge<TNodeData, TEdgeData> AddEdge(IEdge<TNodeData, TEdgeData> edge)
+        {
+            this.adjacencies.AddEdge(edge);
+            return edge;
         }
 
         public virtual void RemoveEdge(IEdge<TNodeData, TEdgeData> edge)
         {
-            throw new System.NotImplementedException();
+            this.adjacencies.RemoveEdge(edge);
         }
 
         public virtual void Clear()
         {
-            throw new System.NotImplementedException();
+            this.adjacencies.Clear();
         }
     }
 }
