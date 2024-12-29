@@ -4,19 +4,24 @@ namespace Attrition.Common.Graphing
 {
     public static class GraphingExtensions
     {
-        public static void AddNode<TNodeData>(this IGraph<TNodeData, int> graph, TNodeData value)
+        public static INode<TNodeData, TEdgeData> AddNode<TGraph, TNodeData, TEdgeData>(
+            this TGraph graph, 
+            TNodeData value)
+            where TGraph : IGraph<TNodeData, TEdgeData>
         {
-            graph.AddNode(value);
+            var node = new Node<TNodeData, TEdgeData>(graph, value);
+            return graph.AddNode(node);
         }
         
-        public static INode<TNodeData, TEdgeData> GetNeighbor<TNodeData, TEdgeData>(this INode<TNodeData, TEdgeData> node)
+        public static IEdge<TNodeData, TEdgeData> AddEdge<TGraph, TNodeData, TEdgeData>(
+            this TGraph graph,
+            INode<TNodeData, TEdgeData> source, 
+            INode<TNodeData, TEdgeData> target, 
+            TEdgeData value = default)
+            where TGraph : IGraph<TNodeData, TEdgeData>
         {
-            throw new NotImplementedException();
-        }
-        
-        public static INode<TNodeData, TEdgeData> AddNeighbor<TNodeData, TEdgeData>()
-        {
-            throw new NotImplementedException();
+            var edge = new Edge<TNodeData, TEdgeData>(graph, source, target, value);
+            return graph.AddEdge(edge);
         }
     }
 }

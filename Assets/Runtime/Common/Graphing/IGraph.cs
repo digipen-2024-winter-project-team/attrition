@@ -5,14 +5,20 @@ namespace Attrition.Common.Graphing
     public interface IGraph<TNodeData, TEdgeData>
     {
         IEnumerable<INode<TNodeData, TEdgeData>> Nodes { get; }
+        
         IEnumerable<IEdge<TNodeData, TEdgeData>> Edges { get; }
         
-        INode<TNodeData, TEdgeData> AddNode(TNodeData value);
-        INode<TNodeData, TEdgeData> AddNode(INode<TNodeData, TEdgeData> node);
-        void RemoveNode(INode<TNodeData, TEdgeData> node);
-        IEdge<TNodeData, TEdgeData> AddEdge(INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to, TEdgeData value = default);
-        IEdge<TNodeData, TEdgeData> AddEdge(IEdge<TNodeData, TEdgeData> edge);
-        void RemoveEdge(IEdge<TNodeData, TEdgeData> edge);
+        TNode AddNode<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>;
+        
+        void RemoveNode<TNode>(TNode node)
+            where TNode : INode<TNodeData, TEdgeData>;
+        
+        TEdge AddEdge<TEdge>(TEdge edge)
+            where TEdge : IEdge<TNodeData, TEdgeData>;
+        
+        void RemoveEdge<TEdge>(TEdge edge)
+            where TEdge : IEdge<TNodeData, TEdgeData>;
         
         void Clear();
     }
