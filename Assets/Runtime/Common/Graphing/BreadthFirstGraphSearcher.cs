@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Attrition.Common.Graphing
 {
@@ -14,7 +16,24 @@ namespace Attrition.Common.Graphing
         public IEnumerable<INode<TNodeData, TEdgeData>> Search<TNode>(TNode from, TNode to)
             where TNode : INode<TNodeData, TEdgeData>
         {
+            if (!this.graph.Nodes.Contains(from) || !this.graph.Nodes.Contains(to))
+            {
+                throw new GraphSearchException<TNodeData, TEdgeData>(this.graph, from, to, 
+                    $"Both {nameof(from)} and {nameof(to)} nodes must be contained in graph {this.graph}.");
+            }
+            
             if (from == null || to == null)
+            {
+                yield break;
+            }
+            
+            if (from.Equals(to))
+            {
+                yield return from;
+                yield break;
+            }
+            
+            if (!this.graph.Nodes.Any() || !this.graph.Edges.Any())
             {
                 yield break;
             }

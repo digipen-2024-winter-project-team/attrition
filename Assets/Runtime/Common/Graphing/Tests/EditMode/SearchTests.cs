@@ -29,19 +29,37 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
         {
             this.graph = new();
             this.searcher = new(this.graph);
+
+            this.foo = new Node<string, int>(this.graph, "foo");
+            this.bar = new Node<string, int>(this.graph, "bar");
+            this.baz = new Node<string, int>(this.graph, "baz");
+            this.qux = new Node<string, int>(this.graph, "qux");
+            this.quux = new Node<string, int>(this.graph, "quux");
+            
+            this.foobar = new Edge<string, int>(this.graph, this.foo, this.bar, 1);
+            this.barbaz = new Edge<string, int>(this.graph, this.bar, this.baz, 1);
+            this.bazqux = new Edge<string, int>(this.graph, this.baz, this.qux, 1);
+            this.quxquux = new Edge<string, int>(this.graph, this.qux, this.quux, 1);
+            this.quuxfoo = new Edge<string, int>(this.graph, this.quux, this.foo, 1);
+            this.barqux = new Edge<string, int>(this.graph, this.bar, this.qux, 1);
+            this.quxfoo = new Edge<string, int>(this.graph, this.qux, this.foo, 1);
+            this.bazquux = new Edge<string, int>(this.graph, this.baz, this.quux, 1);
         }
 
         [Test]
-        public void GivenEmptyGraph_WhenSearchCalled_ThenReturnsEmpty()
+        public void GivenEmptyGraph_WhenSearchCalled_ThenThrowsGraphSearchException()
         {
             /* ARRANGE */
             
 
             /* ACT */
-            var result = this.searcher.Search(this.foo, this.quux);
-
+            void Action()
+            {
+                var results = this.searcher.Search(this.foo, this.quux);
+            }
+            
             /* ASSERT */
-            Assert.IsEmpty(result);
+            Assert.Throws<GraphSearchException<string, int>>(Action);
         }
 
         [Test]
