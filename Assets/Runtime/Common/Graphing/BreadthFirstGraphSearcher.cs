@@ -40,7 +40,6 @@ namespace Attrition.Common.Graphing
 
             var visited = new HashSet<INode<TNodeData, TEdgeData>>();
             var queue = new Queue<INode<TNodeData, TEdgeData>>();
-            var parents = new Dictionary<INode<TNodeData, TEdgeData>, INode<TNodeData, TEdgeData>>();
 
             queue.Enqueue(from);
             visited.Add(from);
@@ -63,26 +62,6 @@ namespace Attrition.Common.Graphing
                     }
 
                     queue.Enqueue(neighbor);
-                    parents[neighbor] = current;
-                }
-            }
-
-            // Optionally, reconstruct the path from `from` to `to` (if needed).
-            if (visited.Contains(to))
-            {
-                var path = new Stack<INode<TNodeData, TEdgeData>>();
-                var current = to as INode<TNodeData, TEdgeData>;
-
-                while (current != null)
-                {
-                    path.Push(current);
-                    parents.TryGetValue(current, out var parent);
-                    current = parent;
-                }
-
-                foreach (var node in path)
-                {
-                    yield return node;
                 }
             }
         }

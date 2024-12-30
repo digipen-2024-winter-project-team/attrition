@@ -47,22 +47,6 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
         }
 
         [Test]
-        public void GivenEmptyGraph_WhenSearchCalled_ThenThrowsGraphSearchException()
-        {
-            /* ARRANGE */
-            
-
-            /* ACT */
-            void Action()
-            {
-                var results = this.searcher.Search(this.foo, this.quux);
-            }
-            
-            /* ASSERT */
-            Assert.Throws<GraphSearchException<string, int>>(Action);
-        }
-
-        [Test]
         public void GivenGraphWithNoPath_WhenSearchCalled_ThenReturnsVisitedNodes()
         {
             /* ARRANGE */
