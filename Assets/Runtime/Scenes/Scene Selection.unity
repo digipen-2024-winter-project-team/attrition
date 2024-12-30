@@ -654,6 +654,8 @@ MonoBehaviour:
   optionsParent: {fileID: 1602433793}
   mainMenuScene: Main Menu
   sceneOptions:
+  - scene: CharacterSelection
+    description: Choose your character.
   - scene: Sandbox
     description: Simple sandbox scene to test features.
 --- !u!1 &1311644531397054440
