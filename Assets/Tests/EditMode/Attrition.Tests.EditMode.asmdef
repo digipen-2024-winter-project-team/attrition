@@ -3,7 +3,8 @@
     "rootNamespace": "Attrition",
     "references": [
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "Attrition.Runtime"
     ],
     "includePlatforms": [
         "Editor"

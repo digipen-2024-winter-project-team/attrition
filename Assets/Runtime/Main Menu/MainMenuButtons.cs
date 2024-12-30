@@ -1,12 +1,10 @@
-using System;
-using UnityEngine;
 using Attrition.Common;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
-namespace Attrition.MainMenu
+namespace Attrition.Main_Menu
 {
     public class MainMenuButtons : MonoBehaviour
     {
@@ -21,7 +19,7 @@ namespace Attrition.MainMenu
         
         private void Start()
         {
-            SetState(State.Main);
+            this.SetState(State.Main);
         }
 
         private State state;
@@ -37,24 +35,24 @@ namespace Attrition.MainMenu
             var input =(InputSystemUIInputModule)EventSystem.current.currentInputModule;
 
             if (input.cancel.action.WasPerformedThisFrame()
-                && state != State.Main)
+                && this.state != State.Main)
             {
-                SetState(State.Main);
+                this.SetState(State.Main);
             }
         }
 
         private void SetState(State state)
         {
 
-            mainMenuContent.SetActive(false);
-            creditsContent.SetActive(false);
-            settingsContent.SetActive(false);
+            this.mainMenuContent.SetActive(false);
+            this.creditsContent.SetActive(false);
+            this.settingsContent.SetActive(false);
 
             var (content, select) = state switch
             {
-                State.Credits => (creditsContent, creditsFirstSelected),
-                State.Settings => (settingsContent, settingsFirstSelected),
-                State.Main or _ => (mainMenuContent, this.state switch { State.Credits => creditsButton, State.Settings => settingsButton, _ => playButton }),
+                State.Credits => (this.creditsContent, this.creditsFirstSelected),
+                State.Settings => (this.settingsContent, this.settingsFirstSelected),
+                State.Main or _ => (this.mainMenuContent, this.state switch { State.Credits => this.creditsButton, State.Settings => this.settingsButton, _ => this.playButton }),
             };
             
             content.SetActive(true);
@@ -65,22 +63,22 @@ namespace Attrition.MainMenu
         
         public void PlayGame()
         {
-            SceneManager.LoadScene(mainMenuScene);
+            SceneManager.LoadScene(this.mainMenuScene);
         }
 
         public void OpenSettings()
         {
-            SetState(State.Settings);
+            this.SetState(State.Settings);
         }
 
         public void OpenCredits()
         {
-            SetState(State.Credits);
+            this.SetState(State.Credits);
         }
 
         public void OpenMain()
         {
-            SetState(State.Main);
+            this.SetState(State.Main);
         }
         
         public void QuitGame()

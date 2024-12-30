@@ -3,7 +3,6 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using Unity.VisualScripting;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "FindForward", story: "[Agent] sets [forward]", category: "Action/Blackboard", id: "91d53f3ab4694c6e9fcf6b912605936d")]
@@ -35,4 +34,3 @@ public partial class FindForwardAction : Action
     {
     }
 }
-
