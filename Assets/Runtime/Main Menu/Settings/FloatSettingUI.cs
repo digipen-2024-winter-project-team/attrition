@@ -1,10 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Attrition.MainMenu.Settings
+namespace Attrition.Main_Menu.Settings
 {
     public class FloatSettingUI : MonoBehaviour
     {
@@ -20,25 +18,25 @@ namespace Attrition.MainMenu.Settings
         
         private void Awake()
         {
-            slider.minValue = minValue / increment;
-            slider.maxValue = maxValue / increment;
-            slider.wholeNumbers = true;
+            this.slider.minValue = this.minValue / this.increment;
+            this.slider.maxValue = this.maxValue / this.increment;
+            this.slider.wholeNumbers = true;
             
-            slider.onValueChanged.AddListener(OnSliderValueChanged);
-            setting.ValueChanged += OnSettingOnValueChanged;
+            this.slider.onValueChanged.AddListener(this.OnSliderValueChanged);
+            this.setting.ValueChanged += this.OnSettingOnValueChanged;
             
-            slider.value = setting.Value / increment;
+            this.slider.value = this.setting.Value / this.increment;
         }
 
         private void OnSliderValueChanged(float value)
         {
-            setting.Value = value * increment;
+            this.setting.Value = value * this.increment;
         }
 
         private void OnSettingOnValueChanged(float value)
         {
-            valueText.text = $"{value * displayMultiple}{valuePostfix}";
-            slider.SetValueWithoutNotify(value / increment);
+            this.valueText.text = $"{value * this.displayMultiple}{this.valuePostfix}";
+            this.slider.SetValueWithoutNotify(value / this.increment);
         }
     }
 }

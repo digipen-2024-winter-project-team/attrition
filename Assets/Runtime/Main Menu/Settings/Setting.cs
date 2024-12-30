@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
-namespace Attrition.MainMenu.Settings 
+namespace Attrition.Main_Menu.Settings 
 {
     public abstract class Setting<TValue> : ScriptableObject
     {
@@ -11,37 +11,37 @@ namespace Attrition.MainMenu.Settings
 
         public event Action<TValue> ValueChanged;
 
-        public TValue DefaultValue => defaultValue;
+        public TValue DefaultValue => this.defaultValue;
 
         public TValue Value
         {
-            get => ToValue(PlayerPrefs.GetFloat(name, ToFloat(defaultValue)));
+            get => this.ToValue(PlayerPrefs.GetFloat(this.name, this.ToFloat(this.defaultValue)));
 
             set
             {
-                SetValueWithoutNotify(value);
-                InvokeValueChanged();
+                this.SetValueWithoutNotify(value);
+                this.InvokeValueChanged();
             }
         }
 
         public void SetValueWithoutNotify(TValue value)
         {
-            PlayerPrefs.SetFloat(name, ToFloat(value));
+            PlayerPrefs.SetFloat(this.name, this.ToFloat(value));
         }
 
         public void InvokeValueChanged()
         {
-            var value = Value;
+            var value = this.Value;
 
-            ValueChanged?.Invoke(value);
-            valueChanged.Invoke(value);
+            this.ValueChanged?.Invoke(value);
+            this.valueChanged.Invoke(value);
         }
 
         public void ResetToDefault()
         {
-            PlayerPrefs.DeleteKey(name);
+            PlayerPrefs.DeleteKey(this.name);
 
-            InvokeValueChanged();
+            this.InvokeValueChanged();
         }
 
         protected abstract TValue ToValue(float value);
@@ -49,7 +49,7 @@ namespace Attrition.MainMenu.Settings
 
         private void OnValidate()
         {
-            InvokeValueChanged();
+            this.InvokeValueChanged();
         }
     }
 }

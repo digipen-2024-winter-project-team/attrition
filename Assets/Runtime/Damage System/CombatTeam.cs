@@ -10,7 +10,7 @@ namespace Attrition.DamageSystem
         [SerializeField] private List<Interaction> interactions;
 
         public Interaction GetInteraction(CombatTeam team)
-            => interactions.Find(interaction => interaction.team == team);
+            => this.interactions.Find(interaction => interaction.team == team);
         
         [Serializable]
         public class Interaction

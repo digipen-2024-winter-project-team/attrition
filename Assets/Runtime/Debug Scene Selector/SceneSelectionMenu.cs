@@ -4,7 +4,7 @@ using Attrition.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Attrition.DebugSceneSelector
+namespace Attrition.Debug_Scene_Selector
 {
     public class SceneSelectionMenu : MonoBehaviour
     {
@@ -22,18 +22,18 @@ namespace Attrition.DebugSceneSelector
             public string description;
         }
 
-        public string[] GetSceneNames() => sceneOptions.Select(sceneOption => sceneOption.scene).ToArray(); 
+        public string[] GetSceneNames() => this.sceneOptions.Select(sceneOption => sceneOption.scene).ToArray(); 
         
         public void ReturnToMain()
         {
-            SceneManager.LoadScene(mainMenuScene);
+            SceneManager.LoadScene(this.mainMenuScene);
         }
 
         private void Start()
         {
-            foreach (var sceneOptionInfo in sceneOptions)
+            foreach (var sceneOptionInfo in this.sceneOptions)
             {
-                var ui = Instantiate(sceneOptionButtonPrefab, optionsParent);
+                var ui = Instantiate(this.sceneOptionButtonPrefab, this.optionsParent);
                 ui.button.onClick.AddListener(() => SceneManager.LoadScene(sceneOptionInfo.scene));
                 ui.sceneName.text = sceneOptionInfo.scene;
                 ui.description.text = sceneOptionInfo.description;

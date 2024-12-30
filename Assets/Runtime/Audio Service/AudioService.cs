@@ -1,9 +1,9 @@
-using Attrition.GameServices;
-using Attrition.MainMenu.Settings;
+using Attrition.Game_Services;
+using Attrition.Main_Menu.Settings;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Attrition.AudioService
+namespace Attrition.Audio_Service
 {
     [CreateAssetMenu(menuName = "Attrition/Services/Audio Service")]
     public class AudioService : GameService
@@ -19,19 +19,19 @@ namespace Attrition.AudioService
         
         protected override void Initialize()
         {
-            Setup(masterVolume, masterVolumeParameter);
-            Setup(musicVolume, musicVolumeParameter);
-            Setup(soundsVolume, soundsVolumeParameter);
+            Setup(this.masterVolume, this.masterVolumeParameter);
+            Setup(this.musicVolume, this.musicVolumeParameter);
+            Setup(this.soundsVolume, this.soundsVolumeParameter);
 
             void Setup(FloatSetting setting, string parameter) => setting.ValueChanged +=
-                value => mixer.SetFloat(parameter, value == 0 ? -80f : Mathf.Log10(value) * 20f);
+                value => this.mixer.SetFloat(parameter, value == 0 ? -80f : Mathf.Log10(value) * 20f);
         }
 
         protected override void Start()
         {
-            masterVolume.InvokeValueChanged();
-            musicVolume.InvokeValueChanged();
-            soundsVolume.InvokeValueChanged();
+            this.masterVolume.InvokeValueChanged();
+            this.musicVolume.InvokeValueChanged();
+            this.soundsVolume.InvokeValueChanged();
         }
     }
 }
