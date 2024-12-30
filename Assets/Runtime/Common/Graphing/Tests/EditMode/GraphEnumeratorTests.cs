@@ -6,10 +6,10 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
 {
     [TestFixture]
     [Category(TestCategories.Integration)]
-    public class SearchTests
+    public class GraphEnumeratorTests
     {
         private MockGraph<string, int> graph;
-        private BreadthFirstGraphSearcher<string, int> searcher;
+        private BreadthFirstGraphEnumerator enumerator;
         private INode<string, int> foo;
         private INode<string, int> bar;
         private INode<string, int> baz;
@@ -27,7 +27,7 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
         public void SetUp()
         {
             this.graph = new();
-            this.searcher = new(this.graph);
+            this.enumerator = new();
 
             this.foo = new Node<string, int>(this.graph, "foo");
             this.bar = new Node<string, int>(this.graph, "bar");
@@ -43,9 +43,9 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
             this.bazqux = new Edge<string, int>(this.graph, this.baz, this.qux, 1);
             this.quxquux = new Edge<string, int>(this.graph, this.qux, this.quux, 1);
         }
-
+        
         [Test]
-        public void GivenAGraphWithNeighboringNodes_WhenSearched_ItShouldReturnNeighborNodesFirst()
+        public void GivenAGraphWithNeighboringNodes_WhenEnumerated_ItShouldEnumerateInTheCorrectOrder()
         {
             /* ARRANGE */
             this.graph.AddNode(this.foo);
@@ -63,7 +63,7 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
             this.graph.AddEdge(this.quxquux);
             
             /* ACT */
-            var result = this.searcher.Search(this.foo, this.quux);
+            var actual = this.enumerator.Enumerate(this.graph, this.foo);
 
             /* ASSERT */
             var expected = new[]
@@ -75,7 +75,7 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
                 this.quux,
             };
             
-            Assert.That(result, Is.EquivalentTo(expected));
+            Assert.AreEqual(expected, actual);
         }
     }
 }

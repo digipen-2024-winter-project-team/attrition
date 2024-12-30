@@ -32,9 +32,9 @@ namespace Attrition.Common.Graphing
 
         public void TraverseGraph()
         {
-            var searcher = new GraphSearcher<string, float>(this.graph);
+            var enumerator = new BreadthFirstGraphEnumerator();
             
-            foreach (var node in searcher.Search(this.foo, this.baz))
+            foreach (var node in enumerator.Enumerate(this.graph, this.foo))
             {
                 Debug.Log($"{node.Value} :: Has {node.GetNeighbors().Count()} neighbors.");
             }
