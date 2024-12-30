@@ -34,7 +34,7 @@ namespace Attrition.Common.Graphing
         {
             var searcher = new GraphSearcher<string, float>(this.graph);
             
-            foreach (var node in searcher.Search(this.graph, this.foo, this.baz))
+            foreach (var node in searcher.Search(this.foo, this.baz))
             {
                 Debug.Log($"{node.Value} :: Has {node.GetNeighbors().Count()} neighbors.");
             }

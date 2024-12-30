@@ -4,6 +4,7 @@ namespace Attrition.Common.Graphing
 {
     public interface IGraphSearcher<TNodeData, TEdgeData>
     {
-        IEnumerable<INode<TNodeData, TEdgeData>> Search(IGraph<TNodeData, TEdgeData> graph, INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to);
+        IEnumerable<INode<TNodeData, TEdgeData>> Search<TNode>(TNode from, TNode to)
+            where TNode : INode<TNodeData, TEdgeData>;
     }
 }

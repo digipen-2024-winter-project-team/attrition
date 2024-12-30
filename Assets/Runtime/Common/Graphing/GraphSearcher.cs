@@ -12,7 +12,8 @@ namespace Attrition.Common.Graphing
             this.graph = graph;
         }
         
-        public IEnumerable<INode<TNodeData, TEdgeData>> Search(IGraph<TNodeData, TEdgeData> graph, INode<TNodeData, TEdgeData> from, INode<TNodeData, TEdgeData> to)
+        public IEnumerable<INode<TNodeData, TEdgeData>> Search<TNode>(TNode from, TNode to) 
+            where TNode : INode<TNodeData, TEdgeData> 
         {
             throw new NotImplementedException();
         }
