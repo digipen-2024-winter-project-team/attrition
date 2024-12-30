@@ -164,5 +164,29 @@ namespace Attrition.Ecosystem
                 unresolvedPoints.Remove(resolving);
             }
         }
+
+        private void BuildGraph()
+        {
+            var graph = new DungeonGraph();
+
+            foreach (var room in rooms)
+            {
+                graph.AddNode(new DungeonRoomNode(graph, room.sceneReference));
+            }
+
+            foreach (var room in rooms)
+            {
+                var from = (DungeonRoomNode)graph.Nodes
+                    .First(node => node.Value == room.sceneReference);
+                
+                foreach (var point in room.points)
+                {
+                    var to = (DungeonRoomNode)graph.Nodes
+                        .First(node => node.Value == point.connection.room.sceneReference);
+
+                    graph.AddEdge(new DungeonEdge(graph, from, to));
+                }
+            }
+        }
     }
 }
