@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Runtime/Common/SerializedEvents/Editor/SerializedEventEditor.uss?fileID=7433441132597879392&amp;guid=cee16a587db5184479be2570584c2d20&amp;type=3#SerializedEventEditor" />
+    <engine:VisualElement name="container" style="flex-grow: 1;">
+        <editor:PropertyField name="property-field" binding-path="invoked" />
+    </engine:VisualElement>
+</engine:UXML>

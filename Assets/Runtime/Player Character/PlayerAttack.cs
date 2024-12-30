@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Attrition.Common.Physics;
 using Attrition.DamageSystem;
+using UnityEngine.VFX;
 
 namespace Attrition.PlayerCharacter
 {
@@ -12,6 +13,7 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private CombatTeam team;
         [SerializeField] private float damageValue;
         [SerializeField] private InputActionReference attackAction;
+        [SerializeField] private VisualEffect attackParticle;
         
         private void Update()
         {
@@ -23,11 +25,13 @@ namespace Attrition.PlayerCharacter
 
         private void Attack()
         {
+            attackParticle.Play();
             foreach (var collision in hitboxCollision.Colliders)
             {
                 if (Damageable.Find(collision.gameObject, out var damageable))
                 {
                     var results = damageable.TakeDamage(new(damageValue, gameObject, team));
+                    
                 }
             }
         }

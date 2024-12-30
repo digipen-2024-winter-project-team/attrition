@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Runtime/Scenes/BOOT.unity
-    guid: a39ef1ee4323cb24084c1d95b842a929
+    path: Assets/Runtime/Scenes/Main Menu.unity
+    guid: c1f5996e9d5b14375be4a72cdb098698
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Scene Selection.unity
+    guid: 2eee10d054e0c42b282e8f8a7eb251c5
+  - enabled: 1
+    path: Assets/Runtime/Scenes/CharacterSelection.unity
+    guid: bf205407402209d4fa14717135c59a91
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Sandbox.unity
+    guid: a88daebfbf43ca540825f2811b1ebc03
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
