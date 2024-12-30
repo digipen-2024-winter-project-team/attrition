@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Attrition.Common.Physics
@@ -21,7 +19,9 @@ namespace Attrition.Common.Physics
         }
 
         public static readonly Layer
+            Default = new("Default"),
             Ground = new("Ground"),
-            Player = new("Player");
+            Player = new("Player"),
+            Targetable = new("Targetable");
     }
 }

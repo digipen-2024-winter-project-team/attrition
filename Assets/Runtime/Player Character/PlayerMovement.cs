@@ -53,6 +53,8 @@ namespace Attrition.PlayerCharacter
             set => Velocity = slopeRotation * value;
         }
 
+        public float SpeedPercent => new Vector2(this.Velocity.x, this.Velocity.z).magnitude / this.walkSpeed;
+
         private void Start()
         {
             InitializeStateMachine();

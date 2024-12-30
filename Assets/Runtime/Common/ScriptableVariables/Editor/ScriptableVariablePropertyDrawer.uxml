@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Runtime/Common/ScriptableVariables/Editor/ScriptableVariablePropertyDrawer.uss?fileID=7433441132597879392&amp;guid=2b45cb73a8ef44c6b08d7fde492b345f&amp;type=3#ScriptableVariablePropertyDrawer" />
+    <engine:VisualElement name="container" class="container">
+        <editor:PropertyField name="property-field" class="property-field" />
+        <engine:DropdownField name="dropdown-field" class="dropdown-field" />
+        <engine:Button selectable="true" text="Create" name="create-button" class="button" />
+    </engine:VisualElement>
+</engine:UXML>
