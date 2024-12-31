@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135b26ff390dd4c2e9fdd5d657e9173b, type: 3}
+  m_Name: Character Class Value Assigner
+  m_EditorClassIdentifier: 
+  values: "\tStandard\tKnight\tPrisoner\tPlagued\tBlacksmith\tPriest\nHitpoints\t5\t8\t3\t1\t5\t5\nDamage
+    Mitigation\t15\t40\t25\t40\t20\t15\nWalk Speed\t8\t5\t10\t6\t8\t9\nAttack Damage\t5\t5\t5\t10\t10\t3\nAttack
+    Speed\t0.5\t0.5\t1.6\t0.5\t2\t0.2\nDamage Zone Length\t3\t3\t6\t4\t4\t2\nDamage
+    Zone Width\t1\t1\t2\t1\t2\t1\nWeapon Power\t30\t30\t37.5\t80\t40\t30\nDodge Distance\t3\t1.5\t5\t1\t3\t4\nDodge
+    Recharge\t1\t2\t0.7\t1\t1.5\t0.5"
+  classes:
+  - {fileID: 11400000, guid: 9f58a769478a7ae49874d5bc4dcc0451, type: 2}
+  - {fileID: 11400000, guid: 1f600169d846ddf4084fa51085e7e716, type: 2}
+  - {fileID: 11400000, guid: 49d4289ed466a6c4b998a1ab885de3b2, type: 2}
+  - {fileID: 11400000, guid: 79db479956f3b61439470e09c82d843e, type: 2}
+  - {fileID: 11400000, guid: c597751f79e7df5489b33fcccc1a0350, type: 2}
+  valueMappings:
+  - dataInputName: Hitpoints
+    scriptVariableName: hitpoints
+  - dataInputName: Damage Mitigation
+    scriptVariableName: damageMitigation
+  - dataInputName: Walk Speed
+    scriptVariableName: walkSpeed
+  - dataInputName: Attack Damage
+    scriptVariableName: attackDamage
+  - dataInputName: Attack Speed
+    scriptVariableName: attackSpeed
+  - dataInputName: Damage Zone Length
+    scriptVariableName: damageZoneLength
+  - dataInputName: Damage Zone Width
+    scriptVariableName: damageZoneWidth
+  - dataInputName: Dodge Distance
+    scriptVariableName: dodgeDistance
+  - dataInputName: Dodge Recharge
+    scriptVariableName: dodgeRecharge

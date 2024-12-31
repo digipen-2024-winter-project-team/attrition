@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   displayName: Knight
-  model:
-    Mesh: {fileID: 919132149155446097, guid: 7af6ed8239dc68f42995740e141f7931, type: 3}
-    Material: {fileID: 2100000, guid: c14898b73d9430f44b136d61b2c4a12b, type: 2}
-    AnimatorController: {fileID: 9100000, guid: 43af94ee851a8df4284827aeeeec45f3, type: 2}
+  hitpoints: 8
+  damageMitigation: 40
+  walkSpeed: 5
+  attackDamage: 5
+  attackSpeed: 0.5
+  damageZoneLength: 3
+  damageZoneWidth: 1
+  dodgeDistance: 1.5
+  dodgeRecharge: 2

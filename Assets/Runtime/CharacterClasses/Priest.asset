@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Priest
   m_EditorClassIdentifier: 
   displayName: Priest
-  model:
-    Mesh: {fileID: 919132149155446097, guid: 7af6ed8239dc68f42995740e141f7931, type: 3}
-    Material: {fileID: 2100000, guid: 87ca311e01281804f89453b77469f32b, type: 2}
-    AnimatorController: {fileID: 9100000, guid: 43af94ee851a8df4284827aeeeec45f3, type: 2}
+  hitpoints: 5
+  damageMitigation: 15
+  walkSpeed: 9
+  attackDamage: 3
+  attackSpeed: 0.2
+  damageZoneLength: 2
+  damageZoneWidth: 1
+  dodgeDistance: 4
+  dodgeRecharge: 0.5
