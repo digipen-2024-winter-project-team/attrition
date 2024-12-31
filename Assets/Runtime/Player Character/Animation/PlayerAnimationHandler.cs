@@ -27,12 +27,15 @@ namespace Attrition.Player_Character.Animation
             {
                 return;
             }
-
-            var speed = this.mover.SpeedPercent;
-            var isMoving = speed > 0f;
+            
+            var speedPercent = this.mover.DirectionalSpeedPercent;
+            var speedForward = speedPercent.y;
+            var speedRight = speedPercent.x;
+            var isMoving = speedPercent.magnitude > 0f;
             
             this.animator.SetBool("IsMoving", isMoving);
-            this.animator.SetFloat("Speed", speed);
+            this.animator.SetFloat("SpeedForward", speedForward);
+            this.animator.SetFloat("SpeedRight", speedRight);
         }
     }
 }
