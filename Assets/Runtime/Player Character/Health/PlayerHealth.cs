@@ -1,4 +1,5 @@
 using System;
+using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.DamageSystem;
 using TMPro;
 using UnityEngine;
@@ -18,26 +19,24 @@ namespace Attrition.PlayerCharacter.Health
         [SerializeField] private float deathTimerLossPerHitpoint;
         [SerializeField] private UnityEvent<DamageInfo> enteringDying;
         [SerializeField] private UnityEvent died;
-        [Header("Debug UI")]
-        [SerializeField] private RectTransform uiParent;
-        [SerializeField] private TextMeshProUGUI healthUI;
-        [SerializeField] private Transform uiAnchor;
+        [Header("References")]
+        [SerializeField] private FloatVariable hitpoints;
+        [SerializeField] private FloatVariable deathTimer;
+        [SerializeField] private BoolVariable dead;
+        [SerializeField] private BoolVariable invincible;
         
         private float invincibilityExpiration;
-        private float hitpoints;
-        private float deathTimer;
         
-        public bool Invincible => Time.time < invincibilityExpiration;
-
-        public bool Dead => hitpoints == 0 && deathTimer == 0;
+        public bool Dead => dead.Value;
         
         public void AddInvincibilityTime(float duration) =>
             invincibilityExpiration = Mathf.Max(invincibilityExpiration, Time.time + duration);
         
         private void Awake()
         {
-            hitpoints = maxHitpoints;
-            deathTimer = deathTimerDuration;
+            hitpoints.Value = maxHitpoints;
+            deathTimer.Value = deathTimerDuration;
+            dead.Value = false;
             
             damageable.Damaged += OnDamaged;
         }
@@ -46,29 +45,29 @@ namespace Attrition.PlayerCharacter.Health
         {
             if (Dead) return;
             
-            float value = damageInfo.Receive(Invincible, team, gameObject);
+            float value = damageInfo.Receive(invincible.Value, team, gameObject);
 
-            if (Invincible)
+            if (invincible.Value)
             {
                 return;
             }
 
             AddInvincibilityTime(invincibilityDuration);
             
-            if (hitpoints > 0)
+            if (hitpoints.Value > 0)
             {
-                hitpoints = Mathf.MoveTowards(hitpoints, 0, value);
+                hitpoints.Value = Mathf.MoveTowards(hitpoints.Value, 0, value);
 
-                if (hitpoints == 0)
+                if (hitpoints.Value == 0)
                 {
                     enteringDying.Invoke(damageInfo);
                 }
             }
             else
             {
-                deathTimer = Mathf.MoveTowards(deathTimer, 0, value * deathTimerLossPerHitpoint);
+                deathTimer.Value = Mathf.MoveTowards(deathTimer.Value, 0, value * deathTimerLossPerHitpoint);
 
-                if (deathTimer == 0)
+                if (deathTimer.Value == 0)
                 {
                     Die();
                 }
@@ -77,37 +76,26 @@ namespace Attrition.PlayerCharacter.Health
 
         private void Update()
         {
-            if (hitpoints == 0 && deathTimer > 0)
+            if (hitpoints.Value == 0 && deathTimer.Value > 0)
             {
-                deathTimer = Mathf.MoveTowards(deathTimer, 0, Time.deltaTime);
+                deathTimer.Value = Mathf.MoveTowards(deathTimer.Value, 0, Time.deltaTime);
 
-                if (deathTimer == 0)
+                if (deathTimer.Value == 0)
                 {
                     Die();
                 }
             }
 
-            string health = hitpoints > 0
-                ? $"{hitpoints:0} HP"
-                : $"{deathTimer:0.00}s";
-            
-            healthUI.text = $"<mspace=0em>{health}\n{(Invincible ? "Invincible" : "Vulnerable")}";
-            healthUI.color = Invincible
-                ? Color.red
-                : Color.white;
+            invincible.Value = Time.time < invincibilityExpiration;
         }
 
         public void Die()
         {
-            hitpoints = 0;
-            deathTimer = 0;
+            hitpoints.Value = 0;
+            deathTimer.Value = 0;
+            dead.Value = true;
             
             died.Invoke();
-        }
-
-        private void LateUpdate()
-        {
-            uiParent.localPosition = GetUVPosition(uiAnchor.position) * ((RectTransform)uiParent.parent).rect.size;
         }
     }
 }
