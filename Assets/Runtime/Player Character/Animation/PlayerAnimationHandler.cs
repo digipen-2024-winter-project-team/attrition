@@ -1,4 +1,5 @@
-﻿using Attrition.PlayerCharacter;
+﻿using System;
+using Attrition.PlayerCharacter;
 using UnityEngine;
 
 namespace Attrition.Player_Character.Animation
@@ -14,6 +15,11 @@ namespace Attrition.Player_Character.Animation
             this.SetAnimator(firstEnabledAnimator);
 
             this.mover = this.GetComponentInParent<PlayerMovement>();
+        }
+
+        private void OnEnable()
+        {
+            throw new NotImplementedException();
         }
 
         public void SetAnimator(Animator animator)
