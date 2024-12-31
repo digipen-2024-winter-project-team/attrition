@@ -53,8 +53,23 @@ namespace Attrition.PlayerCharacter
             set => Velocity = slopeRotation * value;
         }
 
+        private Vector3 LocalSlopeVelocity
+        {
+            get => transform.InverseTransformDirection(SlopeVelocity);
+            set => SlopeVelocity = transform.TransformDirection(value);
+        }
+        
         public float SpeedPercent => new Vector2(this.Velocity.x, this.Velocity.z).magnitude / this.walkSpeed;
 
+        public Vector2 DirectionalSpeedPercent
+        {
+            get
+            {
+                Vector3 localSlopeVelocity = LocalSlopeVelocity;
+                return new Vector2(localSlopeVelocity.x, localSlopeVelocity.z) / walkSpeed;
+            }
+        }
+        
         private void Start()
         {
             InitializeStateMachine();
