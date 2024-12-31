@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Mime;
 using Attrition.Common.Physics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Attrition.Common;
+using Attrition.Common.SerializedEvents;
 using UnityEngine.Serialization;
 
 namespace Attrition.PlayerCharacter
@@ -30,6 +32,8 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private CollisionAggregate ground;
         [SerializeField] private float maxFallWalkSpeed;
         [SerializeField] private float fallWalkAcceleration;
+        [Header("State Machine")]
+        [SerializeField] private SerializedEvent<ValueChangeArgs<MoveState>> stateChanged;
         
         private Vector3 cameraForward;
         private Vector2 previousMoveInput;
@@ -37,9 +41,12 @@ namespace Attrition.PlayerCharacter
         private float dodgeCooldownExpiration;
 
         private Vector3 moveDirection;
-        public Vector3 MoveDirection => moveDirection;
-
         private Quaternion slopeRotation;
+
+        #region Helpers
+        
+        
+        public Vector3 MoveDirection => moveDirection;
 
         private Vector3 Velocity
         {
@@ -69,6 +76,22 @@ namespace Attrition.PlayerCharacter
                 return new Vector2(localSlopeVelocity.x, localSlopeVelocity.z) / walkSpeed;
             }
         }
+
+        private Dictionary<IState, MoveState> moveStates;
+        public enum MoveState
+        {
+            Grounded,
+            Falling,
+            Dodging,
+        }
+
+        public IReadOnlySerializedEvent<ValueChangeArgs<MoveState>> MoveStateChanged => stateChanged;
+        
+        public MoveState CurrentMoveState => moveStates[stateMachine.currentState];
+        
+        #endregion
+        
+        #region Behavior
         
         private void Start()
         {
@@ -137,6 +160,8 @@ namespace Attrition.PlayerCharacter
             }
         }
         
+        #endregion
+        
         #region State Machine
         
         private Grounded grounded;
@@ -149,6 +174,13 @@ namespace Attrition.PlayerCharacter
             grounded = new(this);
             falling = new(this);
             dodging = new(this);
+
+            moveStates = new()
+            {
+                { grounded, MoveState.Grounded },
+                { falling, MoveState.Falling },
+                { dodging, MoveState.Dodging },
+            };
 
             TransitionDelegate
 
@@ -179,6 +211,17 @@ namespace Attrition.PlayerCharacter
                     new(falling, canFall),
                 }},
             });
+
+            stateMachine.OnTransition += (from, to) =>
+            {
+                var args = new ValueChangeArgs<MoveState>
+                {
+                    From = moveStates[from],
+                    To = moveStates[to],
+                };
+                
+                stateChanged.Invoke(args);
+            };
         }
         
         private class State : State<PlayerMovement>
