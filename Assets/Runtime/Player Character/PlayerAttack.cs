@@ -1,9 +1,11 @@
-using Attrition.Common.Physics;
-using Attrition.DamageSystem;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Attrition.Common.Physics;
+using Attrition.DamageSystem;
+using UnityEngine.VFX;
 
-namespace Attrition.Player_Character
+namespace Attrition.PlayerCharacter
 {
     public class PlayerAttack : MonoBehaviour
     {
@@ -11,22 +13,25 @@ namespace Attrition.Player_Character
         [SerializeField] private CombatTeam team;
         [SerializeField] private float damageValue;
         [SerializeField] private InputActionReference attackAction;
+        [SerializeField] private VisualEffect attackParticle;
         
         private void Update()
         {
-            if (this.attackAction.action.WasPerformedThisFrame())
+            if (attackAction.action.WasPerformedThisFrame())
             {
-                this.Attack();
+                Attack();
             }
         }
 
         private void Attack()
         {
-            foreach (var collision in this.hitboxCollision.Colliders)
+            attackParticle.Play();
+            foreach (var collision in hitboxCollision.Colliders)
             {
                 if (Damageable.Find(collision.gameObject, out var damageable))
                 {
-                    var results = damageable.TakeDamage(new(this.damageValue, this.gameObject, this.team));
+                    var results = damageable.TakeDamage(new(damageValue, gameObject, team));
+                    
                 }
             }
         }
