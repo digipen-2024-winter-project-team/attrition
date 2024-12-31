@@ -1914,7 +1914,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -7164,7 +7164,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -11451,7 +11451,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12660,7 +12660,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12781,7 +12781,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -13167,7 +13167,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -13641,7 +13641,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -17876,7 +17876,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -19817,7 +19817,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -20642,7 +20642,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -25888,7 +25888,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -26531,31 +26531,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.439001
+      value: 0.901
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.44
+      value: 12.18
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.445551
+      value: -3.904449
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8850307
+      value: 0.9063079
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3665917
+      value: 0.42261827
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.26509264
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10980496
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308272930204121767, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_Name
@@ -27368,7 +27368,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -34495,7 +34495,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -34746,7 +34746,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -35420,7 +35420,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -41802,7 +41802,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -43176,7 +43176,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -43649,7 +43649,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -45169,7 +45169,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
