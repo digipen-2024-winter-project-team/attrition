@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 9153143225014724169}
   - component: {fileID: 4784414983402654848}
   - component: {fileID: 5300251761339550552}
+  - component: {fileID: 3576589496516295928}
   m_Layer: 0
   m_Name: Grot
   m_TagString: Untagged
@@ -352,9 +353,6 @@ MonoBehaviour:
   m_Graph: {fileID: -7988501657815218245, guid: b5268ba15192f6147a5157ef755e9df9, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6321703028543979919
-  - rid: 6321703187234685258
-  - rid: 6321703239751566200
-  - rid: 6321703239998242921
   references:
     version: 2
     RefIds:
@@ -366,30 +364,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 3522784037944823944}
-    - rid: 6321703187234685258
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7592835909098985269
-          m_Value1: 2995872840194301350
-        Name: Child
-        m_Value: {fileID: 62966556222933470}
-    - rid: 6321703239751566200
-      type: {class: 'BlackboardVariable`1[[Attrition.DamageSystem.SimpleDamageSource, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 12949727007872322406
-          m_Value1: 1061870935131673117
-        Name: AttackHitbox
-        m_Value: {fileID: 7010867848023119955}
-    - rid: 6321703239998242921
-      type: {class: 'BlackboardVariable`1[[Attrition.CombatTargeting.TargetDetection, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 3064666280217182413
-          m_Value1: 7309565896357847967
-        Name: TargetDetection
-        m_Value: {fileID: 5300251761339550552}
 --- !u!114 &9153143225014724169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +449,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   maxRaycastHits: 10
+--- !u!114 &3576589496516295928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522784037944823944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb1a3ebfdcf4bd092e0b9e3875c5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 11400000, guid: e26b755cf305aaa46b4331257965d882, type: 2}
 --- !u!1 &4880270332616159605
 GameObject:
   m_ObjectHideFlags: 0
