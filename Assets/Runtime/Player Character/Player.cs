@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using Attrition.PlayerCharacter.Health;
+using UnityEngine.Serialization;
 
 namespace Attrition.PlayerCharacter
 {
@@ -12,6 +13,7 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private new Rigidbody rigidbody;
         [SerializeField] private new CapsuleCollider collider;
         [SerializeField] private PlayerHealth health;
+        [SerializeField] private PlayerAttack attack;
         
         public class Component : MonoBehaviour
         {
@@ -24,6 +26,7 @@ namespace Attrition.PlayerCharacter
             protected Rigidbody Rigidbody => player.rigidbody;
             protected Collider Collider => player.collider;
             protected PlayerHealth Health => player.health;
+            protected PlayerAttack Attack => player.attack;
             
             protected Vector2 GetUVPosition(Vector3 position) =>
                 (Vector2)CinemachineBrain.OutputCamera.WorldToViewportPoint(position) - Vector2.one / 2f;
