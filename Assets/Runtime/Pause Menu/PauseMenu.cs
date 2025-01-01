@@ -1,11 +1,13 @@
 using System;
 using Attrition.Common;
+using Attrition.Common.ScriptableVariables.DataTypes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
-namespace Attrition
+namespace Attrition.PauseMenu
 {
     public class PauseMenu : MonoBehaviour
     {
@@ -18,35 +20,54 @@ namespace Attrition
         [SerializeField] private GameObject quitConfirmationFirstSelected;
         [SerializeField] private GameObject quitButton;
         
-        private bool paused;
+        [SerializeField] private BoolVariable paused;
+        [SerializeField] private BoolVariable playerDead;
+
+        [SerializeField] private InputActionReference cancel;
 
         private void Start()
         {
             content.SetActive(false);
             quitConfirmationContent.SetActive(false);
+            paused.Value = false;
         }
 
         private void OnEnable()
         {
-            pause.action.performed += OnPaused;  
+            pause.action.performed += OnPaused;
+            cancel.action.performed += OnCancelPerformed;
         }
 
         private void OnDisable()
         {
             pause.action.performed -= OnPaused;
+            cancel.action.performed -= OnCancelPerformed;
+        }
+
+        private void OnCancelPerformed(InputAction.CallbackContext context)
+        {
+            if (quitConfirmationContent.activeSelf)
+            {
+                QuitCancel();
+            }
         }
 
         private void OnPaused(InputAction.CallbackContext obj)
         {
-            Pause(!paused);
+            if (playerDead.Value)
+            {
+                return;
+            }
+            
+            Pause(!paused.Value);
             EventSystem.current.SetSelectedGameObject(firstSelected);
         }
 
         public void Pause(bool pause)
         {
-            paused = pause;
+            paused.Value = pause;
 
-            if (paused)
+            if (paused.Value)
             {
                 Time.timeScale = 0;
                 content.SetActive(true);
@@ -54,6 +75,7 @@ namespace Attrition
             else
             {
                 Time.timeScale = 1;
+                quitConfirmationContent.SetActive(false);
                 content.SetActive(false);
             }
         }

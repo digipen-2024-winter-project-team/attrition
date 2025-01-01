@@ -6,7 +6,7 @@ namespace Attrition.Common.ScriptableVariables.ComponentTypes
     /// A ScriptableVariable representing a reference to a Unity Camera.
     /// </summary>
     [CreateAssetMenu(menuName = "Scriptables/Variables/Camera", fileName = "New Camera Variable")]
-    public class CameraVariable : ScriptableVariable<Camera>
+    public class CameraVariable : ScriptableVariable<UnityEngine.Camera>
     {
     }
 }
