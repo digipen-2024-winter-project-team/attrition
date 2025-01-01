@@ -22622,7 +22622,10 @@ PrefabInstance:
     - {fileID: 2481799154004960604, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3522784037944823944, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1178705171}
   m_SourcePrefab: {fileID: 100100000, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
 --- !u!1 &1109720922
 GameObject:
@@ -24456,6 +24459,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3566341, y: 8, z: 2.0255826}
   m_Center: {x: 0.9864483, y: 3.5, z: -0.29533994}
+--- !u!1 &1178705163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3522784037944823944, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
+  m_PrefabInstance: {fileID: 1092676125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1178705171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178705163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb1a3ebfdcf4bd092e0b9e3875c5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 0}
 --- !u!43 &1183725973
 Mesh:
   m_ObjectHideFlags: 0
@@ -26529,6 +26550,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129001209810746199, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129001209810746199, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129001209810746199, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129001209810746199, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.439001
