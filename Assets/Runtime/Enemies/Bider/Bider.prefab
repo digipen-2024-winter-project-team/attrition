@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 953982859918111243}
   - component: {fileID: 3521482130685764117}
   - component: {fileID: 6021637029404295640}
+  - component: {fileID: 3152181062224880799}
   m_Layer: 0
   m_Name: Bider
   m_TagString: Untagged
@@ -668,8 +669,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -694,10 +695,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   damageable: {fileID: 5074143929289451273}
-  maxHitpoints: 4
+  maxHitpoints: 6
   startWithMaxHitpoints: 1
   invincibilityDuration: 0
-  team: {fileID: 11400000, guid: 2835a240235b8ca489aae2ec4949811c, type: 2}
+  team: {fileID: 11400000, guid: bda91972b4175d540af5d9357d81de6e, type: 2}
   destroyed:
     m_PersistentCalls:
       m_Calls:
@@ -831,6 +832,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: {fileID: 11400000, guid: 2835a240235b8ca489aae2ec4949811c, type: 2}
+--- !u!136 &3152181062224880799
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590839351601694145}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: -0.15}
 --- !u!1 &4738758365048427272
 GameObject:
   m_ObjectHideFlags: 0
