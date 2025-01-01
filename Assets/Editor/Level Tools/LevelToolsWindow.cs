@@ -6,6 +6,7 @@ using Attrition.CameraTriggers;
 using Attrition.DamageSystem;
 using Attrition.Ecosystem;
 using Attrition.PlayerCharacter;
+using Attrition.PlayerCharacter.Health;
 using Unity.Cinemachine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
@@ -38,7 +39,9 @@ namespace Attrition.LevelTools
             }
         }
 
-        private const string startWithFullBrightKey = "StartWithFullbBright";
+        private const string 
+            startWithFullBrightKey = "StartWithFullbBright",
+            playerTakeDamageValueKey = "PlayerTakeDamageValue";
         private GameObject fullbrightLight;
 
         private void SpawnFullbrightLight()
@@ -112,18 +115,29 @@ namespace Attrition.LevelTools
 
             EditorGUILayout.Space();
 
+            using (var changeCheck = new EditorGUI.ChangeCheckScope())
+            {
+                float value = EditorGUILayout.FloatField("Player Take Damage Value",
+                    EditorPrefs.GetFloat(playerTakeDamageValueKey, 1));
+
+                if (changeCheck.changed)
+                {
+                    EditorPrefs.SetFloat(playerTakeDamageValueKey, value);
+                }
+            }
+            
             if (GUILayout.Button("Player Take Damage"))
             {
-                PlayerTakeDamage();
-                
-                void PlayerTakeDamage()
-                {
-                    var player = FindFirstObjectByType<Player>();
+                var player = FindFirstObjectByType<Player>();
+                if (player != null)
+                    player.GetComponent<Damageable>()
+                        .TakeDamage(new(EditorPrefs.GetFloat(playerTakeDamageValueKey, 1), null, null));
+            }
 
-                    if (player == null) return;
-
-                    player.GetComponent<Damageable>().TakeDamage(new(1, null, null));
-                }
+            if (GUILayout.Button("Player Die"))
+            {
+                var player = FindFirstObjectByType<Player>();
+                if (player != null) player.GetComponent<PlayerHealth>().Die();
             }
         }
     }

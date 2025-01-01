@@ -2,9 +2,12 @@ using System;
 using System.Linq;
 using Attrition.Common;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
-namespace Attrition.DebugSceneSelector
+namespace Attrition.Debug_Scene_Selector
 {
     public class SceneSelectionMenu : MonoBehaviour
     {
@@ -13,6 +16,7 @@ namespace Attrition.DebugSceneSelector
         [SceneAsset]
         [SerializeField] private string mainMenuScene;
         [SerializeField] private SceneOptionInfo[] sceneOptions;
+        [SerializeField] private InputActionReference cancel;
         
         [Serializable]
         private struct SceneOptionInfo
@@ -22,18 +26,33 @@ namespace Attrition.DebugSceneSelector
             public string description;
         }
 
-        public string[] GetSceneNames() => sceneOptions.Select(sceneOption => sceneOption.scene).ToArray(); 
-        
+        public string[] GetSceneNames() => this.sceneOptions.Select(sceneOption => sceneOption.scene).ToArray();
+
+        private void OnEnable()
+        {
+            cancel.action.performed += OnCancelPerformed;
+        }
+
+        private void OnDisable()
+        {
+            cancel.action.performed -= OnCancelPerformed;
+        }
+
+        private void OnCancelPerformed(InputAction.CallbackContext context)
+        {
+            ReturnToMain();
+        }
+
         public void ReturnToMain()
         {
-            SceneManager.LoadScene(mainMenuScene);
+            SceneManager.LoadScene(this.mainMenuScene);
         }
 
         private void Start()
         {
-            foreach (var sceneOptionInfo in sceneOptions)
+            foreach (var sceneOptionInfo in this.sceneOptions)
             {
-                var ui = Instantiate(sceneOptionButtonPrefab, optionsParent);
+                var ui = Instantiate(this.sceneOptionButtonPrefab, this.optionsParent);
                 ui.button.onClick.AddListener(() => SceneManager.LoadScene(sceneOptionInfo.scene));
                 ui.sceneName.text = sceneOptionInfo.scene;
                 ui.description.text = sceneOptionInfo.description;

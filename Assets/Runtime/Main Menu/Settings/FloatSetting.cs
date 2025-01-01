@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Attrition.MainMenu.Settings 
+namespace Attrition.Main_Menu.Settings 
 {
     [CreateAssetMenu(menuName = "Attrition/Settings/Float")]
     public class FloatSetting : Setting<float> 

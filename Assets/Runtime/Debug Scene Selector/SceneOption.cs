@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Attrition.DebugSceneSelector
+namespace Attrition.Debug_Scene_Selector
 {
     public class SceneOption : MonoBehaviour
     {

@@ -25,7 +25,8 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private SmartCurve dodgeSpeedCurve;
         [SerializeField] private float dodgeInvincibilityDuration;
         [SerializeField] private float dodgeCooldownDuration;
-        [Header("Falling")] [SerializeField] private float gravity;
+        [Header("Falling")]
+        [SerializeField] private float gravity;
         [SerializeField] private float maxFallSpeed;
         [SerializeField] private CollisionAggregate ground;
         [SerializeField] private float maxFallWalkSpeed;
@@ -53,6 +54,8 @@ namespace Attrition.PlayerCharacter
             set => Velocity = slopeRotation * value;
         }
 
+        public float SpeedPercent => new Vector2(this.Velocity.x, this.Velocity.z).magnitude / this.walkSpeed;
+
         private void Start()
         {
             InitializeStateMachine();
@@ -60,6 +63,12 @@ namespace Attrition.PlayerCharacter
 
         private void Update()
         {
+            if (Health.Dead)
+            {
+                Velocity = Vector3.zero;
+                return;
+            }
+            
             UpdatePhysicalState();
             UpdateInput();
 
@@ -74,10 +83,6 @@ namespace Attrition.PlayerCharacter
                 transform.rotation, Mathf.Infinity, GameInfo.Ground.Mask) 
                 ? Quaternion.FromToRotation(Vector3.up, hit.normal)
                 : Quaternion.identity;
-            
-            Debug.DrawRay(hit.point, hit.normal, Color.yellow);
-            
-            Debug.DrawRay(transform.position, SlopeVelocity, Color.green);
         }
 
         private void UpdateInput()
@@ -139,7 +144,7 @@ namespace Attrition.PlayerCharacter
                 canFall = () => !ground.Touching,
 
                 canDodge = () => ground.Touching 
-                                 && dodge.action.WasPerformedThisFrame() 
+                                 && dodge.action.WasPerformedThisFrame() && !Paused.Value
                                  && Time.time > dodgeCooldownExpiration,
                 canEndDodge = () => dodgeSpeedCurve.Done;
 
@@ -182,7 +187,7 @@ namespace Attrition.PlayerCharacter
                 Vector3 velocity = context.SlopeVelocity;
                 Vector2 velocity2 = new(velocity.x, velocity.z);
                 Vector2 input = new Vector2(context.moveDirection.x, context.moveDirection.z) *
-                                (context.movement.action.IsPressed() ? 1 : 0);
+                                (context.movement.action.IsPressed() && !context.Paused.Value ? 1 : 0);
                 
                 velocity2 = Vector2.MoveTowards(velocity2, input * moveSpeed, acceleration * Time.deltaTime);
 
