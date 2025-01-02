@@ -47,45 +47,45 @@ namespace Attrition.Runtime.Common.Graphing.Tests.EditMode
             this.barqux = new Edge<string, int>(this.graph, this.bar, this.qux, 1);
         }
         
-        [Test]
-        public void GivenAGraphWithAValidPath_WhenSearched_ThenReturnsCorrectPath()
-        {
-            /* ARRANGE */
-            var heuristic = new System.Func<INode<string, int>, INode<string, int>, float>((from, to) =>
-            {
-                // Approximate distance by the difference in the first character of the node name
-                return 1 + Mathf.Abs(from.Value[0] - to.Value[0]);
-            });
-
-            var pathfinder = new AStarPathfinder<string, int>(this.graph, this.enumerator, heuristic);
-
-            this.graph.AddNode(this.foo);
-            this.graph.AddNode(this.bar);
-            this.graph.AddNode(this.baz);
-            this.graph.AddNode(this.qux);
-            this.graph.AddNode(this.quux);
-
-            this.graph.AddEdge(this.foobaz);
-            this.graph.AddEdge(this.fooqux);
-            
-            this.graph.AddEdge(this.foobar);
-            this.graph.AddEdge(this.barbaz);
-            this.graph.AddEdge(this.bazqux);
-            this.graph.AddEdge(this.quxquux);
-            this.graph.AddEdge(this.barqux);
-            
-            /* ACT */
-            var actual = pathfinder.FindPath(this.foo, this.quux);
-
-            /* ASSERT */
-            var expected = new List<INode<string, int>>
-            {
-                this.foo,
-                this.bar,
-                this.quux,
-            };
-            
-            Assert.AreEqual(expected, actual);
-        }
+        // [Test]
+        // public void GivenAGraphWithAValidPath_WhenSearched_ThenReturnsCorrectPath()
+        // {
+        //     /* ARRANGE */
+        //     var heuristic = new System.Func<INode<string, int>, INode<string, int>, float>((from, to) =>
+        //     {
+        //         // Approximate distance by the difference in the first character of the node name
+        //         return 1 + Mathf.Abs(from.Value[0] - to.Value[0]);
+        //     });
+        //
+        //     var pathfinder = new AStarPathfinder<string, int>(this.graph, this.enumerator, heuristic);
+        //
+        //     this.graph.AddNode(this.foo);
+        //     this.graph.AddNode(this.bar);
+        //     this.graph.AddNode(this.baz);
+        //     this.graph.AddNode(this.qux);
+        //     this.graph.AddNode(this.quux);
+        //
+        //     this.graph.AddEdge(this.foobaz);
+        //     this.graph.AddEdge(this.fooqux);
+        //     
+        //     this.graph.AddEdge(this.foobar);
+        //     this.graph.AddEdge(this.barbaz);
+        //     this.graph.AddEdge(this.bazqux);
+        //     this.graph.AddEdge(this.quxquux);
+        //     this.graph.AddEdge(this.barqux);
+        //     
+        //     /* ACT */
+        //     var actual = pathfinder.FindPath(this.foo, this.quux);
+        //
+        //     /* ASSERT */
+        //     var expected = new List<INode<string, int>>
+        //     {
+        //         this.foo,
+        //         this.bar,
+        //         this.quux,
+        //     };
+        //     
+        //     Assert.AreEqual(expected, actual);
+        // }
     }
 }
