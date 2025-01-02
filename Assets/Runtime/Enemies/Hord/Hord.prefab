@@ -85,8 +85,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.2, z: 0.8}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 1, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 1.5}
 --- !u!114 &7113483986496887208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,10 +903,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Graph: {fileID: -1013140041141024869, guid: dffddf6425be6e945bd4b0832d6e832a, type: 2}
-  m_BlackboardVariableOverridesList: []
+  m_BlackboardVariableOverridesList:
+  - rid: 7485633536571998225
+  - rid: 7485633536571998303
+  - rid: 7485633536571998381
+  - rid: 7485633536571998459
+  - rid: 7485633536571998537
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 7485633536571998225
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 3283939563659829147}
+    - rid: 7485633536571998303
+      type: {class: 'BlackboardVariable`1[[Attrition.DamageSystem.SimpleDamageSource, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9145654576794235474
+          m_Value1: 10894510181454402562
+        Name: Stab Damage Source
+        m_Value: {fileID: 3732898022517042086}
+    - rid: 7485633536571998381
+      type: {class: 'BlackboardVariable`1[[Attrition.CombatTargeting.TargetDetection, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17455316381562933173
+          m_Value1: 5367832729894739898
+        Name: Target Detection
+        m_Value: {fileID: 1021166886765378676}
+    - rid: 7485633536571998459
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8231428212439463070
+          m_Value1: 14705995855956920671
+        Name: Animator
+        m_Value: {fileID: 1527257195811048626}
+    - rid: 7485633536571998537
+      type: {class: 'BlackboardVariable`1[[Attrition.DamageSystem.Durability, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15242412351508739687
+          m_Value1: 1836686499592889059
+        Name: Durability
+        m_Value: {fileID: 9164179367394542951}
 --- !u!1 &3843360756920131625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1431,7 @@ Transform:
   m_GameObject: {fileID: 7324778609595796627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
