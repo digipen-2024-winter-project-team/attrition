@@ -21,18 +21,39 @@ namespace Attrition.DamageSystem
         public event Action<DamageInfo> Destroyed;
         
         private float invincibilityExpiration;
+        private bool permanentInvincibility;
 
+        public void SetInvincible(bool invincible)
+        {
+            permanentInvincibility = invincible;
+        }
+
+        public void AddInvincibilityDuration(float duration)
+        {
+            invincibilityExpiration = Mathf.Max(invincibilityExpiration, Time.time + duration);
+        }
+        
         private void Awake()
         {
             if (this.startWithMaxHitpoints)
             {
                 this.hitpoints = this.maxHitpoints;
             }
-            
+
+            permanentInvincibility = false;
+        }
+
+        private void OnEnable()
+        {
             this.damageable.Damaged += this.OnDamaged;
         }
 
-        public bool Invincible => Time.time < this.invincibilityExpiration;
+        private void OnDisable()
+        {
+            damageable.Damaged -= OnDamaged;
+        }
+
+        public bool Invincible => Time.time < this.invincibilityExpiration || permanentInvincibility;
         
         private void OnDamaged(DamageInfo damageInfo)
         {
@@ -46,7 +67,7 @@ namespace Attrition.DamageSystem
             }
 
             this.hitpoints = Mathf.MoveTowards(this.hitpoints, 0, value);
-            this.invincibilityExpiration = Time.time + this.invincibilityDuration;
+            AddInvincibilityDuration(invincibilityDuration);
 
             if (this.hitpoints == 0)
             {
