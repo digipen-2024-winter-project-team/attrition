@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collision: {fileID: 7113483986496887208}
-  damageValue: 1
+  damageValue: 5
   combatTeam: {fileID: 11400000, guid: 1579fe8e05fd0634fbb8d76ae96530e3, type: 2}
   logHits: 1
 --- !u!1 &462161876148641621
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   damageable: {fileID: 4346865600489153939}
-  maxHitpoints: 6
+  maxHitpoints: 27
   startWithMaxHitpoints: 1
   invincibilityDuration: 0
   team: {fileID: 11400000, guid: 1579fe8e05fd0634fbb8d76ae96530e3, type: 2}
@@ -882,6 +882,8 @@ MonoBehaviour:
   targetableTeamsRanking:
   - {fileID: 11400000, guid: c654721327b0e2e4ea52cfbb8f90d252, type: 2}
   - {fileID: 11400000, guid: 4ce6bbd235eb84703aa040c83cd07473, type: 2}
+  - {fileID: 11400000, guid: 2835a240235b8ca489aae2ec4949811c, type: 2}
+  - {fileID: 11400000, guid: e26b755cf305aaa46b4331257965d882, type: 2}
   detectionRadius: 5
   detectionRetentionDuration: 6
   raycastOrigin: {fileID: 17495870097771333}
