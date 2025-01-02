@@ -12,7 +12,7 @@ namespace Attrition
         [FormerlySerializedAs("inputs")] [SerializeField] private List<Input> actions;
         [SerializeField] private Color defaultColor;
         [SerializeField] private Color pressedColor;
-
+        [Header("Movement")]
         [SerializeField] private RectTransform movePosition;
         [SerializeField] private RectTransform moveArea;
         [SerializeField] private RectTransform moveLine;
@@ -22,6 +22,11 @@ namespace Attrition
         [SerializeField] private float minMovePositionSize;
         [SerializeField] private AnimationCurve movePositionSizeCurve;
 
+        [Header("Controller/Keyboard")] 
+        [SerializeField] private Sprite controllerSprite;
+        [SerializeField] private Sprite keyboardSprite;
+        [SerializeField] private Image inputMethodIcon;
+        
         private Vector2 movePositionVelocity;
         
         [Serializable]
@@ -29,6 +34,30 @@ namespace Attrition
         {
             public InputActionReference inputAction;
             public Image image;
+        }
+
+        private void OnEnable()
+        {
+            InputSystem.onActionChange += InputSystemOnActionChange;
+        }
+
+        private void OnDisable()
+        {
+            InputSystem.onActionChange -= InputSystemOnActionChange;
+        }
+
+        private void InputSystemOnActionChange(object obj, InputActionChange actionChange)
+        {
+            if (actionChange != InputActionChange.ActionPerformed) return;
+
+            if (obj is not InputAction action) return;
+            
+            string name = action.activeControl.device.name;
+            bool usingController = !(name.Equals("Keyboard") || name.Equals("Mouse"));
+
+            inputMethodIcon.sprite = usingController
+                ? controllerSprite
+                : keyboardSprite;
         }
 
         private void Update()
