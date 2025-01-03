@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3824524711023631690}
   - component: {fileID: 511844844684861562}
   - component: {fileID: 6525791887634328219}
+  - component: {fileID: 2108645679423430496}
   m_Layer: 0
   m_Name: Attacking
   m_TagString: Untagged
@@ -189,6 +190,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!170 &2108645679423430496
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370486892416768005}
+  m_Enabled: 1
+  m_DistortionLevel: 0.5
 --- !u!1 &449553451676954912
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +686,7 @@ GameObject:
   - component: {fileID: 8229618464729815819}
   - component: {fileID: 2216497738685060260}
   - component: {fileID: 8585427266310987191}
+  - component: {fileID: 7472557568647804560}
   m_Layer: 0
   m_Name: Idling
   m_TagString: Untagged
@@ -748,7 +759,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 3
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -783,7 +794,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -823,6 +834,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!170 &7472557568647804560
+AudioDistortionFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315257331867929380}
+  m_Enabled: 1
+  m_DistortionLevel: 0.4
 --- !u!1 &4025590983793966918
 GameObject:
   m_ObjectHideFlags: 0
