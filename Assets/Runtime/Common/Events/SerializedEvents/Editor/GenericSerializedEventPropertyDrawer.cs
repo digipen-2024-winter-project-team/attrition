@@ -49,7 +49,7 @@ namespace Attrition.Runtime.Common.SerializedEvents.Editor
         /// <summary>
         /// Path to the folder where this editor is located.
         /// </summary>
-        private const string EditorPath = "Assets/Runtime/Common/SerializedEvents/Editor";
+        private const string EditorPath = "Assets/Runtime/Common/Events/SerializedEvents/Editor";
 
         /// <summary>
         /// Filename of the UXML template asset.
