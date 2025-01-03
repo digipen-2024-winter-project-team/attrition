@@ -304,6 +304,9 @@ MonoBehaviour:
   quitConfirmationContent: {fileID: 8889998845087989946}
   quitConfirmationFirstSelected: {fileID: 9200819696721437845}
   quitButton: {fileID: 4125164039825394664}
+  paused: {fileID: 11400000, guid: b1c3a28bf51a54bedb30bb13f88542f6, type: 2}
+  playerDead: {fileID: 11400000, guid: 78ae4220a6cd94430bc770c903b6925b, type: 2}
+  cancel: {fileID: 7727032971491509709, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &5363448716836207775
 GameObject:
   m_ObjectHideFlags: 0

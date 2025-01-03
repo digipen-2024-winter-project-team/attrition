@@ -2,6 +2,9 @@ using System;
 using System.Linq;
 using Attrition.Common;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 namespace Attrition.Debug_Scene_Selector
@@ -13,6 +16,7 @@ namespace Attrition.Debug_Scene_Selector
         [SceneAsset]
         [SerializeField] private string mainMenuScene;
         [SerializeField] private SceneOptionInfo[] sceneOptions;
+        [SerializeField] private InputActionReference cancel;
         
         [Serializable]
         private struct SceneOptionInfo
@@ -22,8 +26,23 @@ namespace Attrition.Debug_Scene_Selector
             public string description;
         }
 
-        public string[] GetSceneNames() => this.sceneOptions.Select(sceneOption => sceneOption.scene).ToArray(); 
-        
+        public string[] GetSceneNames() => this.sceneOptions.Select(sceneOption => sceneOption.scene).ToArray();
+
+        private void OnEnable()
+        {
+            cancel.action.performed += OnCancelPerformed;
+        }
+
+        private void OnDisable()
+        {
+            cancel.action.performed -= OnCancelPerformed;
+        }
+
+        private void OnCancelPerformed(InputAction.CallbackContext context)
+        {
+            ReturnToMain();
+        }
+
         public void ReturnToMain()
         {
             SceneManager.LoadScene(this.mainMenuScene);
