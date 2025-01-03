@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3885206396393465002}
   - component: {fileID: 1928539816265714455}
-  - component: {fileID: 6198312998661456971}
+  - component: {fileID: 8875256857621309335}
   m_Layer: 0
   m_Name: Attacking
   m_TagString: Untagged
@@ -512,7 +512,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6198312998661456971}
+      - m_Target: {fileID: 8875256857621309335}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -524,7 +524,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!82 &6198312998661456971
+--- !u!82 &8875256857621309335
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,7 +536,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5701632504500219304, guid: 2d59ac436c953401d8c3c56dcae81d51, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 524ac41d76a0f554e9b01622353a3b41, type: 2}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5824,7 +5824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197673724487727618}
   - component: {fileID: 3663309058389316443}
-  - component: {fileID: 587764851443041577}
+  - component: {fileID: 4737745316623293002}
   m_Layer: 0
   m_Name: Idling
   m_TagString: Untagged
@@ -5863,7 +5863,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 587764851443041577}
+      - m_Target: {fileID: 4737745316623293002}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -5875,7 +5875,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!82 &587764851443041577
+--- !u!82 &4737745316623293002
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5887,7 +5887,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5701632504500219304, guid: 2d59ac436c953401d8c3c56dcae81d51, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 155239d24cff4754db052fcad7733887, type: 2}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
