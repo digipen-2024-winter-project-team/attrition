@@ -1,4 +1,4 @@
-﻿namespace Attrition.Common.SerializedEvents
+﻿namespace Attrition.Common.Events.SerializedEvents
 {
     /// <summary>
     /// Enum representing the order in which events are invoked for <see cref="SerializedEvent"/>.

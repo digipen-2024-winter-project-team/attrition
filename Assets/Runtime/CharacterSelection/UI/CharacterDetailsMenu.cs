@@ -2,7 +2,7 @@
 using Attrition.CharacterClasses;
 using Attrition.CharacterSelection.Characters;
 using Attrition.Common;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 using Attrition.Names;
 using TMPro;
 using UnityEngine;

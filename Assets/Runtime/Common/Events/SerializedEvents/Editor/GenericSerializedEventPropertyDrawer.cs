@@ -1,4 +1,4 @@
-﻿using Attrition.Common.SerializedEvents;
+﻿using Attrition.Common.Events.SerializedEvents;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;

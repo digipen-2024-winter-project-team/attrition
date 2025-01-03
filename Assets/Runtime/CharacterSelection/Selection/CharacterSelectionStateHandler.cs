@@ -1,6 +1,6 @@
 ﻿using System;
 using Attrition.CharacterSelection.Characters;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 
 namespace Attrition.CharacterSelection.Selection
 {

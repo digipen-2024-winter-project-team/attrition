@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Attrition.Common.SerializedEvents
+namespace Attrition.Common.Events.SerializedEvents
 {
     /// <summary>
     /// A serializable event wrapper that supports custom invocation order.

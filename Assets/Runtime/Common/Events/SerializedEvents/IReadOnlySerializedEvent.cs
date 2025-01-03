@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Attrition.Common.SerializedEvents
+namespace Attrition.Common.Events.SerializedEvents
 {
     public interface IReadOnlySerializedEvent
     {
