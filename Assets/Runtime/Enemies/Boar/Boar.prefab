@@ -446,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 2693729849071610547, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ac01eb3bbb2d214e8b33c93f79e97d5, type: 2}
+      objectReference: {fileID: 2100000, guid: af063ba7fcac25b418586e8a4774476d, type: 2}
     - target: {fileID: 6038429037173670018, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -508,7 +508,8 @@ PrefabInstance:
       value: BoarAnimated
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6102124986085601541, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe6a4403ca474c0c8f78d647b797f31, type: 3}

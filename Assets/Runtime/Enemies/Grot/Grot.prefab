@@ -353,6 +353,9 @@ MonoBehaviour:
   m_Graph: {fileID: -7988501657815218245, guid: b5268ba15192f6147a5157ef755e9df9, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6321703028543979919
+  - rid: 7485633583076344526
+  - rid: 7485633583076344527
+  - rid: 7485633583076344528
   references:
     version: 2
     RefIds:
@@ -364,6 +367,30 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 3522784037944823944}
+    - rid: 7485633583076344526
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7592835909098985269
+          m_Value1: 2995872840194301350
+        Name: Child
+        m_Value: {fileID: 62966556222933470}
+    - rid: 7485633583076344527
+      type: {class: 'BlackboardVariable`1[[Attrition.DamageSystem.SimpleDamageSource, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12949727007872322406
+          m_Value1: 1061870935131673117
+        Name: AttackHitbox
+        m_Value: {fileID: 7010867848023119955}
+    - rid: 7485633583076344528
+      type: {class: 'BlackboardVariable`1[[Attrition.CombatTargeting.TargetDetection, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3064666280217182413
+          m_Value1: 7309565896357847967
+        Name: TargetDetection
+        m_Value: {fileID: 5300251761339550552}
 --- !u!114 &9153143225014724169
 MonoBehaviour:
   m_ObjectHideFlags: 0
