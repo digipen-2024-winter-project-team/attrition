@@ -1,4 +1,6 @@
-﻿using Attrition.PlayerCharacter;
+﻿using System;
+using Attrition.Common;
+using Attrition.PlayerCharacter;
 using UnityEngine;
 
 namespace Attrition.Player_Character.Animation
@@ -7,6 +9,7 @@ namespace Attrition.Player_Character.Animation
     {
         private Animator animator;
         private PlayerMovement mover;
+        private PlayerAttack attacker;
 
         private void Awake()
         {
@@ -14,6 +17,19 @@ namespace Attrition.Player_Character.Animation
             this.SetAnimator(firstEnabledAnimator);
 
             this.mover = this.GetComponentInParent<PlayerMovement>();
+            this.attacker = this.GetComponentInParent<PlayerAttack>();
+        }
+
+        private void OnEnable()
+        {
+            mover.MoveStateChanged.Invoked += OnMoveStateChanged;
+            attacker.Attacked.Invoked += OnAttack;
+        }
+
+        private void OnDisable()
+        {
+            mover.MoveStateChanged.Invoked -= OnMoveStateChanged;
+            attacker.Attacked.Invoked -= OnAttack;
         }
 
         public void SetAnimator(Animator animator)
@@ -27,12 +43,28 @@ namespace Attrition.Player_Character.Animation
             {
                 return;
             }
-
-            var speed = this.mover.SpeedPercent;
-            var isMoving = speed > 0f;
+            
+            var speedPercent = this.mover.DirectionalSpeedPercent;
+            var speedForward = speedPercent.y;
+            var speedRight = speedPercent.x;
+            var isMoving = speedPercent.magnitude > 0f;
             
             this.animator.SetBool("IsMoving", isMoving);
-            this.animator.SetFloat("Speed", speed);
+            this.animator.SetFloat("SpeedForward", speedForward);
+            this.animator.SetFloat("SpeedRight", speedRight);
+        }
+
+        private void OnMoveStateChanged(ValueChangeArgs<PlayerMovement.MoveState> args)
+        {
+            if (args.To == PlayerMovement.MoveState.Dodging)
+            {
+                this.animator.SetTrigger("Dodging");
+            }
+        }
+        
+        private void OnAttack()
+        {
+            this.animator.SetTrigger("Attacking");
         }
     }
 }
