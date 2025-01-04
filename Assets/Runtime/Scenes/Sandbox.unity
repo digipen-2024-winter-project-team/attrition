@@ -26142,6 +26142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grot
       objectReference: {fileID: 0}
+    - target: {fileID: 3522784037944823944, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568315843951621111, guid: 53dbe704e22bc4f429713430d81d8470, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.6001897
@@ -26602,31 +26606,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.641
+      value: 0.64100003
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.32
+      value: 16.050781
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8535535
+      value: 0.95923173
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.35355338
+      value: 0.28262082
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35355338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6123947490767048346, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.1464466
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308272930204121767, guid: 6402cd2b3c4094de2b37605433cca483, type: 3}
       propertyPath: m_Name
@@ -43201,6 +43205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boar
       objectReference: {fileID: 0}
+    - target: {fileID: 4296969147693792371, guid: feb4bb916136e44328b078e60f1aea9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9137118444663222451, guid: feb4bb916136e44328b078e60f1aea9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.127998
@@ -45411,6 +45419,10 @@ PrefabInstance:
     - target: {fileID: 4590839351601694145, guid: 91d8a3c3d1f48cf43965ee2e09f78a01, type: 3}
       propertyPath: m_Name
       value: Bider
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590839351601694145, guid: 91d8a3c3d1f48cf43965ee2e09f78a01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
