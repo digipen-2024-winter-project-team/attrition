@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Attrition.Common.Physics;
+using Attrition.Common.SerializedEvents;
 using Attrition.DamageSystem;
 using UnityEngine.VFX;
 
@@ -14,6 +15,9 @@ namespace Attrition.PlayerCharacter
         [SerializeField] private float damageValue;
         [SerializeField] private InputActionReference attackAction;
         [SerializeField] private VisualEffect attackParticle;
+        [SerializeField] private SerializedEvent attacked;
+
+        public IReadOnlySerializedEvent Attacked => attacked;
         
         private void Update()
         {
@@ -25,6 +29,8 @@ namespace Attrition.PlayerCharacter
 
         private void Attack()
         {
+            attacked.Invoke();
+            
             attackParticle.Play();
             foreach (var collision in hitboxCollision.Colliders)
             {
