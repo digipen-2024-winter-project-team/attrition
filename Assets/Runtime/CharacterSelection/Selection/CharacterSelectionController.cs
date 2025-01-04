@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
 using Attrition.CharacterSelection.UI;

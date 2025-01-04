@@ -2,9 +2,7 @@ using System;
 using System.Linq;
 using Attrition.Common;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 namespace Attrition.Debug_Scene_Selector

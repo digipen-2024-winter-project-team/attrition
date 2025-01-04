@@ -1,12 +1,9 @@
-﻿using System;
-using Attrition.CharacterClasses;
+﻿using Attrition.CharacterClasses;
 using Attrition.CharacterSelection.Characters;
-using Attrition.Common;
 using Attrition.Common.Events.SerializedEvents;
 using Attrition.Names;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Attrition.CharacterSelection.UI

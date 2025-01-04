@@ -1,10 +1,8 @@
-using System;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 namespace Attrition.PauseMenu

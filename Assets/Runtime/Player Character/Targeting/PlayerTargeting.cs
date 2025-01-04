@@ -1,10 +1,8 @@
-using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
-using Attrition.Common.Physics;
 using Attrition.CombatTargeting;
+using Attrition.Common.Physics;
 using Attrition.Common.ScriptableVariables.ComponentTypes;
 
 namespace Attrition.PlayerCharacter.Targeting

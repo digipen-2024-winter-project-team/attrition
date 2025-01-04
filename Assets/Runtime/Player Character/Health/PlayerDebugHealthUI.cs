@@ -1,4 +1,3 @@
-using System;
 using Attrition.Common.ScriptableVariables.ComponentTypes;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using TMPro;

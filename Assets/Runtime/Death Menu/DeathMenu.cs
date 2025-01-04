@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.DataTypes;

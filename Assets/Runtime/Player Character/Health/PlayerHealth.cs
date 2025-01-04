@@ -1,11 +1,7 @@
-using System;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using Attrition.DamageSystem;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Attrition.PlayerCharacter.Health
 {

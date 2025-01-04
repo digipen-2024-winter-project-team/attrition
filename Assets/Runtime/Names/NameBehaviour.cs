@@ -1,5 +1,4 @@
-﻿using System;
-using Attrition.Common.ScriptableVariables.DataTypes;
+﻿using Attrition.Common.ScriptableVariables.DataTypes;
 using UnityEngine;
 
 namespace Attrition.Names

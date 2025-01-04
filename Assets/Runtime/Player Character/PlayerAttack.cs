@@ -1,8 +1,7 @@
-using System;
+using Attrition.Common.Events.SerializedEvents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Attrition.Common.Physics;
-using Attrition.Common.SerializedEvents;
 using Attrition.DamageSystem;
 using UnityEngine.VFX;
 

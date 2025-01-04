@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Net.Mime;
 using Attrition.Common.Physics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Attrition.Common;
-using Attrition.Common.SerializedEvents;
-using UnityEngine.Serialization;
+using Attrition.Common.Events.SerializedEvents;
 
 namespace Attrition.PlayerCharacter
 {

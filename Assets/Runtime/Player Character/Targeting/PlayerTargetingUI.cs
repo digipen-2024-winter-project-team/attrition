@@ -1,4 +1,3 @@
-using System;
 using Attrition.Camera;
 using Attrition.Common;
 using Attrition.Common.ScriptableVariables.ComponentTypes;

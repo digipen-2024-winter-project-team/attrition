@@ -1,4 +1,3 @@
-using System;
 using Attrition.Common.ScriptableVariables.ComponentTypes;
 using UnityEngine;
 

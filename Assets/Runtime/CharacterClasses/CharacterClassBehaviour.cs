@@ -1,5 +1,4 @@
-﻿using System;
-using Attrition.Common;
+﻿using Attrition.Common;
 using Attrition.Common.Events.SerializedEvents;
 using Attrition.Common.ScriptableVariables.DataTypes;
 using UnityEngine;
