@@ -4,6 +4,7 @@ using UnityEngine;
 using Attrition.Common;
 using Attrition.CameraTriggers;
 using Attrition.DamageSystem;
+using Attrition.Ecosystem;
 using Attrition.PlayerCharacter;
 using Attrition.PlayerCharacter.Health;
 using Unity.Cinemachine;
@@ -94,15 +95,21 @@ namespace Attrition.LevelTools
             }
             
             EditorGUILayout.Space();
-            
-            using (var changeCheck = new EditorGUI.ChangeCheckScope())
-            {
-                var selection = (int)(GizmoVisibility)EditorGUILayout.EnumPopup(new GUIContent("Camera Triggers"),
-                    (GizmoVisibility)EditorPrefs.GetInt(CameraTrigger.TriggerGizmoVisibilityKey));
 
-                if (changeCheck.changed)
+            GizmoVisibilityToggle("Camera Triggers", CameraTrigger.GizmoVisibilityKey);
+            GizmoVisibilityToggle("Room Connections", RoomConnectionManager.GizmoVisibilityKey);
+            
+            void GizmoVisibilityToggle(string name, string key)
+            {
+                using (var changeCheck = new EditorGUI.ChangeCheckScope())
                 {
-                    EditorPrefs.SetInt(CameraTrigger.TriggerGizmoVisibilityKey, selection);
+                    var selection = (int)(GizmoVisibility)EditorGUILayout.EnumPopup(new GUIContent(name),
+                        (GizmoVisibility)EditorPrefs.GetInt(key));
+
+                    if (changeCheck.changed)
+                    {
+                        EditorPrefs.SetInt(key, selection);
+                    }
                 }
             }
 
