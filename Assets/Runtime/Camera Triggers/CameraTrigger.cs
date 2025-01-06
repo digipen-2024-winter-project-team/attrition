@@ -29,18 +29,18 @@ namespace Attrition.CameraTriggers
 
         private static readonly Color triggerBoundsColor = new(1, 0, 0, 0.5f);
         
-        public const string TriggerGizmoVisibilityKey = "CameraTriggerGizmoVisiblity";
+        public const string GizmoVisibilityKey = "CameraTriggerGizmoVisiblity";
 
-        private static GizmoVisibility TriggerGizmoVisibility => 
+        private static GizmoVisibility GizmoVisibility => 
         #if UNITY_EDITOR
-            (GizmoVisibility)EditorPrefs.GetInt(TriggerGizmoVisibilityKey, 0);
+            (GizmoVisibility)EditorPrefs.GetInt(GizmoVisibilityKey, 0);
         #else
             GizmoVisibility.NeverShow;
         #endif
         
         private void OnDrawGizmos()
         {
-            if (TriggerGizmoVisibility == GizmoVisibility.AlwaysShow)
+            if (GizmoVisibility == GizmoVisibility.AlwaysShow)
             {
                 this.DrawGizmos();
             }
@@ -48,7 +48,7 @@ namespace Attrition.CameraTriggers
 
         private void OnDrawGizmosSelected()
         {
-            if (TriggerGizmoVisibility == GizmoVisibility.ShowWhenSelected)
+            if (GizmoVisibility == GizmoVisibility.ShowWhenSelected)
             {
                 this.DrawGizmos();
             }

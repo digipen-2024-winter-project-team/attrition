@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 9153143225014724169}
   - component: {fileID: 4784414983402654848}
   - component: {fileID: 5300251761339550552}
+  - component: {fileID: 3576589496516295928}
   m_Layer: 0
   m_Name: Grot
   m_TagString: Untagged
@@ -263,6 +264,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4530513056423036594}
+  - {fileID: 2463797441935748027}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &2929928870826212613
@@ -275,7 +277,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -352,9 +354,9 @@ MonoBehaviour:
   m_Graph: {fileID: -7988501657815218245, guid: b5268ba15192f6147a5157ef755e9df9, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6321703028543979919
-  - rid: 6321703187234685258
-  - rid: 6321703239751566200
-  - rid: 6321703239998242921
+  - rid: 7485633583076344526
+  - rid: 7485633583076344527
+  - rid: 7485633583076344528
   references:
     version: 2
     RefIds:
@@ -366,7 +368,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 3522784037944823944}
-    - rid: 6321703187234685258
+    - rid: 7485633583076344526
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -374,7 +376,7 @@ MonoBehaviour:
           m_Value1: 2995872840194301350
         Name: Child
         m_Value: {fileID: 62966556222933470}
-    - rid: 6321703239751566200
+    - rid: 7485633583076344527
       type: {class: 'BlackboardVariable`1[[Attrition.DamageSystem.SimpleDamageSource, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -382,7 +384,7 @@ MonoBehaviour:
           m_Value1: 1061870935131673117
         Name: AttackHitbox
         m_Value: {fileID: 7010867848023119955}
-    - rid: 6321703239998242921
+    - rid: 7485633583076344528
       type: {class: 'BlackboardVariable`1[[Attrition.CombatTargeting.TargetDetection, Attrition.Runtime]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -404,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 0
   damageable: {fileID: 4784414983402654848}
-  maxHitpoints: 1
+  maxHitpoints: 5
   startWithMaxHitpoints: 1
   invincibilityDuration: 0
   team: {fileID: 11400000, guid: bda91972b4175d540af5d9357d81de6e, type: 2}
@@ -475,6 +477,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   maxRaycastHits: 10
+--- !u!114 &3576589496516295928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522784037944823944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb1a3ebfdcf4bd092e0b9e3875c5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 11400000, guid: e26b755cf305aaa46b4331257965d882, type: 2}
 --- !u!1 &4880270332616159605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5724,3 +5739,70 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &9198163737255735918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2463797441935748027}
+  - component: {fileID: 7738558720698222903}
+  - component: {fileID: 1834077747210510332}
+  m_Layer: 8
+  m_Name: Targetable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2463797441935748027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198163737255735918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5568315843951621111}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7738558720698222903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198163737255735918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb1a3ebfdcf4bd092e0b9e3875c5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 11400000, guid: e26b755cf305aaa46b4331257965d882, type: 2}
+--- !u!65 &1834077747210510332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198163737255735918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
