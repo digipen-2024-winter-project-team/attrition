@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU HAVE DIED
+  m_text: you have died.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 81ceb18f4dabe7c4795fc48f10878a4a, type: 2}
+  m_sharedMaterial: {fileID: -5377968510330555161, guid: 81ceb18f4dabe7c4795fc48f10878a4a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -547,6 +547,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451427163123366476, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1524054733, guid: 848a9d4c45847fb40832f2e41b1b8076, type: 3}
     - target: {fileID: 5209758427375816777, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -555,6 +563,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1279651940, guid: adb098a315dcb934ca2be539ec7a0049, type: 3}
     - target: {fileID: 6998999806913315367, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -670,10 +682,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451427163123366476, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1524054733, guid: 848a9d4c45847fb40832f2e41b1b8076, type: 3}
     - target: {fileID: 5209758427375816777, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1971567768221292485}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1279651940, guid: adb098a315dcb934ca2be539ec7a0049, type: 3}
     - target: {fileID: 6998999806913315367, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

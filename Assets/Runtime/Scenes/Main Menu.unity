@@ -151,7 +151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.300049, y: -28.5}
+  m_AnchoredPosition: {x: 73.9, y: -48.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &163039838
@@ -229,7 +229,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_text
-      value: Credits
+      value: ' Credits'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2137069710114543036, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Type
@@ -259,6 +267,10 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 1.31
       objectReference: {fileID: 0}
+    - target: {fileID: 2451427163123366476, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209758427375816777, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -278,6 +290,26 @@ PrefabInstance:
     - target: {fileID: 5209758427375816777, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1519972500, guid: b4715bd19b2e4cc499d425f5cad8b81e, type: 3}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.63529414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6998999806913315367, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -1390,10 +1422,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1716823439}
     m_Modifications:
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_text
+      value: ' Settings'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451427163123366476, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5209758427375816777, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1822665638}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1519972500, guid: b4715bd19b2e4cc499d425f5cad8b81e, type: 3}
+    - target: {fileID: 5483664517840719075, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6998999806913315367, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2810,34 +2862,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1716823439}
     m_Modifications:
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_text
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_fontSize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 81ceb18f4dabe7c4795fc48f10878a4a, type: 2}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5377968510330555161, guid: 81ceb18f4dabe7c4795fc48f10878a4a, type: 2}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026338599519222626, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2137069710114543036, guid: facb15d3c2f63442792832a8c634ac9d, type: 3}
       propertyPath: m_Type
       value: 1
