@@ -6,15 +6,14 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Linq;
 
 namespace Attrition.Runtime.Common.ScriptableVariables.Editor
 {
     /// <summary>
-    /// Custom property drawers for ScriptableVariable objects.
+    /// Abstract base class for creating custom property drawers for ScriptableVariable objects.
     /// </summary>
-    [CustomPropertyDrawer(typeof(ScriptableVariable<>), true)]
-    public class ScriptableVariablePropertyDrawer : PropertyDrawer
+    /// <typeparam name="T">The type of the variable being drawn.</typeparam>
+    public abstract class ScriptableVariablePropertyDrawer<T> : PropertyDrawer
     {
         /// <summary>
         /// Represents the type of field exposed in the property drawer.
@@ -111,7 +110,7 @@ namespace Attrition.Runtime.Common.ScriptableVariables.Editor
 
             void OnCreateButtonClicked(SerializedProperty serializedProperty)
             {
-                var newInstance = this.CreateScriptableObjectWithSavePath();
+                var newInstance = this.CreateInstance();
                 serializedProperty.objectReferenceValue = newInstance;
                 serializedProperty.serializedObject.ApplyModifiedProperties();
             }
@@ -153,11 +152,18 @@ namespace Attrition.Runtime.Common.ScriptableVariables.Editor
         }
 
         /// <summary>
+        /// Abstract method to create a new instance of the ScriptableVariable.
+        /// Must be implemented by derived classes.
+        /// </summary>
+        /// <returns>A new instance of the ScriptableVariable.</returns>
+        protected abstract ScriptableVariable<T> CreateInstance();
+
+        /// <summary>
         /// Utility method to create a ScriptableObject and save it at a specified path.
         /// </summary>
         /// <typeparam name="TScriptableObject">The type of ScriptableObject to create.</typeparam>
         /// <returns>The created ScriptableObject instance.</returns>
-        private ScriptableObject CreateScriptableObjectWithSavePath()
+        protected static TScriptableObject CreateScriptableObjectWithSavePath<TScriptableObject>() where TScriptableObject : ScriptableObject
         {
             var path = EditorUtility.SaveFilePanelInProject(
                 "Save ScriptableVariable",
@@ -167,20 +173,203 @@ namespace Attrition.Runtime.Common.ScriptableVariables.Editor
 
             if (string.IsNullOrEmpty(path)) return null;
 
-            var valueType = fieldInfo.FieldType.BaseType
-                .GetGenericArguments()
-                .First();
-
-            var type = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .First(type => type.BaseType is { IsGenericType: true } baseType
-                               && baseType.GetGenericArguments().First() == valueType
-                               && baseType.GetGenericTypeDefinition() == typeof(ScriptableVariable<>));
-            
-            var asset = ScriptableObject.CreateInstance(type);
+            var asset = ScriptableObject.CreateInstance<TScriptableObject>();
             AssetDatabase.CreateAsset(asset, path);
             AssetDatabase.SaveAssets();
             return asset;
         }
+    }
+
+    // Below are concrete implementations of ScriptableVariablePropertyDrawer for different variable types.
+
+    /// <summary>
+    /// Custom property drawer for FloatVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(FloatVariable))]
+    public class FloatVariablePropertyDrawer : ScriptableVariablePropertyDrawer<float>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<float> CreateInstance() => CreateScriptableObjectWithSavePath<FloatVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for BoolVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(BoolVariable))]
+    public class BoolVariablePropertyDrawer : ScriptableVariablePropertyDrawer<bool>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<bool> CreateInstance() => CreateScriptableObjectWithSavePath<BoolVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for IntVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(IntVariable))]
+    public class IntVariablePropertyDrawer : ScriptableVariablePropertyDrawer<int>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<int> CreateInstance() => CreateScriptableObjectWithSavePath<IntVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for StringVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(StringVariable))]
+    public class StringVariablePropertyDrawer : ScriptableVariablePropertyDrawer<string>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<string> CreateInstance() => CreateScriptableObjectWithSavePath<StringVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for AnimationCurveVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(AnimationCurveVariable))]
+    public class AnimationCurveVariablePropertyDrawer : ScriptableVariablePropertyDrawer<AnimationCurve>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<AnimationCurve> CreateInstance() => CreateScriptableObjectWithSavePath<AnimationCurveVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for ColorVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(ColorVariable))]
+    public class ColorVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Color>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Color> CreateInstance() => CreateScriptableObjectWithSavePath<ColorVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for Vector3Variable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(Vector3Variable))]
+    public class Vector3VariablePropertyDrawer : ScriptableVariablePropertyDrawer<Vector3>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Vector3> CreateInstance() => CreateScriptableObjectWithSavePath<Vector3Variable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for Vector2Variable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(Vector2Variable))]
+    public class Vector2VariablePropertyDrawer : ScriptableVariablePropertyDrawer<Vector2>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Vector2> CreateInstance() => CreateScriptableObjectWithSavePath<Vector2Variable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for Vector4Variable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(Vector4Variable))]
+    public class Vector4VariablePropertyDrawer : ScriptableVariablePropertyDrawer<Vector4>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Vector4> CreateInstance() => CreateScriptableObjectWithSavePath<Vector4Variable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for Matrix4x4Variable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(Matrix4x4Variable))]
+    public class Matrix4x4VariablePropertyDrawer : ScriptableVariablePropertyDrawer<Matrix4x4>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Matrix4x4> CreateInstance() => CreateScriptableObjectWithSavePath<Matrix4x4Variable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for QuaternionVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(QuaternionVariable))]
+    public class QuaternionVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Quaternion>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Quaternion> CreateInstance() => CreateScriptableObjectWithSavePath<QuaternionVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for RayVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(RayVariable))]
+    public class RayVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Ray>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Ray> CreateInstance() => CreateScriptableObjectWithSavePath<RayVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for Ray2DVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(Ray2DVariable))]
+    public class Ray2DVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Ray2D>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Ray2D> CreateInstance() => CreateScriptableObjectWithSavePath<Ray2DVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for RectVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(RectVariable))]
+    public class RectVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Rect>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Rect> CreateInstance() => CreateScriptableObjectWithSavePath<RectVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for RectIntVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(RectIntVariable))]
+    public class RectIntVariablePropertyDrawer : ScriptableVariablePropertyDrawer<RectInt>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<RectInt> CreateInstance() => CreateScriptableObjectWithSavePath<RectIntVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for BoundsVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(BoundsVariable))]
+    public class BoundsVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Bounds>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Bounds> CreateInstance() => CreateScriptableObjectWithSavePath<BoundsVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for GradientVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(GradientVariable))]
+    public class GradientVariablePropertyDrawer : ScriptableVariablePropertyDrawer<Gradient>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<Gradient> CreateInstance() => CreateScriptableObjectWithSavePath<GradientVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for LayerMaskVariable.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(LayerMaskVariable))]
+    public class LayerMaskVariablePropertyDrawer : ScriptableVariablePropertyDrawer<LayerMask>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<LayerMask> CreateInstance() => CreateScriptableObjectWithSavePath<LayerMaskVariable>();
+    }
+
+    /// <summary>
+    /// Custom property drawer for CharacterClass.
+    /// </summary>
+    [CustomPropertyDrawer(typeof(CharacterClassVariable))]
+    public class CharacterClassVariablePropertyDrawer : ScriptableVariablePropertyDrawer<CharacterClass>
+    {
+        /// <inheritdoc />
+        protected override ScriptableVariable<CharacterClass> CreateInstance() =>
+            CreateScriptableObjectWithSavePath<CharacterClassVariable>();
     }
 }
