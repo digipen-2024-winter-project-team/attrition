@@ -97,7 +97,7 @@ namespace Attrition.CharacterSelection.Selection
         {
             this.applicator.ApplyToPlayableCharacter(this.navigator.CurrentSelection.gameObject);
             // TODO: Replace this with call to a scene loader service
-            SceneManager.LoadScene("Sandbox");
+            SceneManager.LoadScene("Dungeon");
         }
 
         private void Initialize()

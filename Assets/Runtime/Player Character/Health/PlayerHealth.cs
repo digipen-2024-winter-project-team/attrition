@@ -74,7 +74,7 @@ namespace Attrition.PlayerCharacter.Health
 
             if (deathTimer == 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("CharacterSelection");
             }
 
             string health = hitpoints > 0
