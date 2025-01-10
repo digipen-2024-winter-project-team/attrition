@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection.Navigation;
 using Attrition.CharacterSelection.UI;
 using Attrition.Common;
+using Attrition.Common.Events.SerializedEvents;
 using Attrition.Common.ScriptableVariables.DataTypes;
-using Attrition.Common.SerializedEvents;
 using Attrition.Common.Timing;
 using Unity.Cinemachine;
 using UnityEngine;

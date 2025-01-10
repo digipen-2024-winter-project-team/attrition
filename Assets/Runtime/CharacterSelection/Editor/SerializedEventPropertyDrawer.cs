@@ -1,6 +1,6 @@
 ﻿using Attrition.CharacterSelection.Characters;
 using Attrition.CharacterSelection.Selection;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 using Attrition.Runtime.Common.SerializedEvents.Editor;
 using UnityEditor;
 

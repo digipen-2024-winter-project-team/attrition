@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Attrition.Common;
 using Attrition.Common.Physics;
 using Attrition.DamageSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.CombatTargeting
 {

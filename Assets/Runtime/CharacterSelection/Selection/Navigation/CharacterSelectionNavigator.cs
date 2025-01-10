@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Attrition.CharacterSelection.Characters;
-using Attrition.Common.SerializedEvents;
-using UnityEngine;
+using Attrition.Common.Events.SerializedEvents;
 using Attrition.Common.Timing;
 
 namespace Attrition.CharacterSelection.Selection.Navigation
