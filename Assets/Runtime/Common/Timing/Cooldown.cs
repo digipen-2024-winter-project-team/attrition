@@ -1,5 +1,5 @@
 ﻿using System;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 using UnityEngine;
 
 namespace Attrition.Common.Timing

@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="audio-mixer-tweenable-editor" style="flex-grow: 1;">
+        <engine:DropdownField name="parameter-name-dropdown-field" binding-path="ParameterName" style="display: none;" />
+        <editor:PropertyField name="parameter-name-property-field" binding-path="ParameterName" />
+        <editor:PropertyField name="target-value-property-field" binding-path="TargetValue" />
+        <editor:PropertyField name="tween-property-field" binding-path="Tween" />
+    </engine:VisualElement>
+</engine:UXML>

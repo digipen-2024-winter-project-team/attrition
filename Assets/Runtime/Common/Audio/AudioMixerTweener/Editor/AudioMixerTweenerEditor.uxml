@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Runtime/Common/Audio/AudioMixerTweener/Editor/AudioMixerTweenerEditor.uss?fileID=7433441132597879392&amp;guid=d17c1f687586e2a4382ea4cfd8f9123c&amp;type=3#AudioMixerTweenerEditor" />
+    <engine:VisualElement name="audio-mixer-tweener-editor" style="flex-grow: 1;">
+        <editor:PropertyField binding-path="audioMixer" name="audio-mixer-property-drawer" />
+        <engine:ListView binding-path="tweenables" name="tweenables-listview" virtualization-method="DynamicHeight" show-border="true" selection-type="Multiple" show-alternating-row-backgrounds="All" reorderable="true" header-title="Tweens" show-bound-collection-size="false" horizontal-scrolling="true" reorder-mode="Animated" show-add-remove-footer="true" item-template="project://database/Assets/Runtime/Common/Audio/AudioMixerTweener/Editor/AudioMixerTweenableEditor.uxml?fileID=9197481963319205126&amp;guid=be46e3086709ff24ca6294e0cf484cf7&amp;type=3#AudioMixerTweenableEditor" show-foldout-header="false" />
+    </engine:VisualElement>
+</engine:UXML>

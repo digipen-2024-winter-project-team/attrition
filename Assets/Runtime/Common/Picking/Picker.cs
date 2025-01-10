@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Attrition.Common.Picking.Builder;
 using Attrition.Common.Picking.Strategies;
 
 namespace Attrition.Common.Picking

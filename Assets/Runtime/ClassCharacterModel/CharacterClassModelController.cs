@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Attrition.CharacterClasses;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
