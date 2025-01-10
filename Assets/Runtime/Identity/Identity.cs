@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Attrition.Identity
+﻿namespace Attrition.Identity
 {
     public class Identity
     {

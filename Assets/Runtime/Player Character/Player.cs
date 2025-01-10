@@ -2,7 +2,6 @@ using Attrition.Common.ScriptableVariables.DataTypes;
 using Unity.Cinemachine;
 using UnityEngine;
 using Attrition.PlayerCharacter.Health;
-using Attrition.PlayerCharacter.Targeting;
 
 namespace Attrition.PlayerCharacter
 {

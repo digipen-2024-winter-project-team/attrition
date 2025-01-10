@@ -1,4 +1,3 @@
-using System;
 using Attrition.Common;
 using Attrition.PlayerCharacter;
 using UnityEngine;

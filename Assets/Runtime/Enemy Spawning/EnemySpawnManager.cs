@@ -1,5 +1,3 @@
-using System;
-using Attrition.Ecosystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

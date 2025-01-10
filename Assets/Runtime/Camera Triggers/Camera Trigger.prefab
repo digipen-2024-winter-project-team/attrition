@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7788814403292491343}
   - component: {fileID: 4949550021463300510}
   - component: {fileID: 4414408957936605124}
+  - component: {fileID: 7879395043653447525}
   m_Layer: 0
   m_Name: Camera Trigger
   m_TagString: Untagged
@@ -203,3 +204,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7879395043653447525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078509835536307182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c73459127e541df899d232fd741fa42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 2d59ac436c953401d8c3c56dcae81d51, type: 2}
+  tweenables:
+  - ParameterName: Reverb/Room
+    TargetValue: 0
+    Tween:
+      Duration: 1
+      Delay: 0
+      SpeedBased: 0
+      UseAnimationCurve: 0
+      Ease: 6
+      AnimationCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 4
+      LoopType: 0
+      Loops: 0
+      AutoPlay: 0
+      AutoKill: 0
+      Recycle: 0
+      UpdateType: 0
+      IgnoreTimeScale: 0
+      Id: {fileID: 0}
+      IsRelative: 0
+      OnStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      OnUpdated:
+        m_PersistentCalls:
+          m_Calls: []
+      OnCompleted:
+        m_PersistentCalls:
+          m_Calls: []
+      OnKilled:
+        m_PersistentCalls:
+          m_Calls: []

@@ -1,7 +1,6 @@
-﻿using System;
-using Attrition.Common;
+﻿using Attrition.Common;
+using Attrition.Common.Events.SerializedEvents;
 using Attrition.Common.ScriptableVariables.DataTypes;
-using Attrition.Common.SerializedEvents;
 using UnityEngine;
 
 namespace Attrition.CharacterClasses

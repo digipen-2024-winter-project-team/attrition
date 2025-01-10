@@ -1,9 +1,7 @@
-﻿using System;
-using Attrition.Common.DOTweenParameters;
+﻿using Attrition.Common.DOTweenParameters;
 using DG.Tweening;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Attrition.Common.Cinemachine
 {

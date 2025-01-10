@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Attrition.CharacterClasses;
 using Attrition.Common;
-using Attrition.Common.SerializedEvents;
+using Attrition.Common.Events.SerializedEvents;
 using UnityEngine;
 
 namespace Attrition.ClassCharacterModel
